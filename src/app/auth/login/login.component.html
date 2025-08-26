@@ -1,0 +1,44 @@
+<section class="login-container">
+    <section class="talent-flow-img">
+        <section class="talent-flow-img-text">
+            <p class="m-0 text-white text-lg">BIENVENIDO A</p>
+            <p class="m-0 text-white text-6xl font-semibold">{{env.appName}}</p>
+            <p-divider />
+            <p class="m-0 text-white text-lg">Portal de inicio de sesión</p>
+        </section>
+    </section>
+    <section class="talent-flow-form">
+        <section class="form">
+            <form class="grid" [formGroup]="form" (ngSubmit)="submit()">
+                <section class="col-12 xl:col-10 xl:col-offset-1">
+                    <section class="flex align-items-center justify-content-center flex-column mb-4">
+                        <img class="tf-logo" src="assets/svg/tf2.svg" alt="TalentFlow">
+                        <p class="m-0 text-xl font-semibold">{{env.appName}}</p>
+                    </section>
+                </section>
+                <section class="col-12 xl:col-10 xl:col-offset-1">
+                    <p class="m-0 text-sm mb-2">Correo Electrónico</p>
+                    <input formControlName="email" type="email" pInputText placeholder="tu@email.com" class="p-inputtext-sm w-full"/>
+                </section>
+                <section class="col-12 xl:col-10 xl:col-offset-1">
+                    <p class="m-0 text-sm mb-2">Contraseña</p>
+                    <input formControlName="password" type="password" pInputText placeholder="Tu contraseña" class="p-inputtext-sm w-full"/>
+                </section>
+                <section class="col-12 xl:col-10 xl:col-offset-1">
+                    <section class="flex gap-2 align-items-center">
+                        <p-checkbox [binary]="true" formControlName="remember"/>
+                        <p class="m-0 text-sm">Recordar usuario</p>
+                    </section>
+                </section>
+                <section class="col-12 xl:col-10 xl:col-offset-1">
+                    <p-button [loading]="loading" [type]="'submit'" label="Iniciar Sesión" icon="pi pi-sign-in" [rounded]="true" styleClass="w-full p-button-sm"/>
+                </section>
+                <section class="col-12 xl:col-10 xl:col-offset-1">
+                    <p-button label="Olvidé mi contraseña" [link]="true" styleClass="w-full p-button-sm"/>
+                </section>
+            </form>
+        </section>
+    </section>
+</section>
+
+<p-toast />

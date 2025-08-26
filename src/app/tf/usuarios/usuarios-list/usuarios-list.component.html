@@ -1,0 +1,107 @@
+<section class="grid">
+  <section class="col-12 lg:col-10 lg:col-offset-1">
+    <p-breadcrumb class="max-w-full" [model]="bItems" />
+  </section>
+  <section class="col-12 lg:col-10 lg:col-offset-1">
+    <p-table
+      #tablaUsuarios
+      [value]="usuarios"
+      [paginator]="true"
+      [rows]="5"
+      [rowsPerPageOptions]="[5, 10, 20]"
+      [loading]="loading"
+      [globalFilterFields]="['email', 'nombre', 'apellido']"
+    >
+      <ng-template pTemplate="caption">
+        <div class="flex justify-content-between align-items-center">
+          <p-button label="Nuevo" icon="pi pi-user-plus" severity="success" routerLink="/tf/usuarios/add"/>
+          <p-iconField iconPosition="left">
+            <p-inputIcon>
+              <i class="pi pi-search"></i>
+            </p-inputIcon>
+            <input
+              #q
+              pInputText
+              type="text"
+              (input)="tablaUsuarios.filterGlobal(q.value, 'contains')"
+              placeholder="Buscar..."
+            />
+          </p-iconField>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Email</th>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Estado</th>
+          <th>Último Acceso</th>
+          <th>Acciones</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-u>
+        <tr>
+          <td>
+            <p class="m-0 text-sm">{{ u.email }}</p>
+          </td>
+          <td>
+            <p class="m-0 text-sm">{{ u.nombre }}</p>
+          </td>
+          <td>
+            <p class="m-0 text-sm">{{ u.apellido }}</p>
+          </td>
+          <td>
+            <ng-container *ngIf="u.activo; else inactivo;">
+              <p-tag severity="success" value="ACTIVO"/>
+            </ng-container>
+            <ng-template #inactivo>
+              <p-tag severity="warning" value="INACTIVO"/>
+            </ng-template>
+          </td>
+          <td>
+            <p class="m-0 text-sm">{{ u.lastLogin }}</p>
+          </td>
+          <td>
+            <section class="flex gap-2">
+              <p-button
+                pTooltip="Editar datos"
+                icon="pi pi-pencil"
+                [rounded]="true"
+                [text]="true"
+                severity="warning"
+              />
+              <p-button
+                *ngIf="u.activo"
+                pTooltip="Desactivar"
+                icon="pi pi-user-minus"
+                [rounded]="true"
+                [text]="true"
+                severity="danger"
+              />
+              <p-button
+                *ngIf="!u.activo && u.lastLogin !== null"
+                pTooltip="Activar"
+                icon="pi pi-user-edit"
+                [rounded]="true"
+                [text]="true"
+                severity="success"
+              />
+              <p-button
+                pTooltip="Roles"
+                icon="pi pi-shield"
+                [rounded]="true"
+                [text]="true"
+                severity="help"
+              />
+            </section>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="5"><p class="m-0 text-sm">Sin resultados...</p></td>
+        </tr>
+    </ng-template>
+    </p-table>
+  </section>
+</section>

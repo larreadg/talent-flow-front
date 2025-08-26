@@ -1,0 +1,43 @@
+@import '../../../variables.scss';
+
+.login-container {
+  height: 100dvh;
+  display: flex;
+  overflow: hidden;
+}
+
+.talent-flow-img {
+  background: url('../../../assets/svg/bg2.svg') center / cover no-repeat;
+  display: none;
+
+  @media (min-width: $lg) {
+    display: flex !important;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .talent-flow-img-text { width: 70%; }
+}
+
+.talent-flow-form {
+  width: 100%;
+  min-height: 0;
+  min-width: 0;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+
+  @media (min-width: $lg) { flex: 0 0 40dvw; width: auto; }
+  @media (min-width: $xl) { flex: 0 0 30dvw; }
+
+  .tf-logo {
+    width: 72px;
+    height: auto;
+  }
+
+}

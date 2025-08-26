@@ -1,0 +1,13 @@
+@import './variables.scss';
+
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--surface-ground);
+}
+
+.container {
+    height: calc(100vh - 4rem);
+    padding: 1rem;
+    overflow-y: auto;
+}
