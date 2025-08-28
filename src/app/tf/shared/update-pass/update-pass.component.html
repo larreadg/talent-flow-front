@@ -1,0 +1,74 @@
+<form class="grid" [formGroup]="form" (ngSubmit)="submit()">
+  <!-- Email -->
+  <section class="col-12">
+    <p class="m-0 text-sm mb-2">Contraseña</p>
+    <p-password
+        formControlName="pass"
+        appendTo="body"
+        [style]="{ width: '100%' }"
+        promptLabel="Ingrese una contraseña"
+        [toggleMask]="true"
+        [feedback]="true"
+        [strongRegex]="strongRegex"
+        >
+        <ng-template pTemplate="footer">
+            <p-divider />
+            <p class="mt-2 font-semibold">Requerimientos</p>
+            <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                <li [class.text-green-600]="f.pass.value.length >= 8">Longitud mínima de 8</li>
+                <li [class.text-green-600]="lowerRe.test(f.pass.value)">Una letra minúscula</li>
+                <li [class.text-green-600]="upperRe.test(f.pass.value)">Una letra mayúscula</li>
+                <li [class.text-green-600]="digitRe.test(f.pass.value)">Al menos un número</li>
+                <li [class.text-green-600]="symbolRe.test(f.pass.value)">Al menos un símbolo (p. ej. $#:,;)</li>
+            </ul>
+
+            <small class="p-error" *ngIf="f.pass.touched && f.pass.invalid">
+                La contraseña no cumple los requisitos.
+            </small>
+        </ng-template>
+    </p-password>
+  </section>
+
+  <!-- Nombre -->
+  <section class="col-12">
+    <p class="m-0 text-sm mb-2">Repetir contraseña</p>
+    <p-password
+        formControlName="repeatPass"
+        appendTo="body"
+        [style]="{ width: '100%' }"
+        promptLabel="Ingrese una contraseña"
+        [toggleMask]="true"
+        [feedback]="true"
+        [strongRegex]="strongRegex"
+        >
+        <ng-template pTemplate="footer">
+            <p-divider />
+            <p class="mt-2 font-semibold">Requerimientos</p>
+            <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                <li [class.text-primary]="f.pass.value.length >= 8">Longitud mínima de 8</li>
+                <li [class.text-primary]="lowerRe.test(f.pass.value)">Una letra minúscula</li>
+                <li [class.text-primary]="upperRe.test(f.pass.value)">Una letra mayúscula</li>
+                <li [class.text-primary]="digitRe.test(f.pass.value)">Al menos un número</li>
+                <li [class.text-primary]="symbolRe.test(f.pass.value)">Al menos un símbolo (p. ej. $#:,;)</li>
+            </ul>
+
+            <small class="p-error" *ngIf="f.pass.touched && f.pass.invalid">
+                La contraseña no cumple los requisitos.
+            </small>
+        </ng-template>
+    </p-password>
+  </section>
+
+  <!-- Submit -->
+  <section class="col-12">
+    <p-button
+      [loading]="submitted"
+      [disabled]="form.invalid || submitted"
+      label="Actualizar contraseña"
+      type="submit"
+      styleClass="w-full"
+      [disabled]="form.invalid || form.pending"
+    >
+    </p-button>
+  </section>
+</form>

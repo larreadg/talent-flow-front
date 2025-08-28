@@ -10,11 +10,11 @@
       [rows]="5"
       [rowsPerPageOptions]="[5, 10, 20]"
       [loading]="loading"
-      [globalFilterFields]="['email', 'nombre', 'apellido']"
+      [globalFilterFields]="['email', 'nombre', 'apellido', 'rol.nombre']"
     >
       <ng-template pTemplate="caption">
         <div class="flex justify-content-between align-items-center">
-          <p-button label="Nuevo" icon="pi pi-user-plus" severity="success" routerLink="/tf/usuarios/add"/>
+          <p-button label="Nuevo" icon="pi pi-user-plus" severity="success" (onClick)="addVisible = true"/>
           <p-iconField iconPosition="left">
             <p-inputIcon>
               <i class="pi pi-search"></i>
@@ -35,6 +35,7 @@
           <th>Nombres</th>
           <th>Apellidos</th>
           <th>Estado</th>
+          <th>Rol</th>
           <th>Último Acceso</th>
           <th>Acciones</th>
         </tr>
@@ -59,39 +60,21 @@
             </ng-template>
           </td>
           <td>
+            <p-tag icon="pi pi-cog" [value]="u.rol.nombre" />
+          </td>
+          <td>
             <p class="m-0 text-sm">{{ u.lastLogin }}</p>
           </td>
           <td>
             <section class="flex gap-2">
               <p-button
+                *ngIf="u.id !== currentUser.id"
                 pTooltip="Editar datos"
                 icon="pi pi-pencil"
                 [rounded]="true"
                 [text]="true"
                 severity="warning"
-              />
-              <p-button
-                *ngIf="u.activo"
-                pTooltip="Desactivar"
-                icon="pi pi-user-minus"
-                [rounded]="true"
-                [text]="true"
-                severity="danger"
-              />
-              <p-button
-                *ngIf="!u.activo && u.lastLogin !== null"
-                pTooltip="Activar"
-                icon="pi pi-user-edit"
-                [rounded]="true"
-                [text]="true"
-                severity="success"
-              />
-              <p-button
-                pTooltip="Roles"
-                icon="pi pi-shield"
-                [rounded]="true"
-                [text]="true"
-                severity="help"
+                (onClick)="editOpenModal(u)"
               />
             </section>
           </td>
@@ -99,9 +82,36 @@
       </ng-template>
       <ng-template pTemplate="emptymessage">
         <tr>
-            <td colspan="5"><p class="m-0 text-sm">Sin resultados...</p></td>
+            <td colspan="7"><p class="m-0 text-sm">Sin resultados...</p></td>
         </tr>
     </ng-template>
     </p-table>
   </section>
 </section>
+
+
+<p-dialog 
+  header="Agregar Usuario" 
+  [modal]="true" 
+  [(visible)]="addVisible" 
+  [style]="{ width: '40vw' }">
+  <section class="grid">
+    <section class="col-12">
+      <app-usuarios-add (changed)="addOnClose($event)"></app-usuarios-add>
+    </section>
+  </section>
+</p-dialog>
+
+<p-dialog 
+  header="Editar Usuario" 
+  [modal]="true" 
+  [(visible)]="editVisible" 
+  [style]="{ width: '40vw' }">
+  <section class="grid">
+    <section class="col-12">
+      <app-usuarios-edit [usuario]="editUsuario" (changed)="editOnClose($event)"></app-usuarios-edit>
+    </section>
+  </section>
+</p-dialog>
+
+<p-toast key="usuarios"/>

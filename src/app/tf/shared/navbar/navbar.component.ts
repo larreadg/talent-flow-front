@@ -8,21 +8,35 @@ import { Usuario } from '../../../interfaces/usuario.interface';
 // Primeng
 import { ButtonModule } from 'primeng/button';
 import { SidebarModule } from 'primeng/sidebar';
-import { MenuItem, PrimeTemplate } from 'primeng/api';
+import { MenuItem, MessageService, PrimeTemplate } from 'primeng/api';
 import { AvatarModule } from 'primeng/avatar';
 import { MenuModule } from 'primeng/menu';
+import { DialogModule } from 'primeng/dialog';
+import { UpdatePassComponent } from '../update-pass/update-pass.component';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, ButtonModule, SidebarModule, PrimeTemplate, RouterLink, AvatarModule, MenuModule],
+  imports: [
+    CommonModule,
+    ButtonModule,
+    SidebarModule,
+    AvatarModule,
+    MenuModule,
+    DialogModule,
+    ToastModule,
+    PrimeTemplate,
+    RouterLink,
+    UpdatePassComponent
+  ],
+  providers: [MessageService],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit {
   kv = inject(KvStoreService)
   router = inject(Router)
-
   items: any[] = [
     {
       label: 'Inicio',
@@ -56,13 +70,21 @@ export class NavbarComponent implements OnInit {
   user: Usuario | any = {}
   userItems: MenuItem[] = [
     {
+      label: 'Cambiar contraseña',
+      icon: 'pi pi-lock',
+      command: () => {
+        this.updatePassVisible = true
+      }
+    },
+    {
       label: 'Cerrar sesión',
       icon: 'pi pi-sign-out',
       command: () => {
         this.cerrarSesion()
       }
-    }
+    },
   ]
+  updatePassVisible: boolean = false
 
   async ngOnInit() {
     const usuarioRaw = await this.kv.get('user')
@@ -80,5 +102,9 @@ export class NavbarComponent implements OnInit {
     await this.kv.del('token')
     await this.kv.del('user')
     this.router.navigate(['/auth/login'])
+  }
+
+  updatePassClose = (_:any) => {
+    this.updatePassVisible = false
   }
 }

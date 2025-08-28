@@ -10,7 +10,7 @@
         </section>
     </section>
 </nav>
-<p-menu #menu [model]="userItems" [popup]="true" />
+<p-menu #menu [model]="userItems" [popup]="true" [style]="{ width: '220px' }" />
 <p-sidebar [(visible)]="sidebarVisible" styleClass="w-20rem tf-sidebar">
     <ng-template pTemplate="header">
         <section class="flex align-items-center gap-2">
@@ -31,3 +31,12 @@
         </section>
     </section>
 </p-sidebar>
+
+<p-dialog header="Actualizar contraseña" [modal]="true" [(visible)]="updatePassVisible" [style]="{ width: '30vw' }">
+    <section class="grid">
+        <section class="col-12">
+            <app-update-pass (changed)="updatePassClose($event)"></app-update-pass>
+        </section>
+    </section>
+</p-dialog>
+<p-toast key="nav" />

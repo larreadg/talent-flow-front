@@ -1,1 +1,170 @@
-<p>usuarios-edit works!</p>
+<form class="grid" [formGroup]="form" (ngSubmit)="submit()">
+  <!-- Nombre -->
+  <section class="col-12">
+    <p class="m-0 text-sm mb-2">Nombre</p>
+    <input
+      formControlName="nombre"
+      type="text"
+      pInputText
+      placeholder="Juan"
+      class="p-inputtext-sm w-full"
+      [attr.aria-invalid]="f.nombre.invalid && (f.nombre.touched || submitted)"
+      autocomplete="given-name"
+      maxlength="60"
+    />
+    <small
+      class="p-error"
+      *ngIf="(f.nombre.touched || submitted) && f.nombre.errors?.['required']"
+    >
+      El nombre es obligatorio.
+    </small>
+    <small
+      class="p-error"
+      *ngIf="(f.nombre.touched || submitted) && f.nombre.errors?.['minlength']"
+    >
+      Debe tener al menos 2 caracteres.
+    </small>
+    <small
+      class="p-error"
+      *ngIf="(f.nombre.touched || submitted) && f.nombre.errors?.['maxlength']"
+    >
+      Máximo 60 caracteres.
+    </small>
+    <small
+      class="p-error"
+      *ngIf="(f.nombre.touched || submitted) && f.nombre.errors?.['pattern']"
+    >
+      Solo letras, espacios, apóstrofo o guion.
+    </small>
+    <small
+      class="p-error"
+      *ngIf="(f.nombre.touched || submitted) && f.nombre.errors?.['empty']"
+    >
+      No puede ser solo espacios.
+    </small>
+  </section>
+
+  <!-- Apellido -->
+  <section class="col-12">
+    <p class="m-0 text-sm mb-2">Apellido</p>
+    <input
+      formControlName="apellido"
+      type="text"
+      pInputText
+      placeholder="Perez"
+      class="p-inputtext-sm w-full"
+      [attr.aria-invalid]="
+        f.apellido.invalid && (f.apellido.touched || submitted)
+      "
+      autocomplete="family-name"
+      maxlength="60"
+    />
+    <small
+      class="p-error"
+      *ngIf="(f.apellido.touched || submitted) && f.apellido.errors?.['required']"
+    >
+      El apellido es obligatorio.
+    </small>
+    <small
+      class="p-error"
+      *ngIf="(f.apellido.touched || submitted) && f.apellido.errors?.['minlength']"
+    >
+      Debe tener al menos 2 caracteres.
+    </small>
+    <small
+      class="p-error"
+      *ngIf="(f.apellido.touched || submitted) && f.apellido.errors?.['maxlength']"
+    >
+      Máximo 60 caracteres.
+    </small>
+    <small
+      class="p-error"
+      *ngIf="(f.apellido.touched || submitted) && f.apellido.errors?.['pattern']"
+    >
+      Solo letras, espacios, apóstrofo o guion.
+    </small>
+    <small
+      class="p-error"
+      *ngIf="(f.apellido.touched || submitted) && f.apellido.errors?.['empty']"
+    >
+      No puede ser solo espacios.
+    </small>
+  </section>
+
+  <!-- Teléfono -->
+  <section class="col-12">
+    <p class="m-0 text-sm mb-2">Nro. de teléfono</p>
+    <input
+      formControlName="telefono"
+      type="tel"
+      pInputText
+      inputmode="numeric"
+      placeholder="595XXXXXXXXX"
+      class="p-inputtext-sm w-full"
+      [attr.aria-invalid]="
+        f.telefono.invalid && (f.telefono.touched || submitted)
+      "
+      maxlength="12"
+      autocomplete="tel"
+    />
+    <small
+      class="p-error"
+      *ngIf="(f.telefono.touched || submitted) && f.telefono.errors?.['required']"
+    >
+      El teléfono es obligatorio.
+    </small>
+    <small
+      class="p-error"
+      *ngIf="(f.telefono.touched || submitted) && (f.telefono.errors?.['minlength'] || f.telefono.errors?.['maxlength'])"
+    >
+      Debe tener exactamente 12 dígitos.
+    </small>
+    <small
+      class="p-error"
+      *ngIf="(f.telefono.touched || submitted) && f.telefono.errors?.['pattern']"
+    >
+      Debe empezar con 595 y contener solo dígitos (595 + 9 dígitos).
+    </small>
+  </section>
+
+  <section class="col-12">
+    <p class="m-0 text-sm mb-2">Rol</p>
+    <p-dropdown
+      styleClass="p-inputtext-sm"
+      [style]="{ width: '100%' }"
+      appendTo="body"
+      formControlName="rolId"
+      [options]="roles"
+      optionLabel="nombre"
+      optionValue="id"
+      placeholder="Seleccione en un rol..."
+    />
+
+    <small
+      class="p-error"
+      *ngIf="(f.rolId.touched || submitted) && f.rolId.errors?.['required']"
+    >
+      El rol es obligatorio.
+    </small>
+
+    <section class="col-12">
+      <section class="flex gap-2 align-items-center">
+        <p-checkbox [binary]="true" formControlName="activo"/>
+        <p class="text-sm">Activo</p>
+      </section>
+    </section>
+  </section>
+
+  <!-- Submit -->
+  <section class="col-12">
+    <p-button
+      [loading]="submitted"
+      [disabled]="form.invalid || submitted"
+      label="Actualizar usuario"
+      type="submit"
+      styleClass="w-full"
+      [disabled]="form.invalid || form.pending"
+    >
+    </p-button>
+  </section>
+</form>

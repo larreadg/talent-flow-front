@@ -18,6 +18,8 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { MessageService } from 'primeng/api';
 import { KvStoreService } from '../../services/kv-store.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { TalentFlowResponse } from '../../interfaces/talentflow.interface';
 
 @Component({
   selector: 'app-login',
@@ -44,10 +46,12 @@ export class LoginComponent implements OnInit {
   private toast = inject(MessageService)
   private kv = inject(KvStoreService)
   private router = inject(Router)
+  captchaUrl = `${this.env.apiUrl}/auth/captcha?${new Date().getTime()}`
 
   form = this.fb.nonNullable.group({
     email:    ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
+    captcha: ['', Validators.required],
     remember: [false],
   });
 
@@ -77,8 +81,10 @@ export class LoginComponent implements OnInit {
         this.loading = false
         this.router.navigate(['/tf/home'])
       },
-      error: (e) => {
-        this.toast.add({ severity: 'error', summary: this.env.appName, detail: 'Usuario y/o contraseña incorrecta' });
+      error: (e: HttpErrorResponse) => {
+        this.captchaUrl = `${this.env.apiUrl}/auth/captcha?${new Date().getTime()}`
+        const error: TalentFlowResponse = e.error
+        this.toast.add({ severity: 'error', summary: this.env.appName, detail: error.message || 'Usuario y/o contraseña incorrecta' });
         this.loading = false
       }
     });

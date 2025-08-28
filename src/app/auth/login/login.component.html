@@ -31,7 +31,13 @@
                     </section>
                 </section>
                 <section class="col-12 xl:col-10 xl:col-offset-1">
-                    <p-button [loading]="loading" [type]="'submit'" label="Iniciar Sesión" icon="pi pi-sign-in" [rounded]="true" styleClass="w-full p-button-sm"/>
+                    <section class="flex align-items-center justify-content-center gap-2">
+                        <img class="captcha" [src]="captchaUrl" alt="Captcha">
+                        <input formControlName="captcha" type="text" pInputText placeholder="Captcha..." class="p-inputtext-sm" [style]="{ width: '150px' }" />
+                    </section>
+                </section>
+                <section class="col-12 xl:col-10 xl:col-offset-1">
+                    <p-button [disabled]="form.invalid" [loading]="loading" [type]="'submit'" label="Iniciar Sesión" icon="pi pi-sign-in" [rounded]="true" styleClass="w-full p-button-sm"/>
                 </section>
                 <section class="col-12 xl:col-10 xl:col-offset-1">
                     <p-button label="Olvidé mi contraseña" [link]="true" styleClass="w-full p-button-sm"/>

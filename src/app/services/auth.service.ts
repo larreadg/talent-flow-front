@@ -13,4 +13,8 @@ export class AuthService {
   login(dto: { email: string; password: string }) {
     return this.http.post<TalentFlowResponse>(`${environment.apiUrl}/auth/login`, dto);
   }
+  
+  updatePass(dto: { pass: string; repeatPass: string }) {
+    return this.http.post<TalentFlowResponse>(`${environment.apiUrl}/auth/me/password`, dto);
+  }
 }
