@@ -54,14 +54,14 @@ export class NavbarComponent implements OnInit {
       route: '/tf/departamentos'
     },
     {
-      label: 'Usuarios',
-      icon: 'pi pi-users',
-      route: '/tf/usuarios'
-    },
-    {
       label: 'Sedes',
       icon: 'pi pi-building',
       route: '/tf/sedes'
+    },
+    {
+      label: 'Usuarios',
+      icon: 'pi pi-users',
+      route: '/tf/usuarios'
     },
   ]
   env = environment

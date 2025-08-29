@@ -1,0 +1,1247 @@
+[
+	{
+		"departamento_ciudad" : "ASUNCIÓN - ASUNCIÓN",
+		"departamento" : "ASUNCIÓN",
+		"ciudad" : "ASUNCIÓN"
+	},
+	{
+		"departamento_ciudad" : "CONCEPCIÓN - CONCEPCIÓN",
+		"departamento" : "CONCEPCIÓN",
+		"ciudad" : "CONCEPCIÓN"
+	},
+	{
+		"departamento_ciudad" : "CONCEPCIÓN - BELÉN",
+		"departamento" : "CONCEPCIÓN",
+		"ciudad" : "BELÉN"
+	},
+	{
+		"departamento_ciudad" : "CONCEPCIÓN - HORQUETA",
+		"departamento" : "CONCEPCIÓN",
+		"ciudad" : "HORQUETA"
+	},
+	{
+		"departamento_ciudad" : "CONCEPCIÓN - LORETO",
+		"departamento" : "CONCEPCIÓN",
+		"ciudad" : "LORETO"
+	},
+	{
+		"departamento_ciudad" : "CONCEPCIÓN - SAN CARLOS DEL APA",
+		"departamento" : "CONCEPCIÓN",
+		"ciudad" : "SAN CARLOS DEL APA"
+	},
+	{
+		"departamento_ciudad" : "CONCEPCIÓN - SAN LÁZARO",
+		"departamento" : "CONCEPCIÓN",
+		"ciudad" : "SAN LÁZARO"
+	},
+	{
+		"departamento_ciudad" : "CONCEPCIÓN - YBY YAÚ",
+		"departamento" : "CONCEPCIÓN",
+		"ciudad" : "YBY YAÚ"
+	},
+	{
+		"departamento_ciudad" : "CONCEPCIÓN - AZOTE'Y",
+		"departamento" : "CONCEPCIÓN",
+		"ciudad" : "AZOTE'Y"
+	},
+	{
+		"departamento_ciudad" : "CONCEPCIÓN - SARGENTO JOSÉ FÉLIX LÓPEZ",
+		"departamento" : "CONCEPCIÓN",
+		"ciudad" : "SARGENTO JOSÉ FÉLIX LÓPEZ"
+	},
+	{
+		"departamento_ciudad" : "CONCEPCIÓN - SAN ALFREDO",
+		"departamento" : "CONCEPCIÓN",
+		"ciudad" : "SAN ALFREDO"
+	},
+	{
+		"departamento_ciudad" : "CONCEPCIÓN - PASO BARRETO",
+		"departamento" : "CONCEPCIÓN",
+		"ciudad" : "PASO BARRETO"
+	},
+	{
+		"departamento_ciudad" : "SAN PEDRO - SAN PEDRO DEL YCUAMANDYYÚ",
+		"departamento" : "SAN PEDRO",
+		"ciudad" : "SAN PEDRO DEL YCUAMANDYYÚ"
+	},
+	{
+		"departamento_ciudad" : "SAN PEDRO - ANTEQUERA",
+		"departamento" : "SAN PEDRO",
+		"ciudad" : "ANTEQUERA"
+	},
+	{
+		"departamento_ciudad" : "SAN PEDRO - CHORÉ",
+		"departamento" : "SAN PEDRO",
+		"ciudad" : "CHORÉ"
+	},
+	{
+		"departamento_ciudad" : "SAN PEDRO - GENERAL ELIZARDO AQUINO",
+		"departamento" : "SAN PEDRO",
+		"ciudad" : "GENERAL ELIZARDO AQUINO"
+	},
+	{
+		"departamento_ciudad" : "SAN PEDRO - ITACURUBÍ DEL ROSARIO",
+		"departamento" : "SAN PEDRO",
+		"ciudad" : "ITACURUBÍ DEL ROSARIO"
+	},
+	{
+		"departamento_ciudad" : "SAN PEDRO - LIMA",
+		"departamento" : "SAN PEDRO",
+		"ciudad" : "LIMA"
+	},
+	{
+		"departamento_ciudad" : "SAN PEDRO - NUEVA GERMANIA",
+		"departamento" : "SAN PEDRO",
+		"ciudad" : "NUEVA GERMANIA"
+	},
+	{
+		"departamento_ciudad" : "SAN PEDRO - SAN ESTANISLAO",
+		"departamento" : "SAN PEDRO",
+		"ciudad" : "SAN ESTANISLAO"
+	},
+	{
+		"departamento_ciudad" : "SAN PEDRO - SAN PABLO",
+		"departamento" : "SAN PEDRO",
+		"ciudad" : "SAN PABLO"
+	},
+	{
+		"departamento_ciudad" : "SAN PEDRO - TACUATÍ",
+		"departamento" : "SAN PEDRO",
+		"ciudad" : "TACUATÍ"
+	},
+	{
+		"departamento_ciudad" : "SAN PEDRO - UNIÓN",
+		"departamento" : "SAN PEDRO",
+		"ciudad" : "UNIÓN"
+	},
+	{
+		"departamento_ciudad" : "SAN PEDRO - 25 DE DICIEMBRE",
+		"departamento" : "SAN PEDRO",
+		"ciudad" : "25 DE DICIEMBRE"
+	},
+	{
+		"departamento_ciudad" : "SAN PEDRO - VILLA DEL ROSARIO",
+		"departamento" : "SAN PEDRO",
+		"ciudad" : "VILLA DEL ROSARIO"
+	},
+	{
+		"departamento_ciudad" : "SAN PEDRO - GENERAL FRANCISCO ISIDORO RESQUÍN",
+		"departamento" : "SAN PEDRO",
+		"ciudad" : "GENERAL FRANCISCO ISIDORO RESQUÍN"
+	},
+	{
+		"departamento_ciudad" : "SAN PEDRO - YATAITY DEL NORTE",
+		"departamento" : "SAN PEDRO",
+		"ciudad" : "YATAITY DEL NORTE"
+	},
+	{
+		"departamento_ciudad" : "SAN PEDRO - GUAJAYVI",
+		"departamento" : "SAN PEDRO",
+		"ciudad" : "GUAJAYVI"
+	},
+	{
+		"departamento_ciudad" : "SAN PEDRO - CAPIIBARY",
+		"departamento" : "SAN PEDRO",
+		"ciudad" : "CAPIIBARY"
+	},
+	{
+		"departamento_ciudad" : "SAN PEDRO - SANTA ROSA DEL AGUARAY",
+		"departamento" : "SAN PEDRO",
+		"ciudad" : "SANTA ROSA DEL AGUARAY"
+	},
+	{
+		"departamento_ciudad" : "SAN PEDRO - YRYBUCUA",
+		"departamento" : "SAN PEDRO",
+		"ciudad" : "YRYBUCUA"
+	},
+	{
+		"departamento_ciudad" : "SAN PEDRO - LIBERACIÓN",
+		"departamento" : "SAN PEDRO",
+		"ciudad" : "LIBERACIÓN"
+	},
+	{
+		"departamento_ciudad" : "CORDILLERA - CAACUPÉ",
+		"departamento" : "CORDILLERA",
+		"ciudad" : "CAACUPÉ"
+	},
+	{
+		"departamento_ciudad" : "CORDILLERA - ALTOS",
+		"departamento" : "CORDILLERA",
+		"ciudad" : "ALTOS"
+	},
+	{
+		"departamento_ciudad" : "CORDILLERA - ARROYOS Y ESTEROS",
+		"departamento" : "CORDILLERA",
+		"ciudad" : "ARROYOS Y ESTEROS"
+	},
+	{
+		"departamento_ciudad" : "CORDILLERA - ATYRÁ",
+		"departamento" : "CORDILLERA",
+		"ciudad" : "ATYRÁ"
+	},
+	{
+		"departamento_ciudad" : "CORDILLERA - CARAGUATAY",
+		"departamento" : "CORDILLERA",
+		"ciudad" : "CARAGUATAY"
+	},
+	{
+		"departamento_ciudad" : "CORDILLERA - EMBOSCADA",
+		"departamento" : "CORDILLERA",
+		"ciudad" : "EMBOSCADA"
+	},
+	{
+		"departamento_ciudad" : "CORDILLERA - EUSEBIO AYALA",
+		"departamento" : "CORDILLERA",
+		"ciudad" : "EUSEBIO AYALA"
+	},
+	{
+		"departamento_ciudad" : "CORDILLERA - ISLA PUCÚ",
+		"departamento" : "CORDILLERA",
+		"ciudad" : "ISLA PUCÚ"
+	},
+	{
+		"departamento_ciudad" : "CORDILLERA - ITACURUBÍ DE LA CORDILLERA",
+		"departamento" : "CORDILLERA",
+		"ciudad" : "ITACURUBÍ DE LA CORDILLERA"
+	},
+	{
+		"departamento_ciudad" : "CORDILLERA - JUAN DE MENA",
+		"departamento" : "CORDILLERA",
+		"ciudad" : "JUAN DE MENA"
+	},
+	{
+		"departamento_ciudad" : "CORDILLERA - LOMA GRANDE",
+		"departamento" : "CORDILLERA",
+		"ciudad" : "LOMA GRANDE"
+	},
+	{
+		"departamento_ciudad" : "CORDILLERA - MBOCAYATY DEL YHAGUY",
+		"departamento" : "CORDILLERA",
+		"ciudad" : "MBOCAYATY DEL YHAGUY"
+	},
+	{
+		"departamento_ciudad" : "CORDILLERA - NUEVA COLOMBIA",
+		"departamento" : "CORDILLERA",
+		"ciudad" : "NUEVA COLOMBIA"
+	},
+	{
+		"departamento_ciudad" : "CORDILLERA - PIRIBEBUY",
+		"departamento" : "CORDILLERA",
+		"ciudad" : "PIRIBEBUY"
+	},
+	{
+		"departamento_ciudad" : "CORDILLERA - PRIMERO DE MARZO",
+		"departamento" : "CORDILLERA",
+		"ciudad" : "PRIMERO DE MARZO"
+	},
+	{
+		"departamento_ciudad" : "CORDILLERA - SAN BERNARDINO",
+		"departamento" : "CORDILLERA",
+		"ciudad" : "SAN BERNARDINO"
+	},
+	{
+		"departamento_ciudad" : "CORDILLERA - SANTA ELENA",
+		"departamento" : "CORDILLERA",
+		"ciudad" : "SANTA ELENA"
+	},
+	{
+		"departamento_ciudad" : "CORDILLERA - TOBATÍ",
+		"departamento" : "CORDILLERA",
+		"ciudad" : "TOBATÍ"
+	},
+	{
+		"departamento_ciudad" : "CORDILLERA - VALENZUELA",
+		"departamento" : "CORDILLERA",
+		"ciudad" : "VALENZUELA"
+	},
+	{
+		"departamento_ciudad" : "CORDILLERA - SAN JOSÉ OBRERO",
+		"departamento" : "CORDILLERA",
+		"ciudad" : "SAN JOSÉ OBRERO"
+	},
+	{
+		"departamento_ciudad" : "GUAIRÁ - VILLARRICA",
+		"departamento" : "GUAIRÁ",
+		"ciudad" : "VILLARRICA"
+	},
+	{
+		"departamento_ciudad" : "GUAIRÁ - BORJA",
+		"departamento" : "GUAIRÁ",
+		"ciudad" : "BORJA"
+	},
+	{
+		"departamento_ciudad" : "GUAIRÁ - CAPITÁN MAURICIO JOSÉ TROCHE",
+		"departamento" : "GUAIRÁ",
+		"ciudad" : "CAPITÁN MAURICIO JOSÉ TROCHE"
+	},
+	{
+		"departamento_ciudad" : "GUAIRÁ - CORONEL MARTÍNEZ",
+		"departamento" : "GUAIRÁ",
+		"ciudad" : "CORONEL MARTÍNEZ"
+	},
+	{
+		"departamento_ciudad" : "GUAIRÁ - FÉLIX PÉREZ CARDOZO",
+		"departamento" : "GUAIRÁ",
+		"ciudad" : "FÉLIX PÉREZ CARDOZO"
+	},
+	{
+		"departamento_ciudad" : "GUAIRÁ - GRAL. EUGENIO A. GARAY",
+		"departamento" : "GUAIRÁ",
+		"ciudad" : "GRAL. EUGENIO A. GARAY"
+	},
+	{
+		"departamento_ciudad" : "GUAIRÁ - INDEPENDENCIA",
+		"departamento" : "GUAIRÁ",
+		"ciudad" : "INDEPENDENCIA"
+	},
+	{
+		"departamento_ciudad" : "GUAIRÁ - ITAPÉ",
+		"departamento" : "GUAIRÁ",
+		"ciudad" : "ITAPÉ"
+	},
+	{
+		"departamento_ciudad" : "GUAIRÁ - ITURBE",
+		"departamento" : "GUAIRÁ",
+		"ciudad" : "ITURBE"
+	},
+	{
+		"departamento_ciudad" : "GUAIRÁ - JOSÉ FASSARDI",
+		"departamento" : "GUAIRÁ",
+		"ciudad" : "JOSÉ FASSARDI"
+	},
+	{
+		"departamento_ciudad" : "GUAIRÁ - MBOCAYATY",
+		"departamento" : "GUAIRÁ",
+		"ciudad" : "MBOCAYATY"
+	},
+	{
+		"departamento_ciudad" : "GUAIRÁ - NATALICIO TALAVERA",
+		"departamento" : "GUAIRÁ",
+		"ciudad" : "NATALICIO TALAVERA"
+	},
+	{
+		"departamento_ciudad" : "GUAIRÁ - ÑUMÍ",
+		"departamento" : "GUAIRÁ",
+		"ciudad" : "ÑUMÍ"
+	},
+	{
+		"departamento_ciudad" : "GUAIRÁ - SAN SALVADOR",
+		"departamento" : "GUAIRÁ",
+		"ciudad" : "SAN SALVADOR"
+	},
+	{
+		"departamento_ciudad" : "GUAIRÁ - YATAITY",
+		"departamento" : "GUAIRÁ",
+		"ciudad" : "YATAITY"
+	},
+	{
+		"departamento_ciudad" : "GUAIRÁ - DOCTOR BOTTRELL",
+		"departamento" : "GUAIRÁ",
+		"ciudad" : "DOCTOR BOTTRELL"
+	},
+	{
+		"departamento_ciudad" : "GUAIRÁ - PASO YOBAI",
+		"departamento" : "GUAIRÁ",
+		"ciudad" : "PASO YOBAI"
+	},
+	{
+		"departamento_ciudad" : "GUAIRÁ - TEBICUARY",
+		"departamento" : "GUAIRÁ",
+		"ciudad" : "TEBICUARY"
+	},
+	{
+		"departamento_ciudad" : "CAAGUAZÚ - CORONEL OVIEDO",
+		"departamento" : "CAAGUAZÚ",
+		"ciudad" : "CORONEL OVIEDO"
+	},
+	{
+		"departamento_ciudad" : "CAAGUAZÚ - CAAGUAZÚ",
+		"departamento" : "CAAGUAZÚ",
+		"ciudad" : "CAAGUAZÚ"
+	},
+	{
+		"departamento_ciudad" : "CAAGUAZÚ - CARAYAÓ",
+		"departamento" : "CAAGUAZÚ",
+		"ciudad" : "CARAYAÓ"
+	},
+	{
+		"departamento_ciudad" : "CAAGUAZÚ - DR. CECILIO BÁEZ",
+		"departamento" : "CAAGUAZÚ",
+		"ciudad" : "DR. CECILIO BÁEZ"
+	},
+	{
+		"departamento_ciudad" : "CAAGUAZÚ - SANTA ROSA DEL MBUTUY",
+		"departamento" : "CAAGUAZÚ",
+		"ciudad" : "SANTA ROSA DEL MBUTUY"
+	},
+	{
+		"departamento_ciudad" : "CAAGUAZÚ - DR. JUAN MANUEL FRUTOS",
+		"departamento" : "CAAGUAZÚ",
+		"ciudad" : "DR. JUAN MANUEL FRUTOS"
+	},
+	{
+		"departamento_ciudad" : "CAAGUAZÚ - REPATRIACIÓN",
+		"departamento" : "CAAGUAZÚ",
+		"ciudad" : "REPATRIACIÓN"
+	},
+	{
+		"departamento_ciudad" : "CAAGUAZÚ - NUEVA LONDRES",
+		"departamento" : "CAAGUAZÚ",
+		"ciudad" : "NUEVA LONDRES"
+	},
+	{
+		"departamento_ciudad" : "CAAGUAZÚ - SAN JOAQUÍN",
+		"departamento" : "CAAGUAZÚ",
+		"ciudad" : "SAN JOAQUÍN"
+	},
+	{
+		"departamento_ciudad" : "CAAGUAZÚ - SAN JOSÉ DE LOS ARROYOS",
+		"departamento" : "CAAGUAZÚ",
+		"ciudad" : "SAN JOSÉ DE LOS ARROYOS"
+	},
+	{
+		"departamento_ciudad" : "CAAGUAZÚ - YHÚ",
+		"departamento" : "CAAGUAZÚ",
+		"ciudad" : "YHÚ"
+	},
+	{
+		"departamento_ciudad" : "CAAGUAZÚ - DR. J. EULOGIO ESTIGARRIBIA",
+		"departamento" : "CAAGUAZÚ",
+		"ciudad" : "DR. J. EULOGIO ESTIGARRIBIA"
+	},
+	{
+		"departamento_ciudad" : "CAAGUAZÚ - R.I. 3 CORRALES",
+		"departamento" : "CAAGUAZÚ",
+		"ciudad" : "R.I. 3 CORRALES"
+	},
+	{
+		"departamento_ciudad" : "CAAGUAZÚ - RAÚL ARSENIO OVIEDO",
+		"departamento" : "CAAGUAZÚ",
+		"ciudad" : "RAÚL ARSENIO OVIEDO"
+	},
+	{
+		"departamento_ciudad" : "CAAGUAZÚ - JOSÉ DOMINGO OCAMPOS",
+		"departamento" : "CAAGUAZÚ",
+		"ciudad" : "JOSÉ DOMINGO OCAMPOS"
+	},
+	{
+		"departamento_ciudad" : "CAAGUAZÚ - MARISCAL FRANCISCO SOLANO LÓPEZ",
+		"departamento" : "CAAGUAZÚ",
+		"ciudad" : "MARISCAL FRANCISCO SOLANO LÓPEZ"
+	},
+	{
+		"departamento_ciudad" : "CAAGUAZÚ - LA PASTORA",
+		"departamento" : "CAAGUAZÚ",
+		"ciudad" : "LA PASTORA"
+	},
+	{
+		"departamento_ciudad" : "CAAGUAZÚ - 3 DE FEBRERO",
+		"departamento" : "CAAGUAZÚ",
+		"ciudad" : "3 DE FEBRERO"
+	},
+	{
+		"departamento_ciudad" : "CAAGUAZÚ - SIMÓN BOLIVAR",
+		"departamento" : "CAAGUAZÚ",
+		"ciudad" : "SIMÓN BOLIVAR"
+	},
+	{
+		"departamento_ciudad" : "CAAGUAZÚ - VAQUERÍA",
+		"departamento" : "CAAGUAZÚ",
+		"ciudad" : "VAQUERÍA"
+	},
+	{
+		"departamento_ciudad" : "CAAGUAZÚ - TEMBIAPORÁ",
+		"departamento" : "CAAGUAZÚ",
+		"ciudad" : "TEMBIAPORÁ"
+	},
+	{
+		"departamento_ciudad" : "CAAGUAZÚ - NUEVA TOLEDO",
+		"departamento" : "CAAGUAZÚ",
+		"ciudad" : "NUEVA TOLEDO"
+	},
+	{
+		"departamento_ciudad" : "CAAZAPÁ - CAAZAPÁ",
+		"departamento" : "CAAZAPÁ",
+		"ciudad" : "CAAZAPÁ"
+	},
+	{
+		"departamento_ciudad" : "CAAZAPÁ - ABAÍ",
+		"departamento" : "CAAZAPÁ",
+		"ciudad" : "ABAÍ"
+	},
+	{
+		"departamento_ciudad" : "CAAZAPÁ - BUENA VISTA",
+		"departamento" : "CAAZAPÁ",
+		"ciudad" : "BUENA VISTA"
+	},
+	{
+		"departamento_ciudad" : "CAAZAPÁ - DR. MOISÉS S. BERTONI",
+		"departamento" : "CAAZAPÁ",
+		"ciudad" : "DR. MOISÉS S. BERTONI"
+	},
+	{
+		"departamento_ciudad" : "CAAZAPÁ - GRAL. HIGINIO MORINIGO",
+		"departamento" : "CAAZAPÁ",
+		"ciudad" : "GRAL. HIGINIO MORINIGO"
+	},
+	{
+		"departamento_ciudad" : "CAAZAPÁ - MACIEL",
+		"departamento" : "CAAZAPÁ",
+		"ciudad" : "MACIEL"
+	},
+	{
+		"departamento_ciudad" : "CAAZAPÁ - SAN JUAN NEPOMUCENO",
+		"departamento" : "CAAZAPÁ",
+		"ciudad" : "SAN JUAN NEPOMUCENO"
+	},
+	{
+		"departamento_ciudad" : "CAAZAPÁ - TAVAÍ",
+		"departamento" : "CAAZAPÁ",
+		"ciudad" : "TAVAÍ"
+	},
+	{
+		"departamento_ciudad" : "CAAZAPÁ - YEGROS",
+		"departamento" : "CAAZAPÁ",
+		"ciudad" : "YEGROS"
+	},
+	{
+		"departamento_ciudad" : "CAAZAPÁ - YUTY",
+		"departamento" : "CAAZAPÁ",
+		"ciudad" : "YUTY"
+	},
+	{
+		"departamento_ciudad" : "CAAZAPÁ - 3 DE MAYO",
+		"departamento" : "CAAZAPÁ",
+		"ciudad" : "3 DE MAYO"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - ENCARNACIÓN",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "ENCARNACIÓN"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - BELLA VISTA",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "BELLA VISTA"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - CAMBYRETÁ",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "CAMBYRETÁ"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - CAPITÁN MEZA",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "CAPITÁN MEZA"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - CAPITÁN MIRANDA",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "CAPITÁN MIRANDA"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - NUEVA ALBORADA",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "NUEVA ALBORADA"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - CARMEN DEL PARANÁ",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "CARMEN DEL PARANÁ"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - CORONEL BOGADO",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "CORONEL BOGADO"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - CARLOS ANTONIO LÓPEZ",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "CARLOS ANTONIO LÓPEZ"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - NATALIO",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "NATALIO"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - FRAM",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "FRAM"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - GENERAL ARTIGAS",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "GENERAL ARTIGAS"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - GENERAL DELGADO",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "GENERAL DELGADO"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - HOHENAU",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "HOHENAU"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - JESÚS",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "JESÚS"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - JOSÉ LEANDRO OVIEDO",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "JOSÉ LEANDRO OVIEDO"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - OBLIGADO",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "OBLIGADO"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - MAYOR JULIO DIONISIO OTAÑO",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "MAYOR JULIO DIONISIO OTAÑO"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - SAN COSME Y DAMIÁN",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "SAN COSME Y DAMIÁN"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - SAN PEDRO DEL PARANÁ",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "SAN PEDRO DEL PARANÁ"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - SAN RAFAEL DEL PARANÁ",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "SAN RAFAEL DEL PARANÁ"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - TRINIDAD",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "TRINIDAD"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - EDELIRA",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "EDELIRA"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - TOMÁS ROMERO PEREIRA",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "TOMÁS ROMERO PEREIRA"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - ALTO VERÁ",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "ALTO VERÁ"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - LA PAZ",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "LA PAZ"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - YATYTAY",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "YATYTAY"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - SAN JUAN DEL PARANÁ",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "SAN JUAN DEL PARANÁ"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - PIRAPÓ",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "PIRAPÓ"
+	},
+	{
+		"departamento_ciudad" : "ITAPÚA - ITAPÚA POTY",
+		"departamento" : "ITAPÚA",
+		"ciudad" : "ITAPÚA POTY"
+	},
+	{
+		"departamento_ciudad" : "MISIONES - SAN JUAN BAUTISTA DE LAS MISIONES",
+		"departamento" : "MISIONES",
+		"ciudad" : "SAN JUAN BAUTISTA DE LAS MISIONES"
+	},
+	{
+		"departamento_ciudad" : "MISIONES - AYOLAS",
+		"departamento" : "MISIONES",
+		"ciudad" : "AYOLAS"
+	},
+	{
+		"departamento_ciudad" : "MISIONES - SAN IGNACIO",
+		"departamento" : "MISIONES",
+		"ciudad" : "SAN IGNACIO"
+	},
+	{
+		"departamento_ciudad" : "MISIONES - SAN MIGUEL",
+		"departamento" : "MISIONES",
+		"ciudad" : "SAN MIGUEL"
+	},
+	{
+		"departamento_ciudad" : "MISIONES - SAN PATRICIO",
+		"departamento" : "MISIONES",
+		"ciudad" : "SAN PATRICIO"
+	},
+	{
+		"departamento_ciudad" : "MISIONES - SANTA MARÍA",
+		"departamento" : "MISIONES",
+		"ciudad" : "SANTA MARÍA"
+	},
+	{
+		"departamento_ciudad" : "MISIONES - SANTA ROSA",
+		"departamento" : "MISIONES",
+		"ciudad" : "SANTA ROSA"
+	},
+	{
+		"departamento_ciudad" : "MISIONES - SANTIAGO",
+		"departamento" : "MISIONES",
+		"ciudad" : "SANTIAGO"
+	},
+	{
+		"departamento_ciudad" : "MISIONES - VILLA FLORIDA",
+		"departamento" : "MISIONES",
+		"ciudad" : "VILLA FLORIDA"
+	},
+	{
+		"departamento_ciudad" : "MISIONES - YABEBYRY",
+		"departamento" : "MISIONES",
+		"ciudad" : "YABEBYRY"
+	},
+	{
+		"departamento_ciudad" : "PARAGUARÍ - PARAGUARÍ",
+		"departamento" : "PARAGUARÍ",
+		"ciudad" : "PARAGUARÍ"
+	},
+	{
+		"departamento_ciudad" : "PARAGUARÍ - ACAHAY",
+		"departamento" : "PARAGUARÍ",
+		"ciudad" : "ACAHAY"
+	},
+	{
+		"departamento_ciudad" : "PARAGUARÍ - CAAPUCÚ",
+		"departamento" : "PARAGUARÍ",
+		"ciudad" : "CAAPUCÚ"
+	},
+	{
+		"departamento_ciudad" : "PARAGUARÍ - CABALLERO",
+		"departamento" : "PARAGUARÍ",
+		"ciudad" : "CABALLERO"
+	},
+	{
+		"departamento_ciudad" : "PARAGUARÍ - CARAPEGUÁ",
+		"departamento" : "PARAGUARÍ",
+		"ciudad" : "CARAPEGUÁ"
+	},
+	{
+		"departamento_ciudad" : "PARAGUARÍ - ESCOBAR",
+		"departamento" : "PARAGUARÍ",
+		"ciudad" : "ESCOBAR"
+	},
+	{
+		"departamento_ciudad" : "PARAGUARÍ - LA COLMENA",
+		"departamento" : "PARAGUARÍ",
+		"ciudad" : "LA COLMENA"
+	},
+	{
+		"departamento_ciudad" : "PARAGUARÍ - MBUYAPEY",
+		"departamento" : "PARAGUARÍ",
+		"ciudad" : "MBUYAPEY"
+	},
+	{
+		"departamento_ciudad" : "PARAGUARÍ - PIRAYÚ",
+		"departamento" : "PARAGUARÍ",
+		"ciudad" : "PIRAYÚ"
+	},
+	{
+		"departamento_ciudad" : "PARAGUARÍ - QUIINDY",
+		"departamento" : "PARAGUARÍ",
+		"ciudad" : "QUIINDY"
+	},
+	{
+		"departamento_ciudad" : "PARAGUARÍ - QUYQUYHÓ",
+		"departamento" : "PARAGUARÍ",
+		"ciudad" : "QUYQUYHÓ"
+	},
+	{
+		"departamento_ciudad" : "PARAGUARÍ - ROQUE GONZÁLEZ DE SANTA CRUZ",
+		"departamento" : "PARAGUARÍ",
+		"ciudad" : "ROQUE GONZÁLEZ DE SANTA CRUZ"
+	},
+	{
+		"departamento_ciudad" : "PARAGUARÍ - SAPUCÁI",
+		"departamento" : "PARAGUARÍ",
+		"ciudad" : "SAPUCÁI"
+	},
+	{
+		"departamento_ciudad" : "PARAGUARÍ - TEBICUARY-MÍ",
+		"departamento" : "PARAGUARÍ",
+		"ciudad" : "TEBICUARY-MÍ"
+	},
+	{
+		"departamento_ciudad" : "PARAGUARÍ - YAGUARÓN",
+		"departamento" : "PARAGUARÍ",
+		"ciudad" : "YAGUARÓN"
+	},
+	{
+		"departamento_ciudad" : "PARAGUARÍ - YBYCUÍ",
+		"departamento" : "PARAGUARÍ",
+		"ciudad" : "YBYCUÍ"
+	},
+	{
+		"departamento_ciudad" : "PARAGUARÍ - YBYTYMÍ",
+		"departamento" : "PARAGUARÍ",
+		"ciudad" : "YBYTYMÍ"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARANÁ - CIUDAD DEL ESTE",
+		"departamento" : "ALTO PARANÁ",
+		"ciudad" : "CIUDAD DEL ESTE"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARANÁ - PRESIDENTE FRANCO",
+		"departamento" : "ALTO PARANÁ",
+		"ciudad" : "PRESIDENTE FRANCO"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARANÁ - DOMINGO MARTÍNEZ DE IRALA",
+		"departamento" : "ALTO PARANÁ",
+		"ciudad" : "DOMINGO MARTÍNEZ DE IRALA"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARANÁ - DR. JUAN LEÓN MALLORQUÍN",
+		"departamento" : "ALTO PARANÁ",
+		"ciudad" : "DR. JUAN LEÓN MALLORQUÍN"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARANÁ - HERNANDARIAS",
+		"departamento" : "ALTO PARANÁ",
+		"ciudad" : "HERNANDARIAS"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARANÁ - ITAKYRY",
+		"departamento" : "ALTO PARANÁ",
+		"ciudad" : "ITAKYRY"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARANÁ - JUAN E. O'LEARY",
+		"departamento" : "ALTO PARANÁ",
+		"ciudad" : "JUAN E. O'LEARY"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARANÁ - ÑACUNDAY",
+		"departamento" : "ALTO PARANÁ",
+		"ciudad" : "ÑACUNDAY"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARANÁ - YGUAZÚ",
+		"departamento" : "ALTO PARANÁ",
+		"ciudad" : "YGUAZÚ"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARANÁ - LOS CEDRALES",
+		"departamento" : "ALTO PARANÁ",
+		"ciudad" : "LOS CEDRALES"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARANÁ - MINGA GUAZÚ",
+		"departamento" : "ALTO PARANÁ",
+		"ciudad" : "MINGA GUAZÚ"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARANÁ - SAN CRISTÓBAL",
+		"departamento" : "ALTO PARANÁ",
+		"ciudad" : "SAN CRISTÓBAL"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARANÁ - SANTA RITA",
+		"departamento" : "ALTO PARANÁ",
+		"ciudad" : "SANTA RITA"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARANÁ - NARANJAL",
+		"departamento" : "ALTO PARANÁ",
+		"ciudad" : "NARANJAL"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARANÁ - SANTA ROSA DEL MONDAY",
+		"departamento" : "ALTO PARANÁ",
+		"ciudad" : "SANTA ROSA DEL MONDAY"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARANÁ - MINGA PORÁ",
+		"departamento" : "ALTO PARANÁ",
+		"ciudad" : "MINGA PORÁ"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARANÁ - MBARACAYÚ",
+		"departamento" : "ALTO PARANÁ",
+		"ciudad" : "MBARACAYÚ"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARANÁ - SAN ALBERTO",
+		"departamento" : "ALTO PARANÁ",
+		"ciudad" : "SAN ALBERTO"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARANÁ - IRUÑA",
+		"departamento" : "ALTO PARANÁ",
+		"ciudad" : "IRUÑA"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARANÁ - SANTA FE DEL PARANÁ",
+		"departamento" : "ALTO PARANÁ",
+		"ciudad" : "SANTA FE DEL PARANÁ"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARANÁ - TAVAPY",
+		"departamento" : "ALTO PARANÁ",
+		"ciudad" : "TAVAPY"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARANÁ - DR. RAÚL PEÑA",
+		"departamento" : "ALTO PARANÁ",
+		"ciudad" : "DR. RAÚL PEÑA"
+	},
+	{
+		"departamento_ciudad" : "CENTRAL - AREGUÁ",
+		"departamento" : "CENTRAL",
+		"ciudad" : "AREGUÁ"
+	},
+	{
+		"departamento_ciudad" : "CENTRAL - CAPIATÁ",
+		"departamento" : "CENTRAL",
+		"ciudad" : "CAPIATÁ"
+	},
+	{
+		"departamento_ciudad" : "CENTRAL - FERNANDO DE LA MORA",
+		"departamento" : "CENTRAL",
+		"ciudad" : "FERNANDO DE LA MORA"
+	},
+	{
+		"departamento_ciudad" : "CENTRAL - GUARAMBARÉ",
+		"departamento" : "CENTRAL",
+		"ciudad" : "GUARAMBARÉ"
+	},
+	{
+		"departamento_ciudad" : "CENTRAL - ITÁ",
+		"departamento" : "CENTRAL",
+		"ciudad" : "ITÁ"
+	},
+	{
+		"departamento_ciudad" : "CENTRAL - ITAUGUÁ",
+		"departamento" : "CENTRAL",
+		"ciudad" : "ITAUGUÁ"
+	},
+	{
+		"departamento_ciudad" : "CENTRAL - LAMBARÉ",
+		"departamento" : "CENTRAL",
+		"ciudad" : "LAMBARÉ"
+	},
+	{
+		"departamento_ciudad" : "CENTRAL - LIMPIO",
+		"departamento" : "CENTRAL",
+		"ciudad" : "LIMPIO"
+	},
+	{
+		"departamento_ciudad" : "CENTRAL - LUQUE",
+		"departamento" : "CENTRAL",
+		"ciudad" : "LUQUE"
+	},
+	{
+		"departamento_ciudad" : "CENTRAL - MARIANO ROQUE ALONSO",
+		"departamento" : "CENTRAL",
+		"ciudad" : "MARIANO ROQUE ALONSO"
+	},
+	{
+		"departamento_ciudad" : "CENTRAL - NUEVA ITALIA",
+		"departamento" : "CENTRAL",
+		"ciudad" : "NUEVA ITALIA"
+	},
+	{
+		"departamento_ciudad" : "CENTRAL - ÑEMBY",
+		"departamento" : "CENTRAL",
+		"ciudad" : "ÑEMBY"
+	},
+	{
+		"departamento_ciudad" : "CENTRAL - SAN ANTONIO",
+		"departamento" : "CENTRAL",
+		"ciudad" : "SAN ANTONIO"
+	},
+	{
+		"departamento_ciudad" : "CENTRAL - SAN LORENZO",
+		"departamento" : "CENTRAL",
+		"ciudad" : "SAN LORENZO"
+	},
+	{
+		"departamento_ciudad" : "CENTRAL - VILLA ELISA",
+		"departamento" : "CENTRAL",
+		"ciudad" : "VILLA ELISA"
+	},
+	{
+		"departamento_ciudad" : "CENTRAL - VILLETA",
+		"departamento" : "CENTRAL",
+		"ciudad" : "VILLETA"
+	},
+	{
+		"departamento_ciudad" : "CENTRAL - YPACARAÍ",
+		"departamento" : "CENTRAL",
+		"ciudad" : "YPACARAÍ"
+	},
+	{
+		"departamento_ciudad" : "CENTRAL - YPANÉ",
+		"departamento" : "CENTRAL",
+		"ciudad" : "YPANÉ"
+	},
+	{
+		"departamento_ciudad" : "CENTRAL - J. AUGUSTO SALDIVAR",
+		"departamento" : "CENTRAL",
+		"ciudad" : "J. AUGUSTO SALDIVAR"
+	},
+	{
+		"departamento_ciudad" : "ÑEEMBUCÚ - PILAR",
+		"departamento" : "ÑEEMBUCÚ",
+		"ciudad" : "PILAR"
+	},
+	{
+		"departamento_ciudad" : "ÑEEMBUCÚ - ALBERDI",
+		"departamento" : "ÑEEMBUCÚ",
+		"ciudad" : "ALBERDI"
+	},
+	{
+		"departamento_ciudad" : "ÑEEMBUCÚ - CERRITO",
+		"departamento" : "ÑEEMBUCÚ",
+		"ciudad" : "CERRITO"
+	},
+	{
+		"departamento_ciudad" : "ÑEEMBUCÚ - DESMOCHADOS",
+		"departamento" : "ÑEEMBUCÚ",
+		"ciudad" : "DESMOCHADOS"
+	},
+	{
+		"departamento_ciudad" : "ÑEEMBUCÚ - GRAL. JOSÉ EDUVIGIS DÍAZ",
+		"departamento" : "ÑEEMBUCÚ",
+		"ciudad" : "GRAL. JOSÉ EDUVIGIS DÍAZ"
+	},
+	{
+		"departamento_ciudad" : "ÑEEMBUCÚ - GUAZÚ-CUÁ",
+		"departamento" : "ÑEEMBUCÚ",
+		"ciudad" : "GUAZÚ-CUÁ"
+	},
+	{
+		"departamento_ciudad" : "ÑEEMBUCÚ - HUMAITÁ",
+		"departamento" : "ÑEEMBUCÚ",
+		"ciudad" : "HUMAITÁ"
+	},
+	{
+		"departamento_ciudad" : "ÑEEMBUCÚ - ISLA UMBÚ",
+		"departamento" : "ÑEEMBUCÚ",
+		"ciudad" : "ISLA UMBÚ"
+	},
+	{
+		"departamento_ciudad" : "ÑEEMBUCÚ - LAURELES",
+		"departamento" : "ÑEEMBUCÚ",
+		"ciudad" : "LAURELES"
+	},
+	{
+		"departamento_ciudad" : "ÑEEMBUCÚ - MAYOR JOSÉ DEJESÚS MARTÍNEZ",
+		"departamento" : "ÑEEMBUCÚ",
+		"ciudad" : "MAYOR JOSÉ DEJESÚS MARTÍNEZ"
+	},
+	{
+		"departamento_ciudad" : "ÑEEMBUCÚ - PASO DE PATRIA",
+		"departamento" : "ÑEEMBUCÚ",
+		"ciudad" : "PASO DE PATRIA"
+	},
+	{
+		"departamento_ciudad" : "ÑEEMBUCÚ - SAN JUAN BAUTISTA DE ÑEEMBUCÚ",
+		"departamento" : "ÑEEMBUCÚ",
+		"ciudad" : "SAN JUAN BAUTISTA DE ÑEEMBUCÚ"
+	},
+	{
+		"departamento_ciudad" : "ÑEEMBUCÚ - TACUARAS",
+		"departamento" : "ÑEEMBUCÚ",
+		"ciudad" : "TACUARAS"
+	},
+	{
+		"departamento_ciudad" : "ÑEEMBUCÚ - VILLA FRANCA",
+		"departamento" : "ÑEEMBUCÚ",
+		"ciudad" : "VILLA FRANCA"
+	},
+	{
+		"departamento_ciudad" : "ÑEEMBUCÚ - VILLA OLIVA",
+		"departamento" : "ÑEEMBUCÚ",
+		"ciudad" : "VILLA OLIVA"
+	},
+	{
+		"departamento_ciudad" : "ÑEEMBUCÚ - VILLALBÍN",
+		"departamento" : "ÑEEMBUCÚ",
+		"ciudad" : "VILLALBÍN"
+	},
+	{
+		"departamento_ciudad" : "AMAMBAY - PEDRO JUAN CABALLERO",
+		"departamento" : "AMAMBAY",
+		"ciudad" : "PEDRO JUAN CABALLERO"
+	},
+	{
+		"departamento_ciudad" : "AMAMBAY - CAPITÁN BADO",
+		"departamento" : "AMAMBAY",
+		"ciudad" : "CAPITÁN BADO"
+	},
+	{
+		"departamento_ciudad" : "AMAMBAY - ZANJA PYTÃ",
+		"departamento" : "AMAMBAY",
+		"ciudad" : "ZANJA PYTÃ"
+	},
+	{
+		"departamento_ciudad" : "AMAMBAY - KARAPAÍ",
+		"departamento" : "AMAMBAY",
+		"ciudad" : "KARAPAÍ"
+	},
+	{
+		"departamento_ciudad" : "CANINDEYÚ - SALTO DEL GUAIRÁ",
+		"departamento" : "CANINDEYÚ",
+		"ciudad" : "SALTO DEL GUAIRÁ"
+	},
+	{
+		"departamento_ciudad" : "CANINDEYÚ - CORPUS CHRISTI",
+		"departamento" : "CANINDEYÚ",
+		"ciudad" : "CORPUS CHRISTI"
+	},
+	{
+		"departamento_ciudad" : "CANINDEYÚ - VILLA CURUGUATY",
+		"departamento" : "CANINDEYÚ",
+		"ciudad" : "VILLA CURUGUATY"
+	},
+	{
+		"departamento_ciudad" : "CANINDEYÚ - VILLA YGATIMÍ",
+		"departamento" : "CANINDEYÚ",
+		"ciudad" : "VILLA YGATIMÍ"
+	},
+	{
+		"departamento_ciudad" : "CANINDEYÚ - ITANARÁ",
+		"departamento" : "CANINDEYÚ",
+		"ciudad" : "ITANARÁ"
+	},
+	{
+		"departamento_ciudad" : "CANINDEYÚ - YPEJHÚ",
+		"departamento" : "CANINDEYÚ",
+		"ciudad" : "YPEJHÚ"
+	},
+	{
+		"departamento_ciudad" : "CANINDEYÚ - FRANCISCO CABALLERO ALVAREZ",
+		"departamento" : "CANINDEYÚ",
+		"ciudad" : "FRANCISCO CABALLERO ALVAREZ"
+	},
+	{
+		"departamento_ciudad" : "CANINDEYÚ - KATUETÉ",
+		"departamento" : "CANINDEYÚ",
+		"ciudad" : "KATUETÉ"
+	},
+	{
+		"departamento_ciudad" : "CANINDEYÚ - LA PALOMA DEL ESPÍRITU SANTO",
+		"departamento" : "CANINDEYÚ",
+		"ciudad" : "LA PALOMA DEL ESPÍRITU SANTO"
+	},
+	{
+		"departamento_ciudad" : "CANINDEYÚ - NUEVA ESPERANZA",
+		"departamento" : "CANINDEYÚ",
+		"ciudad" : "NUEVA ESPERANZA"
+	},
+	{
+		"departamento_ciudad" : "CANINDEYÚ - YASY CAÑY",
+		"departamento" : "CANINDEYÚ",
+		"ciudad" : "YASY CAÑY"
+	},
+	{
+		"departamento_ciudad" : "CANINDEYÚ - YBYRAROBANÁ",
+		"departamento" : "CANINDEYÚ",
+		"ciudad" : "YBYRAROBANÁ"
+	},
+	{
+		"departamento_ciudad" : "CANINDEYÚ - YBY PYTÁ",
+		"departamento" : "CANINDEYÚ",
+		"ciudad" : "YBY PYTÁ"
+	},
+	{
+		"departamento_ciudad" : "PRESIDENTE HAYES - BENJAMÍN ACEVAL",
+		"departamento" : "PRESIDENTE HAYES",
+		"ciudad" : "BENJAMÍN ACEVAL"
+	},
+	{
+		"departamento_ciudad" : "PRESIDENTE HAYES - PUERTO PINASCO",
+		"departamento" : "PRESIDENTE HAYES",
+		"ciudad" : "PUERTO PINASCO"
+	},
+	{
+		"departamento_ciudad" : "PRESIDENTE HAYES - VILLA HAYES",
+		"departamento" : "PRESIDENTE HAYES",
+		"ciudad" : "VILLA HAYES"
+	},
+	{
+		"departamento_ciudad" : "PRESIDENTE HAYES - NANAWA",
+		"departamento" : "PRESIDENTE HAYES",
+		"ciudad" : "NANAWA"
+	},
+	{
+		"departamento_ciudad" : "PRESIDENTE HAYES - JOSÉ FALCÓN",
+		"departamento" : "PRESIDENTE HAYES",
+		"ciudad" : "JOSÉ FALCÓN"
+	},
+	{
+		"departamento_ciudad" : "PRESIDENTE HAYES - TTE. 1° MANUEL IRALA FERNÁNDEZ",
+		"departamento" : "PRESIDENTE HAYES",
+		"ciudad" : "TTE. 1° MANUEL IRALA FERNÁNDEZ"
+	},
+	{
+		"departamento_ciudad" : "PRESIDENTE HAYES - TENIENTE ESTEBAN MARTÍNEZ",
+		"departamento" : "PRESIDENTE HAYES",
+		"ciudad" : "TENIENTE ESTEBAN MARTÍNEZ"
+	},
+	{
+		"departamento_ciudad" : "PRESIDENTE HAYES - GENERAL JOSÉ MARÍA BRUGUEZ",
+		"departamento" : "PRESIDENTE HAYES",
+		"ciudad" : "GENERAL JOSÉ MARÍA BRUGUEZ"
+	},
+	{
+		"departamento_ciudad" : "BOQUERÓN - MARISCAL JOSÉ FÉLIX ESTIGARRIBIA",
+		"departamento" : "BOQUERÓN",
+		"ciudad" : "MARISCAL JOSÉ FÉLIX ESTIGARRIBIA"
+	},
+	{
+		"departamento_ciudad" : "BOQUERÓN - FILADELFIA",
+		"departamento" : "BOQUERÓN",
+		"ciudad" : "FILADELFIA"
+	},
+	{
+		"departamento_ciudad" : "BOQUERÓN - LOMA PLATA",
+		"departamento" : "BOQUERÓN",
+		"ciudad" : "LOMA PLATA"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARAGUAY - FUERTE OLIMPO",
+		"departamento" : "ALTO PARAGUAY",
+		"ciudad" : "FUERTE OLIMPO"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARAGUAY - PUERTO CASADO",
+		"departamento" : "ALTO PARAGUAY",
+		"ciudad" : "PUERTO CASADO"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARAGUAY - BAHÍA NEGRA",
+		"departamento" : "ALTO PARAGUAY",
+		"ciudad" : "BAHÍA NEGRA"
+	},
+	{
+		"departamento_ciudad" : "ALTO PARAGUAY - CARMELO PERALTA",
+		"departamento" : "ALTO PARAGUAY",
+		"ciudad" : "CARMELO PERALTA"
+	}
+]

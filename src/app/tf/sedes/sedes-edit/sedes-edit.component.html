@@ -1,1 +1,79 @@
-<p>sedes-edit works!</p>
+<form class="grid" [formGroup]="form" (ngSubmit)="submit()">
+    <!-- Nombre -->
+    <section class="col-12">
+      <p class="m-0 text-sm mb-2">Nombre</p>
+      <input
+        formControlName="nombre"
+        type="text"
+        pInputText
+        placeholder="Sede 1..."
+        class="w-full"
+        [attr.aria-invalid]="f.nombre.invalid && (f.nombre.touched || submitted)"
+      />
+      <small
+        class="p-error"
+        *ngIf="(f.nombre.touched || submitted) && f.nombre.errors?.['required']"
+      >
+        El nombre es obligatorio.
+      </small>
+    </section>
+  
+    <!-- Dirección -->
+    <section class="col-12">
+      <p class="m-0 text-sm mb-2">Dirección</p>
+      <input
+        formControlName="direccion"
+        type="text"
+        pInputText
+        placeholder="Avda. Mariscal López..."
+        class="w-full"
+        [attr.aria-invalid]="f.direccion.invalid && (f.direccion.touched || submitted)"
+      />
+      <small
+        class="p-error"
+        *ngIf="(f.direccion.touched || submitted) && f.direccion.errors?.['required']"
+      >
+        La dirección es obligatoria.
+      </small>
+    </section>
+  
+    <!-- Ciudad -->
+    <section class="col-12">
+      <p class="m-0 text-sm mb-2">Ciudad</p>
+      <p-dropdown
+        styleClass=""
+        [style]="{ width: '100%' }"
+        appendTo="body"
+        formControlName="ciudad"
+        [options]="ciudades"
+        optionLabel="departamento_ciudad"
+        optionValue="departamento_ciudad"
+        placeholder="Seleccione una ciudad..."
+        [virtualScroll]="true"
+        [virtualScrollItemSize]="20"
+        [filter]="true"
+        filterBy="departamento_ciudad" 
+      />
+  
+      <small
+        class="p-error"
+        *ngIf="(f.ciudad.touched || submitted) && f.ciudad.errors?.['required']"
+      >
+        La ciudad es obligatoria.
+      </small>
+    </section>
+  
+    <!-- Submit -->
+    <section class="col-12">
+      <p-button
+        [loading]="submitted"
+        [disabled]="form.invalid || submitted"
+        label="Guardar cambios"
+        type="submit"
+        styleClass="w-full"
+        [disabled]="form.invalid || form.pending"
+      >
+      </p-button>
+    </section>
+  </form>
+  
