@@ -6,10 +6,10 @@ import { Router } from '@angular/router';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import { InputTextModule } from 'primeng/inputtext';
-import { PasswordModule } from 'primeng/password';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
+import { DialogModule } from 'primeng/dialog';
 
 // Reactive Forms
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -28,10 +28,10 @@ import { TalentFlowResponse } from '../../interfaces/talentflow.interface';
     CardModule,
     DividerModule,
     InputTextModule,
-    PasswordModule,
     CheckboxModule,
     ButtonModule,
     ToastModule,
+    DialogModule,
     ReactiveFormsModule
   ],
   providers: [MessageService],
@@ -54,6 +54,15 @@ export class LoginComponent implements OnInit {
     captcha: ['', Validators.required],
     remember: [false],
   });
+
+  // reset pass
+  resetPassVisible: boolean = false
+  resetPassForm = this.fb.nonNullable.group({
+    email:    ['', [Validators.required, Validators.email]],
+    captcha: ['', Validators.required],
+  });
+  resetPassLoading: boolean = false
+  resetPassCaptchaUrl: string = ''
 
   async ngOnInit() {
     const userRemember = await this.kv.get('user_remember')
@@ -86,6 +95,31 @@ export class LoginComponent implements OnInit {
         const error: TalentFlowResponse = e.error
         this.toast.add({ severity: 'error', summary: this.env.appName, detail: error.message || 'Usuario y/o contraseña incorrecta' });
         this.loading = false
+      }
+    });
+  }
+
+  resetPassOpen() {
+    this.resetPassCaptchaUrl = `${this.env.apiUrl}/auth/captcha?${new Date().getTime()}`
+    this.resetPassVisible = true
+  }
+
+  resetPassSubmit() {
+    if (this.resetPassForm.invalid) return;
+    this.resetPassLoading = true
+    const body = this.resetPassForm.getRawValue()
+    this.auth.resetAccountReset(body).subscribe({
+      next: async() => {
+        this.toast.add({ severity: 'success', summary: this.env.appName, detail: `Te enviamos un enlace a tu correo electrónico ${body.email} para restablecer tu cuenta` });
+        this.resetPassLoading = false
+        this.resetPassForm.reset()
+        this.resetPassVisible = false
+      },
+      error: (e: HttpErrorResponse) => {
+        this.resetPassCaptchaUrl = `${this.env.apiUrl}/auth/captcha?${new Date().getTime()}`
+        const error: TalentFlowResponse = e.error
+        this.toast.add({ severity: 'error', summary: this.env.appName, detail: error.message || 'Error al restablecer cuenta' });
+        this.resetPassLoading = false
       }
     });
   }

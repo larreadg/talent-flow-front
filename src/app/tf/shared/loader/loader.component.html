@@ -1,0 +1,9 @@
+<p-blockUI [blocked]="(visible$ | async) ?? false">
+    <section class="flex h-screen w-screen flex-column align-items-center justify-content-center">
+        <section class="flex align-items-center justify-content-center">
+            <img class="tf-logo spin" src="assets/svg/tf2.svg" alt="TalentFlow">
+            <p class="text-4xl font-semibold text-white m-0">{{env.appName}}</p>
+        </section>
+        <p class="text-white text-xl m-0">{{ (displayText$ | async) ?? info }}</p>
+    </section>
+</p-blockUI>

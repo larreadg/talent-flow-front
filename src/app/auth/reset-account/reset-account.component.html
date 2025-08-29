@@ -1,0 +1,117 @@
+<section class="login-container">
+    <section class="talent-flow-img">
+      <section class="talent-flow-img-text">
+        <p class="m-0 text-white text-lg">BIENVENIDO A</p>
+        <p class="m-0 text-white text-6xl font-semibold">{{ env.appName }}</p>
+        <p-divider />
+        <p class="m-0 text-white text-lg">Restablecer cuenta</p>
+      </section>
+    </section>
+    <section class="talent-flow-form">
+      <section class="form">
+        <form class="grid" [formGroup]="form" (ngSubmit)="submit()">
+          <section class="col-12 xl:col-10 xl:col-offset-1">
+            <section
+              class="flex align-items-center justify-content-center flex-column mb-4"
+            >
+              <img class="tf-logo" src="assets/svg/tf2.svg" alt="TalentFlow" />
+              <p class="m-0 text-xl font-semibold">{{ env.appName }} - Restablecer cuenta</p>
+            </section>
+          </section>
+          <!-- Pass -->
+          <section class="col-12 xl:col-10 xl:col-offset-1">
+            <p class="m-0 text-sm mb-2">Contraseña</p>
+            <p-password
+              formControlName="pass"
+              appendTo="body"
+              [style]="{ width: '100%' }"
+              promptLabel="Ingrese una contraseña"
+              [toggleMask]="true"
+              [feedback]="true"
+              [strongRegex]="strongRegex"
+            >
+              <ng-template pTemplate="footer">
+                <p-divider />
+                <p class="mt-2 font-semibold">Requerimientos</p>
+                <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                  <li [class.text-green-600]="f.pass.value.length >= 8">
+                    Longitud mínima de 8
+                  </li>
+                  <li [class.text-green-600]="lowerRe.test(f.pass.value)">
+                    Una letra minúscula
+                  </li>
+                  <li [class.text-green-600]="upperRe.test(f.pass.value)">
+                    Una letra mayúscula
+                  </li>
+                  <li [class.text-green-600]="digitRe.test(f.pass.value)">
+                    Al menos un número
+                  </li>
+                  <li [class.text-green-600]="symbolRe.test(f.pass.value)">
+                    Al menos un símbolo (p. ej. $#:,;)
+                  </li>
+                </ul>
+  
+                <small class="p-error" *ngIf="f.pass.touched && f.pass.invalid">
+                  La contraseña no cumple los requisitos.
+                </small>
+              </ng-template>
+            </p-password>
+          </section>
+  
+          <!-- Repeat Pass -->
+          <section class="col-12 xl:col-10 xl:col-offset-1">
+            <p class="m-0 text-sm mb-2">Repetir contraseña</p>
+            <p-password
+              formControlName="repeatPass"
+              appendTo="body"
+              [style]="{ width: '100%' }"
+              promptLabel="Ingrese una contraseña"
+              [toggleMask]="true"
+              [feedback]="true"
+              [strongRegex]="strongRegex"
+            >
+              <ng-template pTemplate="footer">
+                <p-divider />
+                <p class="mt-2 font-semibold">Requerimientos</p>
+                <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                  <li [class.text-primary]="f.pass.value.length >= 8">
+                    Longitud mínima de 8
+                  </li>
+                  <li [class.text-primary]="lowerRe.test(f.pass.value)">
+                    Una letra minúscula
+                  </li>
+                  <li [class.text-primary]="upperRe.test(f.pass.value)">
+                    Una letra mayúscula
+                  </li>
+                  <li [class.text-primary]="digitRe.test(f.pass.value)">
+                    Al menos un número
+                  </li>
+                  <li [class.text-primary]="symbolRe.test(f.pass.value)">
+                    Al menos un símbolo (p. ej. $#:,;)
+                  </li>
+                </ul>
+  
+                <small class="p-error" *ngIf="f.pass.touched && f.pass.invalid">
+                  La contraseña no cumple los requisitos.
+                </small>
+              </ng-template>
+            </p-password>
+          </section>
+  
+          <section class="col-12 xl:col-10 xl:col-offset-1">
+              <section class="flex align-items-center justify-content-center gap-2">
+                  <img class="captcha" [src]="captchaUrl" alt="Captcha">
+                  <input formControlName="captcha" type="text" pInputText placeholder="Captcha..." class="" [style]="{ width: '150px' }" />
+              </section>
+          </section>
+  
+          <section class="col-12 xl:col-10 xl:col-offset-1">
+              <p-button [disabled]="form.invalid" [loading]="loading" [type]="'submit'" label="Restablecer cuenta" icon="pi pi-lock"  styleClass="w-full p-button-sm"/>
+          </section>
+        </form>
+      </section>
+    </section>
+  </section>
+  
+  <p-toast />
+  

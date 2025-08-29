@@ -1,0 +1,21 @@
+// Reutilizable: velocidad por CSS var --spin-dur
+.spin {
+    display: inline-block; // asegura que el transform funcione bien
+    transform-origin: center center;
+    animation: spin var(--spin-dur, 1.2s) linear infinite;
+
+    @media (prefers-reduced-motion: reduce) {
+        animation: none;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Variante: solo al hacer hover */
+.spin-hover:hover {
+    animation: spin var(--spin-dur, .8s) linear infinite;
+}

@@ -14,7 +14,15 @@ export class AuthService {
     return this.http.post<TalentFlowResponse>(`${environment.apiUrl}/auth/login`, dto);
   }
   
-  updatePass(dto: { pass: string; repeatPass: string }) {
-    return this.http.post<TalentFlowResponse>(`${environment.apiUrl}/auth/me/password`, dto);
+  activateAccount(dto: { pass: string; repeatPass: string, token: string, captcha: string }) {
+    return this.http.post<TalentFlowResponse>(`${environment.apiUrl}/auth/activate-account`, dto);
+  }
+  
+  resetAccountReset(dto: { email: string, captcha: string }) {
+    return this.http.post<TalentFlowResponse>(`${environment.apiUrl}/auth/reset-account/request`, dto);
+  }
+  
+  resetAccount(dto: { pass: string; repeatPass: string, token: string, captcha: string }) {
+    return this.http.post<TalentFlowResponse>(`${environment.apiUrl}/auth/reset-account`, dto);
   }
 }

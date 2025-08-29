@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthService } from '../../../services/auth.service';
 import { MessageService } from 'primeng/api';
 import { passwordRulesValidator } from '../../../utils/utils';
 import { environment } from '../../../../environments/environment';
@@ -12,6 +11,7 @@ import { TalentFlowResponse } from '../../../interfaces/talentflow.interface';
 import { ButtonModule } from 'primeng/button';
 import { PasswordModule } from 'primeng/password';
 import { DividerModule } from 'primeng/divider';
+import { UsuariosService } from '../../../services/usuarios.service';
 
 @Component({
   selector: 'app-update-pass',
@@ -29,7 +29,7 @@ import { DividerModule } from 'primeng/divider';
 export class UpdatePassComponent {
 
   private toast = inject(MessageService)
-  private api = inject(AuthService)
+  private api = inject(UsuariosService)
   private fb   = inject(FormBuilder)
   submitted = false
   env = environment

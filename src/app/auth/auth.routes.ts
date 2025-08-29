@@ -14,6 +14,10 @@ export const AUTH_ROUTES: Routes = [
         path: 'activate-account',
         loadComponent: () => import('./activate-account/activate-account.component').then((c) => c.ActivateAccountComponent),
       },
+      {
+        path: 'reset-account',
+        loadComponent: () => import('./reset-account/reset-account.component').then((c) => c.ResetAccountComponent),
+      },
     ],
   },
 ];

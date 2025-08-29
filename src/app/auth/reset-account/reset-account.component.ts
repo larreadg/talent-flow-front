@@ -21,9 +21,8 @@ import { AuthService } from '../../services/auth.service';
 import { MessageService } from 'primeng/api';
 import { HttpErrorResponse } from '@angular/common/http';
 import { TalentFlowResponse } from '../../interfaces/talentflow.interface';
-
 @Component({
-  selector: 'app-activate-account',
+  selector: 'app-reset-account',
   standalone: true,
   imports: [
     CommonModule,
@@ -38,10 +37,10 @@ import { TalentFlowResponse } from '../../interfaces/talentflow.interface';
     ReactiveFormsModule,
   ],
   providers: [MessageService],
-  templateUrl: './activate-account.component.html',
-  styleUrl: './activate-account.component.scss'
+  templateUrl: './reset-account.component.html',
+  styleUrl: './reset-account.component.scss'
 })
-export class ActivateAccountComponent implements OnInit {
+export class ResetAccountComponent {
   env = environment
   captchaUrl = `${this.env.apiUrl}/auth/captcha?${new Date().getTime()}`
   loading: boolean = false
@@ -86,9 +85,9 @@ export class ActivateAccountComponent implements OnInit {
     if (this.form.invalid) return;
     this.loading = true
     const body = this.form.getRawValue()
-    this.auth.activateAccount(body).subscribe({
+    this.auth.resetAccount(body).subscribe({
       next: async(resp) => {
-        this.toast.add({ severity: 'success', summary: this.env.appName, detail: 'Tu cuenta fue activada' });
+        this.toast.add({ severity: 'success', summary: this.env.appName, detail: 'Tu cuenta fue restablecida' });
         setTimeout(() => {
           this.router.navigate(['/auth/login'])
         }, 3000)
@@ -96,7 +95,7 @@ export class ActivateAccountComponent implements OnInit {
       error: (e: HttpErrorResponse) => {
         this.captchaUrl = `${this.env.apiUrl}/auth/captcha?${new Date().getTime()}`
         const error: TalentFlowResponse = e.error
-        this.toast.add({ severity: 'error', summary: this.env.appName, detail: error.message || 'Error al activar cuenta' });
+        this.toast.add({ severity: 'error', summary: this.env.appName, detail: error.message || 'Error al restablecer cuenta' });
         this.loading = false
       }
     });

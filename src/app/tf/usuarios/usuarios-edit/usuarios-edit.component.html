@@ -7,7 +7,7 @@
       type="text"
       pInputText
       placeholder="Juan"
-      class="p-inputtext-sm w-full"
+      class=" w-full"
       [attr.aria-invalid]="f.nombre.invalid && (f.nombre.touched || submitted)"
       autocomplete="given-name"
       maxlength="60"
@@ -52,7 +52,7 @@
       type="text"
       pInputText
       placeholder="Perez"
-      class="p-inputtext-sm w-full"
+      class=" w-full"
       [attr.aria-invalid]="
         f.apellido.invalid && (f.apellido.touched || submitted)
       "
@@ -100,7 +100,7 @@
       pInputText
       inputmode="numeric"
       placeholder="595XXXXXXXXX"
-      class="p-inputtext-sm w-full"
+      class=" w-full"
       [attr.aria-invalid]="
         f.telefono.invalid && (f.telefono.touched || submitted)
       "
@@ -130,7 +130,7 @@
   <section class="col-12">
     <p class="m-0 text-sm mb-2">Rol</p>
     <p-dropdown
-      styleClass="p-inputtext-sm"
+      styleClass=""
       [style]="{ width: '100%' }"
       appendTo="body"
       formControlName="rolId"

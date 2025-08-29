@@ -25,4 +25,8 @@ export class UsuariosService {
   getRoles() {
     return this.http.get<TalentFlowResponse>(`${environment.apiUrl}/roles`)
   }
+
+  updatePass(dto: { pass: string; repeatPass: string }) {
+    return this.http.post<TalentFlowResponse>(`${environment.apiUrl}/usuarios/me/password`, dto);
+  }
 }
