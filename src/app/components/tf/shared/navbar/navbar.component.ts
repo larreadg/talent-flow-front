@@ -1,0 +1,110 @@
+import { Component, inject, OnInit } from '@angular/core';
+import { environment } from '../../../../../environments/environment';
+import { CommonModule } from '@angular/common';
+import { Router, RouterLink } from "@angular/router";
+import { KvStoreService } from '../../../../services/kv-store.service';
+import { Usuario } from '../../../../interfaces/usuario.interface';
+
+// Primeng
+import { ButtonModule } from 'primeng/button';
+import { SidebarModule } from 'primeng/sidebar';
+import { MenuItem, MessageService, PrimeTemplate } from 'primeng/api';
+import { AvatarModule } from 'primeng/avatar';
+import { MenuModule } from 'primeng/menu';
+import { DialogModule } from 'primeng/dialog';
+import { UpdatePassComponent } from '../update-pass/update-pass.component';
+import { ToastModule } from 'primeng/toast';
+
+@Component({
+  selector: 'app-navbar',
+  standalone: true,
+  imports: [
+    CommonModule,
+    ButtonModule,
+    SidebarModule,
+    AvatarModule,
+    MenuModule,
+    DialogModule,
+    ToastModule,
+    PrimeTemplate,
+    RouterLink,
+    UpdatePassComponent
+  ],
+  providers: [MessageService],
+  templateUrl: './navbar.component.html',
+  styleUrl: './navbar.component.scss'
+})
+export class NavbarComponent implements OnInit {
+  kv = inject(KvStoreService)
+  router = inject(Router)
+  items: any[] = [
+    {
+      label: 'Inicio',
+      icon: 'pi pi-home',
+      route: '/tf/home'
+    },
+    {
+      label: 'Vacantes',
+      icon: 'pi pi-briefcase',
+      route: '/tf/vacantes'
+    },
+    {
+      label: 'Departamentos',
+      icon: 'pi pi-objects-column',
+      route: '/tf/departamentos'
+    },
+    {
+      label: 'Sedes',
+      icon: 'pi pi-building',
+      route: '/tf/sedes'
+    },
+    {
+      label: 'Usuarios',
+      icon: 'pi pi-users',
+      route: '/tf/usuarios'
+    },
+  ]
+  env = environment
+  sidebarVisible: boolean = false
+  empresaNombre: string = ''
+  user: Usuario | any = {}
+  userItems: MenuItem[] = [
+    {
+      label: 'Cambiar contraseña',
+      icon: 'pi pi-lock',
+      command: () => {
+        this.updatePassVisible = true
+      }
+    },
+    {
+      label: 'Cerrar sesión',
+      icon: 'pi pi-sign-out',
+      command: () => {
+        this.cerrarSesion()
+      }
+    },
+  ]
+  updatePassVisible: boolean = false
+
+  async ngOnInit() {
+    const usuarioRaw = await this.kv.get('user')
+    if(usuarioRaw) {
+      this.user = JSON.parse(<string> usuarioRaw)
+      this.empresaNombre = <string> this.user?.empresa?.nombre
+    }
+  }
+
+  toggleSidebar = () => {
+    this.sidebarVisible = !this.sidebarVisible
+  }
+
+  cerrarSesion = async() => {
+    await this.kv.del('token')
+    await this.kv.del('user')
+    this.router.navigate(['/auth/login'])
+  }
+
+  updatePassClose = (_:any) => {
+    this.updatePassVisible = false
+  }
+}

@@ -7,8 +7,7 @@ import { environment } from '../environments/environment';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  template: '<router-outlet></router-outlet>',
 })
 export class AppComponent implements OnInit {
   private title = inject(Title);
