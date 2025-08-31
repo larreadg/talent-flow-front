@@ -1,4 +1,4 @@
-@import '../../../variables.scss';
+@import '../../../../variables.scss';
 
 .login-container {
   height: 100dvh;
@@ -7,7 +7,7 @@
 }
 
 .talent-flow-img {
-  background: url('../../../assets/svg/bg2.svg') center / cover no-repeat;
+  background: url('../../../../assets/svg/bg2.svg') center / cover no-repeat;
   display: none;
 
   @media (min-width: $lg) {
