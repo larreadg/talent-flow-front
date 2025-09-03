@@ -18,18 +18,14 @@
             <span class="font-semibold text-xl">{{env.appName}}</span>
         </section>
     </ng-template>
-    <section class="sidebar-content">
-        <section class="nav-items">
-            <section class="nav-item" *ngFor="let item of items" [routerLink]="item.route" (click)="sidebarVisible = false">
-                <p-avatar icon="{{item.icon}}"/>
-                <p>{{item.label}}</p>
-            </section>
-        </section>
+    <p-panelMenu [model]="items" styleClass="w-full"/>
+    <ng-template pTemplate="footer">
         <section class="flex align-items-center gap-2 py-4">
-            <p-avatar icon="pi pi-building-columns" [style]="{ 'background-color': 'var(--primary-color)', color: '#fff' }"/>
-            <p class="m-0 font-semibold">{{empresaNombre}}</p>
+          <p-avatar icon="pi pi-building-columns"
+                    [style]="{ 'background-color': 'var(--primary-color)', color: '#fff' }"/>
+          <p class="m-0 font-semibold">{{ empresaNombre }}</p>
         </section>
-    </section>
+      </ng-template>
 </p-sidebar>
 
 <p-dialog header="Actualizar contraseña" [modal]="true" [(visible)]="updatePassVisible" [style]="{ width: '30vw' }">

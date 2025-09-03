@@ -15,16 +15,20 @@ export const TF_ROUTES: Routes = [
         loadChildren: () => import('./usuarios/usuarios.routes').then((m) => m.USUARIOS_ROUTES),
       },
       {
-        path: 'vacantes',
-        loadChildren: () => import('./vacantes/vacantes.routes').then((m) => m.VACANTES_ROUTES),
-      },
-      {
         path: 'departamentos',
         loadChildren: () => import('./departamentos/departamentos.routes').then((m) => m.DEPARTAMENTOS_ROUTES),
       },
       {
         path: 'sedes',
         loadChildren: () => import('./sedes/sedes.routes').then((m) => m.SEDES_ROUTES),
+      },
+      {
+        path: 'dia-no-laboral',
+        loadChildren: () => import('./dia-no-laboral/dia-no-laboral.routes').then((m) => m.DIA_NO_LABORAL_ROUTES),
+      },
+      {
+        path: 'reclutamiento',
+        loadChildren: () => import('./reclutamiento/reclutamiento.routes').then((m) => m.RECLUTAMIENTO_ROUTES),
       },
     ],
   },

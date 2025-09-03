@@ -1,0 +1,55 @@
+<form class="grid" [formGroup]="form" (ngSubmit)="submit()">
+  <section class="col-12">
+    <p class="m-0 text-sm mb-2">Nombre</p>
+    <input
+      formControlName="nombre"
+      type="text"
+      pInputText
+      placeholder="Evento..."
+      class="w-full"
+      [attr.aria-invalid]="f.nombre.invalid && (f.nombre.touched || submitted)"
+    />
+    <small
+      class="p-error"
+      *ngIf="(f.nombre.touched || submitted) && f.nombre.errors?.['required']"
+    >
+      El nombre es obligatorio.
+    </small>
+  </section>
+  <section class="col-12">
+    <p class="m-0 text-sm mb-2">Fecha</p>
+    <p-calendar formControlName="fecha" appendTo="body" styleClass="w-full" dateFormat="yy-mm-dd" [touchUI]="true"  />
+    <small
+      class="p-error"
+      *ngIf="(f.fecha.touched || submitted) && f.fecha.errors?.['required']"
+    >
+      La fecha es obligatoria.
+    </small>
+  </section>
+  <section class="col-12">
+    <p class="m-0 text-sm mb-2">Tipo de día no laboral</p>
+    <section class="flex flex-column">
+      <div *ngFor="let tipo of tiposDnl" class="field-checkbox">
+          <p-radioButton 
+              [inputId]="tipo.tipo" 
+              [value]="tipo.tipo"
+              formControlName="tipo" />
+          <label [for]="tipo.tipo" class="ml-2 text-sm">
+              {{ tipo.descripcion }}
+          </label>
+      </div>
+    </section>
+  </section>
+  <!-- Submit -->
+  <section class="col-12">
+    <p-button
+      [loading]="submitted"
+      [disabled]="form.invalid || submitted"
+      label="Guardar cambios"
+      type="submit"
+      styleClass="w-full"
+      [disabled]="form.invalid || form.pending"
+    >
+    </p-button>
+  </section>
+</form>

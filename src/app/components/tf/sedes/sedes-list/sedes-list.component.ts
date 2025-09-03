@@ -1,7 +1,8 @@
-import { Component, inject, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { SedesService } from '../../../../services/sedes.service';
 import { bItemSedesList } from '../../../../utils/breadCrumbItems';
 import { environment } from '../../../../../environments/environment';
+import { Sede } from '../../../../interfaces/sede.interface';
 
 // Primeng
 import { BreadcrumbModule } from 'primeng/breadcrumb';
@@ -21,7 +22,6 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
 // Components
 import { SedesAddComponent } from '../sedes-add/sedes-add.component';
 import { SedesEditComponent } from '../sedes-edit/sedes-edit.component';
-import { Sede } from '../../../../interfaces/sede.interface';
 
 @Component({
   selector: 'app-sedes-list',

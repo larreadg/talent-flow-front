@@ -1,16 +1,15 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DepartamentosService } from '../../../../services/departamentos.service';
-import { environment } from '../../../../../environments/environment';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 // Primeng
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { MessageService } from 'primeng/api';
-
+import { EtapasService } from '../../../../../services/etapas.service';
+import { environment } from '../../../../../../environments/environment';
 @Component({
-  selector: 'app-departamentos-add',
+  selector: 'app-etapas-add',
   standalone: true,
   imports: [
     CommonModule,
@@ -18,12 +17,12 @@ import { MessageService } from 'primeng/api';
     InputTextModule,
     ReactiveFormsModule,
   ],
-  templateUrl: './departamentos-add.component.html',
-  styleUrl: './departamentos-add.component.scss'
+  templateUrl: './etapas-add.component.html',
+  styleUrl: './etapas-add.component.scss'
 })
-export class DepartamentosAddComponent {
+export class EtapasAddComponent {
   private toast = inject(MessageService)
-  private api = inject(DepartamentosService)
+  private api = inject(EtapasService)
   private fb   = inject(FormBuilder)
   submitted = false
   env = environment
@@ -33,10 +32,14 @@ export class DepartamentosAddComponent {
       '',
       [Validators.required]
     ),
+    slaDias: this.fb.nonNullable.control(
+      1,
+      [Validators.required, Validators.min(1)]
+    ),
   });
 
   get f() { return this.form.controls }
-  
+
   submit() {
     this.submitted = true
     if (this.form.invalid) {
@@ -48,12 +51,12 @@ export class DepartamentosAddComponent {
     this.api.post(body).subscribe({
       next: async(resp) => {
         this.submitted = false
-        this.toast.add({ key: 'sedes', severity: 'success', summary: this.env.appName, detail: `Departamento ${body.nombre} fue agregado`, life: 6000 })
+        this.toast.add({ key: 'etapas', severity: 'success', summary: this.env.appName, detail: `Etapa ${body.nombre} fue agregada`, life: 6000 })
         this.form.reset()
         this.changed.emit(true)
       },
       error: (e) => {
-        this.toast.add({ key: 'sedes', severity: 'error', summary: this.env.appName, detail: 'Error al crear departamento' })
+        this.toast.add({ key: 'etapas', severity: 'error', summary: this.env.appName, detail: 'Error al crear etapa' })
         this.submitted = false
       }
     })

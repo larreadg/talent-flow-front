@@ -1,8 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { bItemDepartamentosList } from '../../../../utils/breadCrumbItems';
+import { Component, inject } from '@angular/core';
+import { DiaNoLaboral } from '../../../../interfaces/dia-no-laboral.interface';
+import { DiaNoLaboralService } from '../../../../services/dia-no-laboral.service';
+import { bItemDiaNoLaboralList } from '../../../../utils/breadCrumbItems';
 import { environment } from '../../../../../environments/environment';
-import { DepartamentosService } from '../../../../services/departamentos.service';
-import { Departamento } from '../../../../interfaces/departamento.interface';
+
 
 // Primeng
 import { BreadcrumbModule } from 'primeng/breadcrumb';
@@ -20,11 +21,12 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 
 // Components
-import { DepartamentosAddComponent } from '../departamentos-add/departamentos-add.component';
-import { DepartamentosEditComponent } from '../departamentos-edit/departamentos-edit.component';
+import { DiaNoLaboralAddComponent } from '../dia-no-laboral-add/dia-no-laboral-add.component';
+import { DiaNoLaboralEditComponent } from '../dia-no-laboral-edit/dia-no-laboral-edit.component';
+import dayjs from 'dayjs';
 
 @Component({
-  selector: 'app-departamentos-list',
+  selector: 'app-dia-no-laboral-list',
   standalone: true,
   imports: [
     BreadcrumbModule,
@@ -39,25 +41,24 @@ import { DepartamentosEditComponent } from '../departamentos-edit/departamentos-
     DialogModule,
     ConfirmPopupModule,
     CommonModule,
-    DepartamentosAddComponent,
-    DepartamentosEditComponent
+    DiaNoLaboralAddComponent,
+    DiaNoLaboralEditComponent
   ],
   providers: [MessageService, ConfirmationService],
-  templateUrl: './departamentos-list.component.html',
-  styleUrl: './departamentos-list.component.scss'
+  templateUrl: './dia-no-laboral-list.component.html',
+  styleUrl: './dia-no-laboral-list.component.scss'
 })
-export class DepartamentosListComponent implements OnInit {
-
+export class DiaNoLaboralListComponent {
   private toast = inject(MessageService)
-  private api = inject(DepartamentosService)
+  private api = inject(DiaNoLaboralService)
   private confirm = inject(ConfirmationService)
-  bItems = bItemDepartamentosList
+  bItems = bItemDiaNoLaboralList
   env = environment
   loading: boolean = false
-  departamentos: Departamento[] = []
+  dias: DiaNoLaboral[] = []
   addVisible: boolean = false
   editVisible: boolean = false
-  editDep!: Departamento
+  editDnl!: DiaNoLaboral
   deleteLoading: boolean = false
 
   async ngOnInit() {
@@ -69,18 +70,21 @@ export class DepartamentosListComponent implements OnInit {
     this.api.get().subscribe({
       next: async(resp) => {
         const data: any = <any> resp.data;
-        this.departamentos = <Departamento[]> data.data
+        this.dias = <DiaNoLaboral[]> data.data.map((el:DiaNoLaboral) => {
+          el.fecha = dayjs(el.fecha).format('YYYY-MM-DD')
+          return el
+        })
         this.loading = false
       },
       error: (e) => {
-        this.toast.add({ severity: 'error', summary: this.env.appName, detail: 'Error al obtener departamentos' });
+        this.toast.add({ severity: 'error', summary: this.env.appName, detail: 'Error al obtener dias' });
         this.loading = false
       }
     })
   }
 
   editOpenModal = (s:any) => {
-    this.editDep = <Departamento> s
+    this.editDnl = <DiaNoLaboral> s
     this.editVisible = true
   }
 
@@ -94,28 +98,28 @@ export class DepartamentosListComponent implements OnInit {
     this.addVisible = false
   }
 
-  deleteRequest(event: Event, departamento: Departamento) {
+  deleteRequest(event: Event, dia: DiaNoLaboral) {
     this.confirm.confirm({
         target: event.target as EventTarget,
         message: '¿Querés eliminar este recurso?. Esta acción no puede deshacerse.',
         icon: 'pi pi-exclamation-triangle',
         accept: () => {
-          this.deleteSede(departamento)
+          this.deleteSede(dia)
         },
         reject: () => {},
         acceptLabel: 'Sí, eliminar'
     });
   }
 
-  deleteSede = (departamento: Departamento) => {
+  deleteSede = (dia: DiaNoLaboral) => {
     this.deleteLoading = true
-    this.api.delete(departamento.id).subscribe({
+    this.api.delete(dia.id).subscribe({
       next: async() => {
         this.deleteLoading = false
         this.getDepartamentos()
       },
       error: (e) => {
-        this.toast.add({ severity: 'error', summary: this.env.appName, detail: 'Error al eliminar departamento' });
+        this.toast.add({ severity: 'error', summary: this.env.appName, detail: 'Error al eliminar dia' });
         this.deleteLoading = false
       }
     })

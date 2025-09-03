@@ -1,14 +1,14 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Departamento } from '../../../../interfaces/departamento.service';
+import { Departamento } from '../../../../interfaces/departamento.interface';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { DepartamentosService } from '../../../../services/departamentos.service';
+import { environment } from '../../../../../environments/environment';
 
 // Primeng
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { MessageService } from 'primeng/api';
-import { DepartamentosService } from '../../../../services/departamentos.service';
-import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-departamentos-edit',

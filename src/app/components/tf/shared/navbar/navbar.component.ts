@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink } from "@angular/router";
+import { Router } from "@angular/router";
 import { KvStoreService } from '../../../../services/kv-store.service';
 import { Usuario } from '../../../../interfaces/usuario.interface';
 
@@ -14,6 +14,7 @@ import { MenuModule } from 'primeng/menu';
 import { DialogModule } from 'primeng/dialog';
 import { UpdatePassComponent } from '../update-pass/update-pass.component';
 import { ToastModule } from 'primeng/toast';
+import { PanelMenuModule } from 'primeng/panelmenu';
 
 @Component({
   selector: 'app-navbar',
@@ -27,8 +28,8 @@ import { ToastModule } from 'primeng/toast';
     DialogModule,
     ToastModule,
     PrimeTemplate,
-    RouterLink,
-    UpdatePassComponent
+    UpdatePassComponent,
+    PanelMenuModule
   ],
   providers: [MessageService],
   templateUrl: './navbar.component.html',
@@ -37,31 +38,77 @@ import { ToastModule } from 'primeng/toast';
 export class NavbarComponent implements OnInit {
   kv = inject(KvStoreService)
   router = inject(Router)
-  items: any[] = [
+  items: MenuItem[] = [
     {
-      label: 'Inicio',
       icon: 'pi pi-home',
-      route: '/tf/home'
+      routerLink: '/tf/home',
+      label: 'Inicio', 
+      command: () => {
+        this.toggleSidebar()
+      }
     },
     {
-      label: 'Vacantes',
-      icon: 'pi pi-briefcase',
-      route: '/tf/vacantes'
+      icon: 'pi pi-star',
+      label: 'Reclutamiento',
+      expanded: true,
+      items: [
+        {
+          icon: 'pi pi-briefcase',
+          routerLink: '/tf/reclutamiento/etapas',
+          label: 'Vacantes', 
+          command: () => {
+            this.toggleSidebar()
+          }
+        },
+        {
+          icon: 'pi pi-list-check',
+          routerLink: '/tf/reclutamiento/procesos',
+          label: 'Procesos', 
+          command: () => {
+            this.toggleSidebar()
+          }
+        },
+        {
+          icon: 'pi pi-sort-numeric-down',
+          routerLink: '/tf/reclutamiento/etapas',
+          label: 'Etapas', 
+          command: () => {
+            this.toggleSidebar()
+          }
+        },
+      ]
     },
     {
-      label: 'Departamentos',
       icon: 'pi pi-objects-column',
-      route: '/tf/departamentos'
+      routerLink: '/tf/departamentos',
+      label: 'Departamentos', 
+      command: () => {
+        this.toggleSidebar()
+      }
     },
     {
-      label: 'Sedes',
       icon: 'pi pi-building',
-      route: '/tf/sedes'
+      routerLink: '/tf/sedes',
+      label: 'Sedes', 
+      command: () => {
+        this.toggleSidebar()
+      }
     },
     {
-      label: 'Usuarios',
       icon: 'pi pi-users',
-      route: '/tf/usuarios'
+      routerLink: '/tf/usuarios',
+      label: 'Usuarios', 
+      command: () => {
+        this.toggleSidebar()
+      }
+    },
+    {
+      icon: 'pi pi-calendar-times',
+      routerLink: '/tf/dia-no-laboral',
+      label: 'Días no laborales', 
+      command: () => {
+        this.toggleSidebar()
+      }
     },
   ]
   env = environment

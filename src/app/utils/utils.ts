@@ -19,3 +19,14 @@ export const passwordRulesValidator: ValidatorFn = (control: AbstractControl): V
   const allOk = Object.values(checks).every(Boolean);
   return allOk ? null : { passwordRules: checks };
 };
+
+export const tiposDnl = [
+  {
+    descripcion: 'Evento de la empresa',
+    tipo: 'empresa'
+  },
+  {
+    descripcion: 'Feriado nacional',
+    tipo: 'nacional'
+  }
+]

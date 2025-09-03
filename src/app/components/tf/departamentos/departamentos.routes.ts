@@ -8,15 +8,7 @@ export const DEPARTAMENTOS_ROUTES: Routes = [
       {
         path: '',
         loadComponent: () => import('./departamentos-list/departamentos-list.component').then((c) => c.DepartamentosListComponent),
-      },
-      {
-        path: 'add',
-        loadComponent: () => import('./departamentos-add/departamentos-add.component').then((c) => c.DepartamentosAddComponent),
-      },
-      {
-        path: 'edit/:id',
-        loadComponent: () => import('./departamentos-edit/departamentos-edit.component').then((c) => c.DepartamentosEditComponent),
-      },
+      }
     ],
   },
 ];
