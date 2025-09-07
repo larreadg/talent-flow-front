@@ -1,1 +1,81 @@
-<p>procesos-add works!</p>
+<!-- proceso-form.component.html -->
+<form class="grid" [formGroup]="form" (ngSubmit)="submit()">
+    <!-- Nombre -->
+    <section class="col-12">
+        <p class="m-0 text-sm mb-2">Nombre</p>
+        <input
+        formControlName="nombre"
+        type="text"
+        pInputText
+        placeholder="Nombre del proceso..."
+        class="w-full"
+        [attr.aria-invalid]="f.nombre.invalid && (f.nombre.touched || submitted)"
+        />
+        <small
+        class="p-error"
+        *ngIf="(f.nombre.touched || submitted) && f.nombre.errors?.['required']"
+        >
+        El nombre es obligatorio.
+        </small>
+    </section>
+
+    <!-- Descripción -->
+    <section class="col-12">
+        <p class="m-0 text-sm mb-2">Descripción</p>
+        <textarea
+        formControlName="descripcion"
+        pInputTextarea
+        rows="3"
+        autoResize="false"
+        placeholder="Descripción (opcional)"
+        class="w-full"
+        ></textarea>
+    </section>
+
+    <!-- PickList de Etapas -->
+    <section class="col-12">
+        <p class="m-0 text-sm mb-2">
+        Etapas del proceso (arrastrá para seleccionar y ordenar)
+        </p>
+
+        <p-pickList
+        [source]="etapas"
+        [target]="targetEtapas"
+        sourceHeader="Disponibles"
+        targetHeader="Seleccionadas"
+        [dragdrop]="true"
+        [responsive]="true"
+        breakpoint="992px"
+        (onMoveToTarget)="onPickListChange()"
+        (onMoveToSource)="onPickListChange()"
+        (onMoveAllToTarget)="onPickListChange()"
+        (onMoveAllToSource)="onPickListChange()"
+        (onReorder)="onPickListChange()"
+        [filterBy]="'nombre,slaDias'"
+        >
+        <ng-template let-item pTemplate="item">
+            <div class="flex flex-wrap p-2 align-items-center gap-3 w-full">
+            <div class="flex-1 flex flex-column gap-1">
+                <span class="font-bold text-sm">{{ item.nombre }}</span>
+                <small class="text-600 text-xs">SLA: {{ item.slaDias }} días</small>
+            </div>
+            </div>
+        </ng-template>
+        </p-pickList>
+
+        <!-- Validación del array etapas -->
+        <small
+        class="p-error"
+        *ngIf="(f.etapas.touched || submitted) && f.etapas.errors"
+        >
+        Debés seleccionar al menos una etapa y definir su orden.
+        </small>
+    </section>
+
+    <!-- Botón submit -->
+    <section class="col-12">
+        <section class="flex justify-content-end">
+            <p-button [loading]="submitted" label="Crear proceso" type="submit" [disabled]="form.invalid || form.pending"></p-button>
+        </section>
+    </section>
+</form>

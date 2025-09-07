@@ -1,4 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
+import { EtapasService } from '../../../../../services/etapas.service';
+import { bItemEtapasList } from '../../../../../utils/breadCrumbItems';
+import { environment } from '../../../../../../environments/environment';
+import { Etapa } from '../../../../../interfaces/etapa.interface';
 
 // Primeng
 import { BreadcrumbModule } from 'primeng/breadcrumb';
@@ -14,11 +19,6 @@ import { CommonModule } from '@angular/common';
 
 // Components
 import { EtapasAddComponent } from '../etapas-add/etapas-add.component';
-import { MessageService } from 'primeng/api';
-import { EtapasService } from '../../../../../services/etapas.service';
-import { bItemEtapasList } from '../../../../../utils/breadCrumbItems';
-import { environment } from '../../../../../../environments/environment';
-import { Etapa } from '../../../../../interfaces/etapa.interface';
 
 @Component({
   selector: 'app-etapas-list',

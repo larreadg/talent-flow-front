@@ -1,13 +1,14 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
+import { EtapasService } from '../../../../../services/etapas.service';
+import { environment } from '../../../../../../environments/environment';
 
 // Primeng
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { MessageService } from 'primeng/api';
-import { EtapasService } from '../../../../../services/etapas.service';
-import { environment } from '../../../../../../environments/environment';
+
 @Component({
   selector: 'app-etapas-add',
   standalone: true,

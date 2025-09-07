@@ -1,1 +1,83 @@
-<p>procesos-list works!</p>
+<section class="grid">
+    <section class="col-12 lg:col-10 lg:col-offset-1">
+      <p-breadcrumb class="max-w-full" [model]="bItems" />
+    </section>
+    <section class="col-12 lg:col-10 lg:col-offset-1">
+      <p-table
+        #tablaProcesos
+        [value]="procesos"
+        [paginator]="true"
+        [rows]="5"
+        [rowsPerPageOptions]="[5, 10, 20]"
+        [loading]="loading"
+        [globalFilterFields]="['nombre']"
+      >
+        <ng-template pTemplate="caption">
+          <div class="flex justify-content-between align-items-center">
+            <p-button
+              label="Nuevo"
+              icon="pi pi-list-check"
+              severity="success"
+              (onClick)="addVisible = true"
+            />
+            <p-iconField iconPosition="left">
+              <p-inputIcon>
+                <i class="pi pi-search"></i>
+              </p-inputIcon>
+              <input
+                #q
+                pInputText
+                type="text"
+                (input)="tablaProcesos.filterGlobal(q.value, 'contains')"
+                placeholder="Buscar..."
+              />
+            </p-iconField>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Nombre</th>
+            <th>Etapas</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-proceso>
+          <tr>
+            <td>
+              <p class="m-0 text-sm">{{ proceso.nombre }}</p>
+            </td>
+            <td>
+              <section class="flex flex-column gap-1 h-10rem overflow-y-auto">
+                <ng-container *ngFor="let etapaProceso of proceso.etapas">
+                  <section class="flex align-items-center gap-2">
+                    <p-avatar [label]="etapaProceso.orden" shape="circle" [style]="{ backgroundColor: 'var(--primary-color)', color: 'white' }" />
+                    <p class="m-0 text-xs">{{ etapaProceso.etapa.nombre }}</p>
+                  </section>
+                </ng-container>
+              </section>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="2"><p class="m-0 text-sm">Sin resultados...</p></td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </section>
+  </section>
+  
+  <p-dialog
+    header="Agregar Proceso"
+    [modal]="true"
+    [(visible)]="addVisible"
+    [style]="{ width: '80vw' }"
+  >
+    <section class="grid">
+      <section class="col-12">
+        <app-procesos-add (changed)="addOnClose($event)"></app-procesos-add>
+      </section>
+    </section>
+  </p-dialog>
+  
+  <p-toast key="procesos" />
+  

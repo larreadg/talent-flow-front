@@ -7,3 +7,4 @@ export const bItemSedesList: MenuItem[] = [bItemHome, { routerLink: '/tf/sedes',
 export const bItemDepartamentosList: MenuItem[] = [bItemHome, { routerLink: '/tf/departamentos', label: 'Departamentos' }]
 export const bItemDiaNoLaboralList: MenuItem[] = [bItemHome, { routerLink: '/tf/dia-no-laboral', label: 'Días no laborales' }]
 export const bItemEtapasList: MenuItem[] = [bItemHome, { routerLink: '/tf/reclutamiento/etapas', label: 'Etapas' }]
+export const bItemProcesosList: MenuItem[] = [bItemHome, { routerLink: '/tf/reclutamiento/procesos', label: 'Procesos' }]
