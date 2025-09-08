@@ -49,8 +49,9 @@
               <section class="flex flex-column gap-1 h-10rem overflow-y-auto">
                 <ng-container *ngFor="let etapaProceso of proceso.etapas">
                   <section class="flex align-items-center gap-2">
-                    <p-avatar [label]="etapaProceso.orden" shape="circle" [style]="{ backgroundColor: 'var(--primary-color)', color: 'white' }" />
+                    <p-avatar [label]="etapaProceso.orden" shape="circle" />
                     <p class="m-0 text-xs">{{ etapaProceso.etapa.nombre }}</p>
+                    <p-tag [value]="'SLA: ' + etapaProceso.etapa.slaDias + ' días'"></p-tag>
                   </section>
                 </ng-container>
               </section>

@@ -4,12 +4,12 @@ import { SedesService } from '../../../../services/sedes.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LocalService } from '../../../../services/local.service';
 import { environment } from '../../../../../environments/environment';
+import { CommonModule } from '@angular/common';
 
 // Primeng
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sedes-add',

@@ -4,19 +4,21 @@
   </section>
   <section class="col-12 lg:col-10 lg:col-offset-1">
     <p-table
-      #tablaDeps
-      [value]="departamentos"
+      #dt
+      [value]="vacantes"
+      [lazy]="true"
       [paginator]="true"
-      [rows]="5"
+      [rows]="rows"
+      [totalRecords]="totalRecords"
       [rowsPerPageOptions]="[5, 10, 20]"
       [loading]="loading"
-      [globalFilterFields]="['nombre']"
+      (onLazyLoad)="loadVacantes($event)"
     >
       <ng-template pTemplate="caption">
         <div class="flex justify-content-between align-items-center">
           <p-button
             label="Nuevo"
-            icon="pi pi-objects-column"
+            icon="pi pi-briefcase"
             severity="success"
             (onClick)="addVisible = true"
           />
@@ -25,10 +27,10 @@
               <i class="pi pi-search"></i>
             </p-inputIcon>
             <input
-              #q
               pInputText
               type="text"
-              (input)="tablaDeps.filterGlobal(q.value, 'contains')"
+              [(ngModel)]="search"
+              (input)="onFilter(search)"
               placeholder="Buscar..."
             />
           </p-iconField>
@@ -37,13 +39,32 @@
       <ng-template pTemplate="header">
         <tr>
           <th>Nombre</th>
+          <th>Fecha de Inicio</th>
+          <th>Departamento Solicitante</th>
+          <th>Sede</th>
+          <th>Estado</th>
           <th>Acciones</th>
         </tr>
       </ng-template>
-      <ng-template pTemplate="body" let-departamento>
+      <ng-template pTemplate="body" let-vacante>
         <tr>
           <td>
-            <p class="m-0 text-sm">{{ departamento.nombre }}</p>
+            <p class="m-0 text-sm">{{ vacante.nombre }}</p>
+          </td>
+          <td>
+            <p class="m-0 text-sm">{{ vacante.fechaInicio }}</p>
+          </td>
+          <td>
+            <p class="m-0 text-sm">{{ vacante.departamento.nombre }}</p>
+          </td>
+          <td>
+            <p class="m-0 text-sm">{{ vacante.sede.nombre }}</p>
+          </td>
+          <td>
+            <p-tag
+              [value]="vacante.estado"
+              [severity]="vacante.estado === 'cancelada' ? 'danger' : undefined"
+            ></p-tag>
           </td>
           <td>
             <section class="flex gap-2">
@@ -52,15 +73,7 @@
                 icon="pi pi-pencil"
                 [text]="true"
                 severity="warning"
-                (onClick)="editOpenModal(departamento)"
-              />
-              <p-button
-                [loading]="deleteLoading"
-                pTooltip="Eliminar departamento"
-                icon="pi pi-trash"
-                [text]="true"
-                severity="danger"
-                (onClick)="deleteRequest($event, departamento)"
+                (onClick)="editOpenModal(vacante)"
               />
             </section>
           </td>
@@ -68,7 +81,7 @@
       </ng-template>
       <ng-template pTemplate="emptymessage">
         <tr>
-          <td colspan="5"><p class="m-0 text-sm">Sin resultados...</p></td>
+          <td colspan="6"><p class="m-0 text-sm">Sin resultados...</p></td>
         </tr>
       </ng-template>
     </p-table>
@@ -76,37 +89,35 @@
 </section>
 
 <p-dialog
-  header="Agregar Departamento"
+  header="Agregar Vacante"
   [modal]="true"
   [(visible)]="addVisible"
   [style]="{ width: '40vw' }"
 >
   <section class="grid">
     <section class="col-12">
-      <app-departamentos-add
-        (changed)="addOnClose($event)"
-      ></app-departamentos-add>
+      <app-vacantes-add (changed)="addOnClose($event)"></app-vacantes-add>
     </section>
   </section>
 </p-dialog>
 
 <p-dialog
-  header="Editar Departamento"
+  header="Editar Vacante"
   [modal]="true"
   [(visible)]="editVisible"
   [style]="{ width: '40vw' }"
 >
   <section class="grid">
     <section class="col-12">
-      <app-departamentos-edit
-        [departamento]="editDep"
+      <app-vacantes-edit
+        [vacante]="editVacante"
         (changed)="editOnClose($event)"
-      ></app-departamentos-edit>
+      ></app-vacantes-edit>
     </section>
   </section>
 </p-dialog>
 
-<p-toast key="departamentos" />
+<p-toast key="vacantes" />
 
 <p-confirmPopup>
   <ng-template pTemplate="content" let-message>

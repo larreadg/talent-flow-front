@@ -17,6 +17,7 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { DialogModule } from 'primeng/dialog';
 import { AvatarModule } from 'primeng/avatar';
+import { TagModule } from 'primeng/tag';
 
 // Components
 import { ProcesosAddComponent } from '../procesos-add/procesos-add.component';
@@ -35,6 +36,7 @@ import { ProcesosAddComponent } from '../procesos-add/procesos-add.component';
     InputIconModule,
     DialogModule,
     AvatarModule,
+    TagModule,
     CommonModule,
     ProcesosAddComponent
   ],

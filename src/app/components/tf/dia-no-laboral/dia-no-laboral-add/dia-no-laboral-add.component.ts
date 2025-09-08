@@ -5,15 +5,15 @@ import { environment } from '../../../../../environments/environment';
 import { MessageService } from 'primeng/api';
 import { CommonModule } from '@angular/common';
 import { tiposDnl } from '../../../../utils/utils';
+import dayjs from 'dayjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { TalentFlowResponse } from '../../../../interfaces/talentflow.interface';
 
 // Primeng
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
 import { RadioButtonModule } from 'primeng/radiobutton';
-import dayjs from 'dayjs';
-import { HttpErrorResponse } from '@angular/common/http';
-import { TalentFlowResponse } from '../../../../interfaces/talentflow.interface';
 
 @Component({
   selector: 'app-dia-no-laboral-add',

@@ -11,14 +11,14 @@
     </section>
 </nav>
 <p-menu #menu [model]="userItems" [popup]="true" [style]="{ width: '220px' }" />
-<p-sidebar [(visible)]="sidebarVisible" styleClass="w-20rem tf-sidebar">
+<p-sidebar [(visible)]="sidebarVisible" styleClass="w-20rem tf-sidebar" (onShow)="updatePanelKey()">
     <ng-template pTemplate="header">
         <section class="flex align-items-center gap-2">
             <img src="assets/svg/tf2.svg" alt="TalentFlow" class="w-3rem h-auto">
             <span class="font-semibold text-xl">{{env.appName}}</span>
         </section>
     </ng-template>
-    <p-panelMenu [model]="items" styleClass="w-full"/>
+    <p-panelMenu *ngIf="panelKey" [multiple]="true" [model]="items" styleClass="w-full"/>
     <ng-template pTemplate="footer">
         <section class="flex align-items-center gap-2 py-4">
           <p-avatar icon="pi pi-building-columns"

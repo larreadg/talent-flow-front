@@ -8,3 +8,4 @@ export const bItemDepartamentosList: MenuItem[] = [bItemHome, { routerLink: '/tf
 export const bItemDiaNoLaboralList: MenuItem[] = [bItemHome, { routerLink: '/tf/dia-no-laboral', label: 'Días no laborales' }]
 export const bItemEtapasList: MenuItem[] = [bItemHome, { routerLink: '/tf/reclutamiento/etapas', label: 'Etapas' }]
 export const bItemProcesosList: MenuItem[] = [bItemHome, { routerLink: '/tf/reclutamiento/procesos', label: 'Procesos' }]
+export const bItemVacantesList: MenuItem[] = [bItemHome, { routerLink: '/tf/reclutamiento/vacantes', label: 'Vacantes' }]

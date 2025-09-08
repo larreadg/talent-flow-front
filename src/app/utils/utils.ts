@@ -30,3 +30,5 @@ export const tiposDnl = [
     tipo: 'nacional'
   }
 ]
+
+export const vacantesEstados = ['abierta', 'cerrada', 'pausada', 'cancelada']

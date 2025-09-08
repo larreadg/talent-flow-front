@@ -13,6 +13,10 @@ export const RECLUTAMIENTO_ROUTES: Routes = [
         path: 'procesos',
         loadChildren: () => import('./procesos/procesos.routes').then((m) => m.PROCESOS_ROUTES),
       },
+      {
+        path: 'vacantes',
+        loadChildren: () => import('./vacantes/vacantes.routes').then((m) => m.VACANTES_ROUTES),
+      },
     ],
   },
 ];

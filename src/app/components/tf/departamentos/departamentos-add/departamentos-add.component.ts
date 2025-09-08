@@ -48,12 +48,12 @@ export class DepartamentosAddComponent {
     this.api.post(body).subscribe({
       next: async(resp) => {
         this.submitted = false
-        this.toast.add({ key: 'sedes', severity: 'success', summary: this.env.appName, detail: `Departamento ${body.nombre} fue agregado`, life: 6000 })
+        this.toast.add({ key: 'departamentos', severity: 'success', summary: this.env.appName, detail: `Departamento ${body.nombre} fue agregado`, life: 6000 })
         this.form.reset()
         this.changed.emit(true)
       },
       error: (e) => {
-        this.toast.add({ key: 'sedes', severity: 'error', summary: this.env.appName, detail: 'Error al crear departamento' })
+        this.toast.add({ key: 'departamentos', severity: 'error', summary: this.env.appName, detail: 'Error al crear departamento' })
         this.submitted = false
       }
     })
