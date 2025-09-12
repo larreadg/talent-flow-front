@@ -108,13 +108,15 @@ export class NavbarComponent implements OnInit {
     },
   ]
   updatePassVisible: boolean = false
-  panelKey = 0;
+  panelKey = 0
+  iniciales: string = ''
 
   async ngOnInit() {
     const usuarioRaw = await this.kv.get('user')
     if(usuarioRaw) {
       this.user = JSON.parse(<string> usuarioRaw)
       this.empresaNombre = <string> this.user?.empresa?.nombre
+      this.iniciales = `${this.user.nombre.slice(0,1).toUpperCase()}${this.user.apellido.slice(0,1).toUpperCase()}`
     }
 
     this.router.events.subscribe(ev => {

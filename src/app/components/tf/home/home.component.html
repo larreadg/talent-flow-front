@@ -1,1 +1,62 @@
-<p>home works!</p>
+<section class="grid">
+    <section class="col-12 lg:col-10 lg:col-offset-1 xl:col-8 xl:col-offset-2">
+        <section class="grid">
+            <section class="col-12">
+                <section class="flex justify-content-between align-items-center">
+                    <section class="flex flex-column gap-2">
+                        <p class="m-0 font-semibold text-2xl">{{env.appName}} Dashboard</p>
+                        <p class="m-0 p-text-secondary text-sm">Sistema de gestión de procesos de reclutamiento</p>
+                    </section>
+                    <p-button
+                        label="Nueva vacante"
+                        icon="pi pi-briefcase"
+                        severity="success"
+                        (onClick)="addVacanteOpen()"
+                    />
+                </section>
+            </section>
+            <section class="col-12 lg:col-3" *ngFor="let vE of vacantesEstados">
+                <p-card>
+                    <section class="grid">
+                        <section class="col-12">
+                            <section class="flex align-items-center justify-content-between">
+                                <p class="m-0">{{vE.estado}}</p>
+                                <p-badge [value]="vE.total" [ngClass]="vE.estado" />
+                            </section>
+                            <p class="text-2xl font-bold mb-0">{{vE.total}}</p>
+                            <p class="m-0 p-text-secondary text-xs">Vacantes</p>
+                        </section>
+                    </section>
+                </p-card>
+            </section>
+            <section class="col-12 lg:col-6">
+                <p-card styleClass="h-20rem">
+                    <section class="grid">
+                        <section class="col-12">
+                            <p class="m-0 font-semibold">Vacantes por Departamento</p>
+                        </section>
+                    </section>
+                </p-card>
+            </section>
+            <section class="col-12 lg:col-6">
+                <p-card styleClass="h-20rem">
+                    <section class="grid">
+                        <section class="col-12">
+                            <p class="m-0 font-semibold">Vacantes por Sede</p>
+                        </section>
+                    </section>
+                </p-card>
+            </section>
+            <section class="col-12">
+                <p-card styleClass="h-20rem">
+                    <section class="grid">
+                        <section class="col-12">
+                            <p class="m-0 font-semibold">Tendencia Mensual</p>
+                            <p class="m-0 p-text-secondary text-xs">Vacantes por mes</p>
+                        </section>
+                    </section>
+                </p-card>
+            </section>
+        </section>
+    </section>
+</section>

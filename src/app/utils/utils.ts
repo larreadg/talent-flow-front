@@ -31,4 +31,11 @@ export const tiposDnl = [
   }
 ]
 
-export const vacantesEstados = ['abierta', 'cerrada', 'pausada', 'cancelada']
+// export const vacantesEstados = ['abierta', 'cerrada', 'pausada', 'cancelada']
+
+export const vacantesEstados = [
+  {label: 'Abierta',   value: 'abierta'},
+  {label: 'Pausada',   value: 'pausada'},
+  {label: 'Finalizada',   value: 'finalizada'},
+  {label: 'Cancelada', value: 'cancelada'},
+];

@@ -2,6 +2,7 @@
   <section class="col-12 lg:col-10 lg:col-offset-1">
     <p-breadcrumb class="max-w-full" [model]="bItems" />
   </section>
+
   <section class="col-12 lg:col-10 lg:col-offset-1">
     <p-table
       #dt
@@ -13,72 +14,157 @@
       [rowsPerPageOptions]="[5, 10, 20]"
       [loading]="loading"
       (onLazyLoad)="loadVacantes($event)"
+      [sortField]="filtrosApplied.sortBy"
+      [sortOrder]="filtrosApplied.sortDir"
     >
       <ng-template pTemplate="caption">
-        <div class="flex justify-content-between align-items-center">
-          <p-button
-            label="Nuevo"
-            icon="pi pi-briefcase"
-            severity="success"
-            (onClick)="addVisible = true"
-          />
-          <p-iconField iconPosition="left">
-            <p-inputIcon>
-              <i class="pi pi-search"></i>
-            </p-inputIcon>
-            <input
-              pInputText
-              type="text"
-              [(ngModel)]="search"
-              (input)="onFilter(search)"
-              placeholder="Buscar..."
+        <section class="grid">
+          <section class="col-12">
+            <p-button
+              label="Nuevo"
+              icon="pi pi-briefcase"
+              severity="success"
+              (onClick)="addVisible = true"
             />
-          </p-iconField>
-        </div>
+          </section>
+
+          <section class="col-12">
+            <p-panel header="Filtros">
+              <section class="grid">
+                <section class="col-12">
+                  <p-iconField iconPosition="left" [style]="{ width: '100%' }">
+                    <p-inputIcon><i class="pi pi-search"></i></p-inputIcon>
+                    <input
+                      class="w-full"
+                      pInputText
+                      type="text"
+                      [(ngModel)]="filtrosDraft.search"
+                      placeholder="Buscar..."
+                    />
+                  </p-iconField>
+                </section>
+
+                <section class="col-12 lg:col-4">
+                  <p-multiSelect
+                    styleClass="w-full"
+                    [options]="vacantesEstados"
+                    [(ngModel)]="filtrosDraft.estados"
+                    optionLabel="label"
+                    optionValue="value"
+                    placeholder="Estados..."
+                    selectedItemsLabel="{0} estados seleccionados"
+                    [virtualScroll]="true"
+                    [virtualScrollItemSize]="35"
+                    [showClear]="true"
+                    [showToggleAll]="false"
+                  />
+                </section>
+
+                <section class="col-12 lg:col-4">
+                  <p-multiSelect
+                    styleClass="w-full"
+                    [options]="departamentos"
+                    [(ngModel)]="filtrosDraft.departamentos"
+                    optionLabel="nombre"
+                    optionValue="id"
+                    placeholder="Departamentos..."
+                    selectedItemsLabel="{0} dptos seleccionados"
+                    [virtualScroll]="true"
+                    [virtualScrollItemSize]="35"
+                    [filter]="true"
+                    [showClear]="true"
+                    [showToggleAll]="false"
+                  />
+                </section>
+
+                <section class="col-12 lg:col-4">
+                  <p-multiSelect
+                    styleClass="w-full"
+                    [options]="sedes"
+                    [(ngModel)]="filtrosDraft.sedes"
+                    optionLabel="nombre"
+                    optionValue="id"
+                    placeholder="Sedes..."
+                    selectedItemsLabel="{0} sedes seleccionadas"
+                    [virtualScroll]="true"
+                    [virtualScrollItemSize]="35"
+                    [filter]="true"
+                    [showClear]="true"
+                    [showToggleAll]="false"
+                  />
+                </section>
+
+                <section class="col-12">
+                  <section class="flex justify-content-end gap-2 align-items-center">
+                    <p-button
+                      label="Limpiar"
+                      icon="pi pi-filter-slash"
+                      severity="secondary"
+                      size="small"
+                      (onClick)="onLimpiarClick()"
+                    />
+                    <p-button
+                      label="Buscar"
+                      icon="pi pi-search"
+                      severity="success"
+                      size="small"
+                      (onClick)="onBuscarClick()"
+                    />
+                  </section>
+                </section>
+              </section>
+            </p-panel>
+          </section>
+        </section>
       </ng-template>
+
       <ng-template pTemplate="header">
         <tr>
-          <th>Nombre</th>
-          <th>Fecha de Inicio</th>
-          <th>Departamento Solicitante</th>
-          <th>Sede</th>
-          <th>Estado</th>
+          <th pSortableColumn="nombre">Nombre <p-sortIcon field="nombre" /></th>
+          <th pSortableColumn="fechaInicio">Fecha de Inicio <p-sortIcon field="fechaInicio" /></th>
+          <th pSortableColumn="departamento.nombre">
+            Departamento Solicitante <p-sortIcon field="departamento.nombre" />
+          </th>
+          <th pSortableColumn="sede.nombre">Sede <p-sortIcon field="sede.nombre" /></th>
+          <th pSortableColumn="estado">Estado <p-sortIcon field="estado" /></th>
+          <th>Progreso</th>
           <th>Acciones</th>
         </tr>
       </ng-template>
+
       <ng-template pTemplate="body" let-vacante>
         <tr>
+          <td><p class="m-0 text-sm font-semibold">{{ vacante.nombre }}</p></td>
           <td>
-            <p class="m-0 text-sm">{{ vacante.nombre }}</p>
+            <section class="flex align-items-center gap-2">
+              <i class="pi pi-calendar text-primary"></i>
+              <p class="m-0 text-sm">{{ vacante.fechaInicio }}</p>
+            </section>
           </td>
-          <td>
-            <p class="m-0 text-sm">{{ vacante.fechaInicio }}</p>
-          </td>
-          <td>
+          <td><section class="flex align-items-center gap-2">
             <p class="m-0 text-sm">{{ vacante.departamento.nombre }}</p>
-          </td>
-          <td>
+          </section></td>
+          <td><section class="flex align-items-center gap-2">
             <p class="m-0 text-sm">{{ vacante.sede.nombre }}</p>
+          </section></td>
+          <td><p-tag [value]="vacante?.estado" [ngClass]="vacante.estado"></p-tag></td>
+          <td>
+            <p-progressBar [showValue]="false" [value]="vacante?.progress" [style]="{ height: '6px' }" />
           </td>
           <td>
-            <p-tag
-              [value]="vacante.estado"
-              [severity]="vacante.estado === 'cancelada' ? 'danger' : undefined"
-            ></p-tag>
-          </td>
-          <td>
-            <section class="flex gap-2">
+            <section class="flex gap-2" *ngIf="vacante.estado === 'abierta' || vacante.estado === 'finalizada'">
               <p-button
-                pTooltip="Editar datos"
-                icon="pi pi-pencil"
+                pTooltip="Gestionar vacante"
+                icon="pi pi-external-link"
                 [text]="true"
-                severity="warning"
-                (onClick)="editOpenModal(vacante)"
+                severity="primary"
+                (onClick)="goToDetail(vacante)"
               />
             </section>
           </td>
         </tr>
       </ng-template>
+
       <ng-template pTemplate="emptymessage">
         <tr>
           <td colspan="6"><p class="m-0 text-sm">Sin resultados...</p></td>
@@ -88,31 +174,10 @@
   </section>
 </section>
 
-<p-dialog
-  header="Agregar Vacante"
-  [modal]="true"
-  [(visible)]="addVisible"
-  [style]="{ width: '40vw' }"
->
+<p-dialog header="Agregar Vacante" [modal]="true" [(visible)]="addVisible" [style]="{ width: '40vw' }">
   <section class="grid">
     <section class="col-12">
-      <app-vacantes-add (changed)="addOnClose($event)"></app-vacantes-add>
-    </section>
-  </section>
-</p-dialog>
-
-<p-dialog
-  header="Editar Vacante"
-  [modal]="true"
-  [(visible)]="editVisible"
-  [style]="{ width: '40vw' }"
->
-  <section class="grid">
-    <section class="col-12">
-      <app-vacantes-edit
-        [vacante]="editVacante"
-        (changed)="editOnClose($event)"
-      ></app-vacantes-edit>
+      <app-vacantes-add *ngIf="addVisible" (changed)="addOnClose($event)"></app-vacantes-add>
     </section>
   </section>
 </p-dialog>

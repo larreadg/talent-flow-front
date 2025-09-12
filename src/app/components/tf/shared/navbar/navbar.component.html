@@ -1,12 +1,13 @@
-<nav class="h-4rem px-4">
+<nav class="h-4rem">
     <section class="flex align-items-center justify-content-between h-4rem">
-        <section class="flex align-items-center gap-2">
+        <section class="flex align-items-center gap-2 px-4">
             <p-button icon="pi pi-bars"  (onClick)="toggleSidebar()"/>
             <img src="assets/svg/tf2.svg" alt="TalentFlow" class="w-3rem h-auto">
             <p class="m-0 font-semibold">{{env.appName}}</p>
         </section>
-        <section>
-            <p-button icon="pi pi-user"  [text]="true" [label]="user?.email" styleClass="p-button-sm" (onClick)="menu.toggle($event)"/>
+        <section class="flex align-items-center justify-content-center gap-2 cursor-pointer user" (click)="menu.toggle($event)">
+            <p class="text-sm m-0">{{user.nombre}} {{user.apellido}}</p>
+            <p-avatar [label]="iniciales" shape="circle"></p-avatar>
         </section>
     </section>
 </nav>

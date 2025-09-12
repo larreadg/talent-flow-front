@@ -1,0 +1,46 @@
+<p-button label="Comentarios ({{total}})" icon="pi pi-comment" [severity]="'secondary'" [size]="'small'" (onClick)="openComments()" />
+
+<p-dialog 
+    header="Comentarios ({{total}})" 
+    [modal]="true"
+    [draggable]="false"
+    [(visible)]="visible" 
+    [style]="{ width: '30vw' }">
+            
+    <section class="grid">
+        <section class="col-12">
+            <section class="flex justify-content-center" *ngIf="!loading && comentarios.length === 0">
+                <span class="p-text-secondary text-sm">Sin comentarios en esta etapa...</span>
+            </section>
+        </section>
+        <section class="col-12" *ngFor="let comentario of comentarios">
+            <section class="flex align-items-start gap-2">
+                <p-avatar shape="circle" [label]="comentario?.autor?.iniciales"></p-avatar>
+                <section class="flex flex-column w-full">
+                    <p-panel class="w-full" styleClass="comment">
+                        <ng-template pTemplate="header">
+                            <section class="flex w-full align-content-center justify-content-between">
+                                <p class="text-sm font-semibold m-0">{{comentario?.autor?.nombre}} {{comentario?.autor?.apellido}}</p>
+                                <i class="pi pi-trash p-text-secondary cursor-pointer text-sm" (click)="deleteComment(comentario.id)"></i>
+                            </section>
+                        </ng-template>
+                        <p class="text-sm m-0">{{comentario.comentario}}</p>
+                    </p-panel>
+                    <p class="m-0 text-xs p-text-secondary">{{comentario.fcLabel}}</p>
+                </section>
+            </section>
+        </section>
+    </section>
+
+    <ng-template pTemplate="footer">
+        <form class="grid" [formGroup]="form" (ngSubmit)="submit()">
+            <section class="col-12">
+                <textarea placeholder="Escriba un comentario..." rows="3" pInputTextarea formControlName="comentario" [style]="{ resize: 'none', width: '100%', height: 'auto' }"></textarea>
+                <section class="flex justify-content-end mt-2 gap-2">
+                    <p-button label="Cerrar" severity="secondary" size="small" styleClass="m-0" (onClick)="visible = false" />
+                    <p-button [loading]="submitted" type="submit" icon="pi pi-send" label="Comentar" size="small" styleClass="m-0" [disabled]="form.invalid || submitted" />
+                </section>
+            </section>
+        </form>
+    </ng-template>
+</p-dialog>

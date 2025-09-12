@@ -1,6 +1,7 @@
 import { Departamento } from "./departamento.interface";
 import { DiaNoLaboral } from "./dia-no-laboral.interface";
-import { Proceso } from "./proceso.interface";
+import { Proceso, ProcesoEtapa } from "./proceso.interface";
+import { Sede } from "./sede.interface";
 
 export interface VacanteEtapa {
     id: string;
@@ -11,6 +12,12 @@ export interface VacanteEtapa {
     fechaCumplimiento: string;
     comentarios?:string;
     recursos?:string;
+    procesoEtapa?: ProcesoEtapa;
+    fechaInicioLabel?: string;
+    fechaFinalizacionLabel?: string;
+    fechaCumplimientoLabel?: string;
+    estado: 'abierta' | 'pendiente' | 'finalizada';
+    _count?: { comentarios?:number }
 }
 
 export interface Vacante {
@@ -25,6 +32,9 @@ export interface Vacante {
     activo: boolean;
     proceso?: Proceso;
     departamento?: Departamento;
+    sede?: Sede;
     etapasVacante?: Array<VacanteEtapa>;
     diasNoLaborales?: Array<DiaNoLaboral>;
+    progress?: number;
+    disabledDates?: string[]
 }

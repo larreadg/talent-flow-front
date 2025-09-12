@@ -32,3 +32,14 @@ nav {
         }
     }
 }
+
+.user {
+    height: 100%;
+    padding: 0 1rem;
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+        background-color: var(--surface-card);
+        border-bottom: 1px solid var(--surface-border);
+    }
+}

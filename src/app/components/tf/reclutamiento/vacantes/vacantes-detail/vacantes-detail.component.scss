@@ -1,0 +1,21 @@
+:host ::ng-deep .border_abierta {
+    border: 1px solid var(--primary-color);
+}
+
+:host ::ng-deep .avatar_abierta {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+:host ::ng-deep .avatar_finalizada {
+    background-color: var(--green-500);
+    color: white;
+}
+
+.icon_finalizada {
+    color: var(--green-500);
+}
+
+:host ::ng-deep .fc .p-disabled {
+    cursor: not-allowed !important;
+}

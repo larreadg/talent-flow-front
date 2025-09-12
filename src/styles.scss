@@ -13,5 +13,35 @@ body {
 }
 
 .text-primary {
-    color: var(--primary-color);
+    color: var(--primary-color) !important;
+}
+
+.abierta .p-badge,
+.abierta .p-tag {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+
+.pausada .p-badge,
+.pausada .p-tag {
+    background-color: var(--yellow-500) !important;
+    color: white !important;
+}
+
+.pendiente .p-badge,
+.pendiente .p-tag {
+    background-color: var(--yellow-500) !important;
+    color: white !important;
+}
+
+.finalizada .p-badge,
+.finalizada .p-tag {
+    background-color: var(--green-500) !important;
+    color: white !important;
+}
+
+.cancelada .p-badge,
+.cancelada .p-tag {
+    background-color: var(--pink-500) !important;
+    color: white !important;
 }
