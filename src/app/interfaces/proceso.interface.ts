@@ -14,4 +14,5 @@ export interface ProcesoEtapa {
     orden: number;
     proceso?:Proceso;
     etapa?:Etapa;
+    responsable: string;
 }

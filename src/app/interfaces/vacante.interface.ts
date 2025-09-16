@@ -10,14 +10,16 @@ export interface VacanteEtapa {
     fechaInicio: string;
     fechaFinalizacion: string;
     fechaCumplimiento: string;
+    estado: 'abierta' | 'pendiente' | 'finalizada';
     comentarios?:string;
     recursos?:string;
     procesoEtapa?: ProcesoEtapa;
     fechaInicioLabel?: string;
     fechaFinalizacionLabel?: string;
     fechaCumplimientoLabel?: string;
-    estado: 'abierta' | 'pendiente' | 'finalizada';
-    _count?: { comentarios?:number }
+    _count: { comentarios:number }
+    totalRetrasoDias?:number;
+    totalDias?:number;
 }
 
 export interface Vacante {
@@ -27,8 +29,10 @@ export interface Vacante {
     procesoId: string;
     departamentoId: string;
     sedeId: string;
+    aumentoDotacion:boolean;
+    resultado: 'promocion_interna' | 'traslado' | 'contratacion_externa' | null;
     fechaInicio: string;
-    estado: 'abierta' | 'cerrada' | 'pausada' | 'cancelada';
+    estado: 'abierta' | 'finalizada' | 'pausada' | 'cancelada';
     activo: boolean;
     proceso?: Proceso;
     departamento?: Departamento;

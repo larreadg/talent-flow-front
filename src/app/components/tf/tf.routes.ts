@@ -15,7 +15,7 @@ export const TF_ROUTES: Routes = [
         loadChildren: () => import('./usuarios/usuarios.routes').then((m) => m.USUARIOS_ROUTES),
       },
       {
-        path: 'departamentos',
+        path: 'areas',
         loadChildren: () => import('./departamentos/departamentos.routes').then((m) => m.DEPARTAMENTOS_ROUTES),
       },
       {

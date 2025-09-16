@@ -3,75 +3,165 @@
       <p-breadcrumb class="max-w-full" [model]="bItems" />
     </section>
     <section class="col-12 lg:col-10 lg:col-offset-1">
-        <section class="flex flex-column gap-1">
-            <p class="m-0 text-2xl font-bold">{{vacante?.nombre}}</p>
-            <section class="flex gap-2">
-                <p-tag icon="pi pi-building" [value]="vacante?.sede?.nombre"></p-tag>
-                <p-tag icon="pi pi-objects-column" [value]="vacante?.departamento?.nombre"></p-tag>
+        <section class="flex justify-content-between align-items-center">
+            <section class="flex flex-column gap-1">
+                <p class="m-0 text-2xl font-bold">{{vacante?.nombre}}</p>
+                <section class="flex gap-2">
+                    <p-tag pTooltip="Sede" icon="pi pi-building" [value]="vacante?.sede?.nombre"></p-tag>
+                    <p-tag pTooltip="Departamento" icon="pi pi-objects-column" [value]="vacante?.departamento?.nombre"></p-tag>
+                </section>
             </section>
-            <!-- <p class="m-0 p-text-secondary">{{vacante?.departamento?.nombre}} · {{vacante?.sede?.nombre}}</p> -->
+            <p-button (onClick)="reporteDownload()" severity="success" label="Exportar" icon="pi pi-file-excel" [size]="'small'" />
         </section>
     </section>
-    <section class="col-12 lg:col-10 lg:col-offset-1" *ngFor="let etapa of vacante?.etapasVacante">
-        <p-panel [styleClass]="'border_' + etapa?.estado" [toggleable]="true" [collapsed]="etapa.estado === 'finalizada'" >
-            <ng-template pTemplate="header">
-                <section class="flex w-full justify-content-between align-items-center">
-                    <section class="flex align-items-center gap-2">
-                        <p-avatar 
-                            [styleClass]="'avatar_' + etapa?.estado"
-                            [label]="etapa?.procesoEtapa?.orden + ''"
-                            shape="circle" />
-                        <section class="flex flex-column gap-1">
-                            <span class="font-bold">
-                                {{etapa?.procesoEtapa?.etapa?.nombre}} <i *ngIf="etapa.estado === 'finalizada'" class="pi pi-check-circle" [ngClass]="'icon_' + etapa.estado"></i>
-                            </span>
-                            <section class="flex gap-1">
-                                <p-tag pTooltip="SLA" icon="pi pi-clock" [value]="etapa?.procesoEtapa?.etapa?.slaDias + ' días'"></p-tag>
-                                <p-tag pTooltip="Estado" [value]="etapa?.estado" [ngClass]="etapa?.estado" ></p-tag>
-                                <p-tag pTooltip="Fecha de cumplimiento" [value]="etapa?.fechaCumplimientoLabel" icon="pi pi-check-circle" *ngIf="etapa.estado === 'finalizada'" severity="info"></p-tag>
+    <section class="col-12 lg:col-10 lg:col-offset-1">
+        <p-tabView>
+            <p-tabPanel leftIcon="pi pi-list-check" header="Etapas">
+                <section class="grid">
+                    <section class="col-12" *ngFor="let etapa of vacante?.etapasVacante">
+                        <p-panel expandIcon="pi pi-chevron-up" collapseIcon="pi pi-chevron-down" [styleClass]="'border_' + etapa?.estado" [toggleable]="true" [collapsed]="etapa.estado === 'finalizada'" >
+                            <ng-template pTemplate="header">
+                                <section class="flex w-full justify-content-between align-items-center">
+                                    <section class="flex align-items-center gap-2">
+                                        <p-avatar 
+                                            [styleClass]="'avatar_' + etapa?.estado"
+                                            [label]="etapa?.procesoEtapa?.orden + ''"
+                                            shape="circle" />
+                                        <section class="flex flex-column gap-1">
+                                            <span class="font-bold">
+                                                {{etapa?.procesoEtapa?.etapa?.nombre}} <i *ngIf="etapa.estado === 'finalizada'" class="pi pi-check-circle" [ngClass]="'icon_' + etapa.estado"></i>
+                                            </span>
+                                            <section class="flex gap-1">
+                                                <!-- <p-tag pTooltip="SLA" icon="pi pi-clock" [value]="etapa?.procesoEtapa?.etapa?.slaDias + ' días'"></p-tag> -->
+                                                <p-tag pTooltip="Responsable" icon="pi pi-users" 
+                                                    [value]="etapa?.procesoEtapa?.responsable === 'reclutamiento' ? 'Reclutamiento':'Área solicitante'"
+                                                    [severity]="etapa.procesoEtapa?.responsable === 'reclutamiento' ? 'warning' : undefined">
+                                                </p-tag>
+                                                <p-tag pTooltip="Estado" [value]="etapa?.estado" [ngClass]="etapa?.estado" ></p-tag>
+                                                <p-tag pTooltip="Fecha de cumplimiento" [value]="etapa?.fechaCumplimientoLabel" icon="pi pi-check-circle" *ngIf="etapa.estado === 'finalizada'" severity="info"></p-tag>
+                                                <app-vacantes-comments *ngIf="etapa?._count?.comentarios && etapa._count.comentarios > 0" [type]="'tag'" (changed)="updateComments($event, etapa)" [vacanteEtapaId]="etapa?.id" [vacanteEtapaTotal]="etapa?._count?.comentarios"></app-vacantes-comments>
+                                            </section>
+                                        </section>
+                                    </section>
+                                    <section class="flex px-2" *ngIf="etapa?.estado === 'abierta'">
+                                        <p-button label="Finalizar" icon="pi pi-check-circle" [size]="'small'" (onClick)="finalizarEtapaShow(etapa)" />
+                                    </section>
+                                    <section class="flex px-2" *ngIf="etapa?.estado === 'finalizada'">
+                                        <p-button label="Editar" icon="pi pi-pencil" [size]="'small'" severity="secondary" (onClick)="editarEtapaShow(etapa)" />
+                                    </section>
+                                </section>
+                            </ng-template>
+                            <section class="grid">
+                                <section class="col-12">
+                                    <section class="flex justify-content-between">
+                                        <section class="flex flex-column gap-1">
+                                            <section class="flex gap-2 align-items-center">
+                                                <i class="pi pi-calendar text-primary"></i>
+                                                <p class="m-0 text-sm font-semibold">Fecha de inicio</p>
+                                            </section>
+                                            <p class="m-0 text-sm p-text-secondary">{{etapa?.fechaInicioLabel}}</p>
+                                        </section>
+                                        <section class="flex flex-column gap-1" *ngIf="etapa.estado === 'abierta' || etapa.estado === 'pendiente'">
+                                            <section class="flex gap-2 align-items-center">
+                                                <i class="pi pi-clock text-primary"></i>
+                                                <p class="m-0 text-sm font-semibold">Fecha de fin (planificada)</p>
+                                            </section>
+                                            <p class="m-0 text-sm p-text-secondary">{{etapa?.fechaFinalizacionLabel}}</p>
+                                        </section>
+                                        <section class="flex flex-column gap-1" *ngIf="etapa.estado === 'finalizada'">
+                                            <section class="flex gap-2 align-items-center">
+                                                <i class="pi pi-check-circle icon_finalizada"></i>
+                                                <p class="m-0 text-sm font-semibold">Fecha de cumplimiento</p>
+                                            </section>
+                                            <p class="m-0 text-sm p-text-secondary">{{etapa?.fechaCumplimientoLabel}}</p>
+                                        </section>
+                                    </section>
+                                    <p-divider></p-divider>
+                                    <section class="flex gap-2">
+                                        <app-vacantes-comments [type]="'btn'" (changed)="updateComments($event, etapa)" [vacanteEtapaId]="etapa?.id" [vacanteEtapaTotal]="etapa?._count?.comentarios"></app-vacantes-comments>
+                                    </section>
+                                </section>
                             </section>
-                        </section>
-                    </section>
-                    <section class="flex px-2" *ngIf="etapa?.estado === 'abierta'">
-                        <p-button label="Finalizar" icon="pi pi-check-circle" [size]="'small'" (onClick)="finalizarEtapaShow(etapa)" />
-                    </section>
-                    <section class="flex px-2" *ngIf="etapa?.estado === 'finalizada'">
-                        <p-button label="Editar" icon="pi pi-pencil" [size]="'small'" severity="secondary" (onClick)="editarEtapaShow(etapa)" />
+                        </p-panel>
                     </section>
                 </section>
-            </ng-template>
-            <section class="grid">
-                <section class="col-12">
-                    <section class="flex justify-content-between">
-                        <section class="flex flex-column gap-1">
-                            <section class="flex gap-2 align-items-center">
-                                <i class="pi pi-calendar text-primary"></i>
-                                <p class="m-0 text-sm font-semibold">Fecha de inicio</p>
-                            </section>
-                            <p class="m-0 text-sm p-text-secondary">{{etapa?.fechaInicioLabel}}</p>
-                        </section>
-                        <section class="flex flex-column gap-1" *ngIf="etapa.estado === 'abierta' || etapa.estado === 'pendiente'">
-                            <section class="flex gap-2 align-items-center">
-                                <i class="pi pi-clock text-primary"></i>
-                                <p class="m-0 text-sm font-semibold">Fecha de fin (planificada)</p>
-                            </section>
-                            <p class="m-0 text-sm p-text-secondary">{{etapa?.fechaFinalizacionLabel}}</p>
-                        </section>
-                        <section class="flex flex-column gap-1" *ngIf="etapa.estado === 'finalizada'">
-                            <section class="flex gap-2 align-items-center">
-                                <i class="pi pi-check-circle text-primary"></i>
-                                <p class="m-0 text-sm font-semibold">Fecha de cumplimiento</p>
-                            </section>
-                            <p class="m-0 text-sm p-text-secondary">{{etapa?.fechaCumplimientoLabel}}</p>
-                        </section>
-                    </section>
-                    <p-divider></p-divider>
-                    <section class="flex gap-2">
-                        <app-vacantes-comments [vacanteEtapaId]="etapa?.id" [vacanteEtapaTotal]="etapa?._count?.comentarios"></app-vacantes-comments>
+            </p-tabPanel>
+            <p-tabPanel leftIcon="pi pi-pencil" header="Datos">
+                <section class="grid">
+                    <section class="col-12">
+                        <app-vacantes-edit (changed)="editClose($event)" [vacante]="vacante" ></app-vacantes-edit>
                     </section>
                 </section>
-            </section>
-        </p-panel>
+            </p-tabPanel>
+            <p-tabPanel leftIcon="pi pi-chart-line" header="Resultados">
+                <section class="grid p-4" #exportWrap>
+                    <section class="col-12">
+                        <section class="flex align-items-center justify-content-center gap-2">
+                            <img src="assets/svg/tf2.svg" alt="TalentFlow" class="w-3rem h-auto">
+                            <p class="m-0 font-semibold">{{env.appName}}</p>
+                        </section>
+                    </section>
+                    <section class="col-12">
+                        <p class="m-0"><span class="font-semibold">Vacante:</span> {{vacante?.nombre}}</p>
+                        <p class="m-0"><span class="font-semibold">Área:</span> {{vacante?.departamento?.nombre}}</p>
+                        <p class="m-0"><span class="font-semibold">Sede:</span> {{vacante?.sede?.nombre}}</p>
+                        <p-divider></p-divider>
+                    </section>
+                    <section class="col-12">
+                        <p-table [value]="resumenList">
+                            
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th class="text-sm" [style]="{ 'minWidth': '330px' }">Etapa</th>
+                                    <th class="text-sm" [style]="{ 'minWidth': '150px' }">SLA (días)</th>
+                                    <th class="text-sm" [style]="{ 'minWidth': '150px' }">Total (días)</th>
+                                    <th class="text-sm" [style]="{ 'minWidth': '230px' }">Responsable</th>
+                                    <th class="text-sm" [style]="{ 'minWidth': '230px' }">Fecha Inicio</th>
+                                    <th class="text-sm" [style]="{ 'minWidth': '230px' }">Fecha Finalización</th>
+                                    <th class="text-sm" [style]="{ 'minWidth': '230px' }">Fecha Cumplimiento</th>
+                                    <th class="text-sm" [style]="{ 'minWidth': '330px' }">Observaciones</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-etapa>
+                                <tr>
+                                    <td class="text-sm" [style]="{ 'minWidth': '330px' }" [ngClass]="etapa.totalRetrasoDias > 0 ? 'incumplido':''">
+                                        <section class="flex align-content-center gap-2">
+                                            <i *ngIf="etapa.fechaCumplimientoLabel !== null" class="pi pi-check-circle" [style]="{ color: 'var(--green-500)' }"></i>
+                                            <p class="m-0">{{etapa?.procesoEtapa?.etapa?.nombre}}</p>
+                                        </section>
+                                        
+                                    </td>
+                                    <td class="text-sm" [style]="{ 'minWidth': '150px' }" [ngClass]="etapa.totalRetrasoDias > 0 ? 'incumplido':''">{{etapa?.procesoEtapa?.etapa?.slaDias}}</td>
+                                    <td class="text-sm" [style]="{ 'minWidth': '150px' }" [ngClass]="etapa.totalRetrasoDias > 0 ? 'incumplido':''">{{ etapa.totalDias }}</td>
+                                    <td class="text-sm" [style]="{ 'minWidth': '230px' }"><p-tag pTooltip="Responsable" icon="pi pi-users" 
+                                        [value]="etapa?.procesoEtapa?.responsable === 'reclutamiento' ? 'Reclutamiento':'Área solicitante'"
+                                        [severity]="etapa.procesoEtapa?.responsable === 'reclutamiento' ? 'warning' : undefined"></p-tag></td>
+                                    <td class="text-sm" [style]="{ 'minWidth': '230px' }" [ngClass]="etapa.totalRetrasoDias > 0 ? 'incumplido':''">{{ etapa.fechaInicioLabel }}</td>
+                                    <td class="text-sm" [style]="{ 'minWidth': '230px' }" [ngClass]="etapa.totalRetrasoDias > 0 ? 'incumplido':''">{{ etapa.fechaFinalizacionLabel }}</td>
+                                    <td class="text-sm" [style]="{ 'minWidth': '230px' }" [ngClass]="etapa.totalRetrasoDias > 0 ? 'incumplido':''">{{ etapa.fechaCumplimientoLabel }}</td>
+                                    <td class="text-sm" [style]="{ 'minWidth': '330px' }">
+                                        <app-vacantes-comments [type]="'plain'" [vacanteEtapaId]="etapa?.id"></app-vacantes-comments>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="footer">
+                                <tr>
+                                    <td colspan="2">Duración del proceso</td>
+                                    <td colspan="6" class="text-right">{{resumenTotalDias}} días</td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </section>
+                </section>
+                <section class="grid">
+                    <section class="col-12">
+                        <section class="flex justify-content-end my-2">
+                            <button pTooltip="Exportar como imagen" pButton type="button" label="Exportar" (click)="exportPNG()" icon="pi pi-image" severity="secondary" size="small"></button>
+                        </section>
+                    </section>
+                </section>
+            </p-tabPanel>
+        </p-tabView>
     </section>
 </section>
 
@@ -118,7 +208,7 @@
         </section>
         <section class="col-12">
             <p class="m-0 text-sm mb-2">Fecha de Cumplimiento</p>
-            <p-calendar [defaultDate]="editarEtapaMinFecha" [minDate]="editarEtapaMinFecha" formControlName="fechaCumplimiento" appendTo="body" styleClass="w-full" dateFormat="yy-mm-dd" />
+            <p-calendar [disabledDates]="disabledDates" [defaultDate]="editarEtapaMinFecha" [minDate]="editarEtapaMinFecha" formControlName="fechaCumplimiento" appendTo="body" styleClass="w-full" dateFormat="yy-mm-dd" />
             <small class="p-error" *ngIf="(editarEtapaFormGetter.fechaCumplimiento.touched || editarEtapaSubmitted) && editarEtapaFormGetter.fechaCumplimiento.errors?.['required']">
                 La fecha de cumplimiento es obligatoria.
             </small>

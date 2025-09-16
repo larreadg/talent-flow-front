@@ -15,9 +15,9 @@
       <ng-template pTemplate="caption">
         <div class="flex justify-content-between align-items-center">
           <p-button
-            label="Nuevo"
+            label="Nuevo" size="small"
             icon="pi pi-objects-column"
-            severity="success"
+            
             (onClick)="addVisible = true"
           />
           <p-iconField iconPosition="left">
@@ -76,7 +76,7 @@
 </section>
 
 <p-dialog
-  header="Agregar Departamento"
+  header="Agregar Área"
   [modal]="true"
   [(visible)]="addVisible"
   [style]="{ width: '40vw' }"
@@ -91,7 +91,7 @@
 </p-dialog>
 
 <p-dialog
-  header="Editar Departamento"
+  header="Editar Área"
   [modal]="true"
   [(visible)]="editVisible"
   [style]="{ width: '40vw' }"

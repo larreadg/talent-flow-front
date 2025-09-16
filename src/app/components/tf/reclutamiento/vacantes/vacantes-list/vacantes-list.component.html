@@ -20,12 +20,19 @@
       <ng-template pTemplate="caption">
         <section class="grid">
           <section class="col-12">
-            <p-button
-              label="Nuevo"
-              icon="pi pi-briefcase"
-              severity="success"
-              (onClick)="addVisible = true"
-            />
+            <section class="flex gap-2">
+              <p-button
+                label="Nuevo" size="small"
+                icon="pi pi-briefcase"
+                (onClick)="addVisible = true"
+              />
+              <p-button
+                label="Exportar" size="small"
+                icon="pi pi-file-excel"
+                severity="success"
+                (onClick)="reporteShow()"
+              />
+            </section>
           </section>
 
           <section class="col-12">
@@ -106,7 +113,7 @@
                     <p-button
                       label="Buscar"
                       icon="pi pi-search"
-                      severity="success"
+                      
                       size="small"
                       (onClick)="onBuscarClick()"
                     />
@@ -152,8 +159,9 @@
             <p-progressBar [showValue]="false" [value]="vacante?.progress" [style]="{ height: '6px' }" />
           </td>
           <td>
-            <section class="flex gap-2" *ngIf="vacante.estado === 'abierta' || vacante.estado === 'finalizada'">
+            <section class="flex gap-2" >
               <p-button
+                *ngIf="vacante.estado === 'abierta' || vacante.estado === 'finalizada'"
                 pTooltip="Gestionar vacante"
                 icon="pi pi-external-link"
                 [text]="true"
@@ -189,3 +197,72 @@
     <p class="py-3 m-0 text-sm">{{ message.message }}</p>
   </ng-template>
 </p-confirmPopup>
+
+<p-dialog header="Exportar" [modal]="true" [(visible)]="reporteVisible" [style]="{ width: '40vw' }">
+  <section class="grid">
+
+    <section class="col-12">
+      <p-multiSelect
+        styleClass="w-full"
+        [options]="vacantesEstados"
+        [(ngModel)]="reporteParams.estados"
+        optionLabel="label"
+        optionValue="value"
+        placeholder="Estados..."
+        selectedItemsLabel="{0} estados seleccionados"
+        [virtualScroll]="true"
+        [virtualScrollItemSize]="35"
+        [showClear]="true"
+        [showToggleAll]="false"
+        appendTo="body"
+      />
+    </section>
+
+    <section class="col-12">
+      <p-multiSelect
+        styleClass="w-full"
+        [options]="departamentos"
+        [(ngModel)]="reporteParams.departamentos"
+        optionLabel="nombre"
+        optionValue="id"
+        placeholder="Departamentos..."
+        selectedItemsLabel="{0} dptos seleccionados"
+        [virtualScroll]="true"
+        [virtualScrollItemSize]="35"
+        [filter]="true"
+        [showClear]="true"
+        [showToggleAll]="false"
+        appendTo="body"
+      />
+    </section>
+
+    <section class="col-12">
+      <p-multiSelect
+        styleClass="w-full"
+        [options]="sedes"
+        [(ngModel)]="reporteParams.sedes"
+        optionLabel="nombre"
+        optionValue="id"
+        placeholder="Sedes..."
+        selectedItemsLabel="{0} sedes seleccionadas"
+        [virtualScroll]="true"
+        [virtualScrollItemSize]="35"
+        [filter]="true"
+        [showClear]="true"
+        [showToggleAll]="false"
+        appendTo="body"
+      />
+    </section>
+
+    <section class="col-12">
+      <p-button
+          label="Descargar reporte"
+          icon="pi pi-download"
+          styleClass="w-full"
+          size="small"
+          (onClick)="reporteDownload()"
+          severity="success"
+        />
+    </section>
+  </section>
+</p-dialog>

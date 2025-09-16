@@ -1,11 +1,12 @@
 <form class="grid" [formGroup]="form" (ngSubmit)="submit()">
+
     <section class="col-12">
       <p-messages 
         [(value)]="messages" 
         [enableService]="false" 
         [closable]="false" />
     </section>
-    <section class="col-12">
+    <section class="col-12 lg:col-6">
         <p class="m-0 text-sm mb-2">Nombre</p>
         <input
           formControlName="nombre"
@@ -22,8 +23,8 @@
           El nombre es obligatorio.
         </small>
     </section>
-    <section class="col-12">
-        <p class="m-0 text-sm mb-2">Departamento solicitante</p>
+    <section class="col-12 lg:col-6">
+        <p class="m-0 text-sm mb-2">Área solicitante</p>
         <p-dropdown
           [style]="{ width: '100%' }"
           appendTo="body"
@@ -31,7 +32,7 @@
           [options]="departamentos"
           optionLabel="nombre"
           optionValue="id"
-          placeholder="Seleccione un departamento..."
+          placeholder="Seleccione un área..."
           [virtualScroll]="true"
           [virtualScrollItemSize]="20"
           [filter]="true"
@@ -42,10 +43,10 @@
           class="p-error"
           *ngIf="(f.departamentoId.touched || submitted) && f.departamentoId.errors?.['required']"
         >
-          El departamento es obligatorio.
+          El área es obligatorio.
         </small>
     </section>
-    <section class="col-12">
+    <section class="col-12 lg:col-4">
         <p class="m-0 text-sm mb-2">Sede</p>
         <p-dropdown
           [style]="{ width: '100%' }"
@@ -68,7 +69,7 @@
           La sede es obligatoria.
         </small>
     </section>
-    <section class="col-12">
+    <section class="col-12 lg:col-4">
         <p class="m-0 text-sm mb-2">Fecha de Inicio</p>
         <p-calendar formControlName="fechaInicio" appendTo="body" styleClass="w-full" dateFormat="yy-mm-dd" [touchUI]="true"  placeholder="Seleccione una fecha..." />
         <small
@@ -78,34 +79,58 @@
           La fecha de inicio es obligatoria.
         </small>
     </section>
-    <section class="col-12">
-      <p class="m-0 text-sm mb-2">Estado</p>
+    <ng-container *ngIf="vacanteEstado !== 'finalizada'">
+      <section class="col-12 lg:col-4">
+        <p class="m-0 text-sm mb-2">Estado</p>
+        <p-dropdown
+          [style]="{ width: '100%' }"
+          appendTo="body"
+          formControlName="estado"
+          [options]="vacantesEstados"
+          placeholder="Seleccione un estado..."
+          [virtualScroll]="true"
+          [virtualScrollItemSize]="20"
+        />
+  
+        <small
+          class="p-error"
+          *ngIf="(f.estado.touched || submitted) && f.estado.errors?.['required']"
+        >
+          El estado es obligatorio.
+        </small>
+      </section>
+    </ng-container>
+    
+    <section class="col-12 lg:col-4">
+      <p class="m-0 text-sm mb-2">Resultado de la búsqueda</p>
       <p-dropdown
         [style]="{ width: '100%' }"
         appendTo="body"
-        formControlName="estado"
-        [options]="vacantesEstados"
-        placeholder="Seleccione un estado..."
+        formControlName="resultado"
+        [options]="vacantesResultados"
+        placeholder="Seleccione un resultado..."
+        optionLabel="label"
+        optionValue="value"
         [virtualScroll]="true"
         [virtualScrollItemSize]="20"
       />
-  
-      <small
-        class="p-error"
-        *ngIf="(f.estado.touched || submitted) && f.estado.errors?.['required']"
-      >
-        El estado es obligatorio.
-      </small>
     </section>
     <section class="col-12">
+      <section class="flex gap-2 my-4">
+        <p-checkbox formControlName="aumentoDotacion" [binary]="true" inputId="aumentoDotacion"></p-checkbox>
+        <label for="aumentoDotacion">La vacante es un aumento de dotación</label>
+      </section>
+    </section>
+    <section class="col-12">
+      <section class="flex justify-content-end">
         <p-button
           [loading]="submitted"
           [disabled]="form.invalid || submitted"
           label="Guardar cambios"
           type="submit"
-          styleClass="w-full"
           [disabled]="form.invalid || form.pending"
         >
         </p-button>
+      </section>
     </section>
 </form>

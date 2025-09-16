@@ -19,3 +19,7 @@
 :host ::ng-deep .fc .p-disabled {
     cursor: not-allowed !important;
 }
+
+.incumplido {
+    color: var(--red-500);
+}

@@ -68,8 +68,8 @@ export class NavbarComponent implements OnInit {
     },
     {
       icon: 'pi pi-objects-column',
-      routerLink: '/tf/departamentos',
-      label: 'Departamentos', 
+      routerLink: '/tf/areas',
+      label: 'Áreas', 
     },
     {
       icon: 'pi pi-building',

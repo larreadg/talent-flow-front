@@ -19,6 +19,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
+import { CheckboxModule } from 'primeng/checkbox';
 
 @Component({
   selector: 'app-vacantes-add',
@@ -28,6 +29,7 @@ import { DropdownModule } from 'primeng/dropdown';
     InputTextModule,
     CalendarModule,
     DropdownModule,
+    CheckboxModule,
     ReactiveFormsModule,
     CommonModule
   ],
@@ -69,6 +71,10 @@ export class VacantesAddComponent implements OnInit {
     ),
     fechaInicio: this.fb.nonNullable.control(
       '',
+      [Validators.required]
+    ),
+    aumentoDotacion: this.fb.nonNullable.control(
+      false,
       [Validators.required]
     ),
   });

@@ -39,3 +39,15 @@ export const vacantesEstados = [
   {label: 'Finalizada',   value: 'finalizada'},
   {label: 'Cancelada', value: 'cancelada'},
 ];
+
+export const vacantesEstadosEditable = [
+  {label: 'Abierta',   value: 'abierta'},
+  {label: 'Pausada',   value: 'pausada'},
+  {label: 'Cancelada', value: 'cancelada'},
+];
+
+export const vacantesResultados = [
+  {label: 'Promoción Interna',   value: 'promocion_interna'},
+  {label: 'Traslado',   value: 'traslado'},
+  {label: 'Contratación Externa', value: 'contratacion_externa'},
+];

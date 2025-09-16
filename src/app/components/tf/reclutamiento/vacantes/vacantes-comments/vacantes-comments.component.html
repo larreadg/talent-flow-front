@@ -1,11 +1,29 @@
-<p-button label="Comentarios ({{total}})" icon="pi pi-comment" [severity]="'secondary'" [size]="'small'" (onClick)="openComments()" />
-
+<ng-container *ngIf="type === 'btn'">
+    <p-button label="Comentarios ({{total}})" icon="pi pi-comment" [severity]="'secondary'" [size]="'small'" (onClick)="openComments()" />
+</ng-container>
+<ng-container *ngIf="type === 'tag'">
+    <section (click)="openComments()" class="cursor-pointer">
+        <p-tag pTooltip="Comentarios" [value]="total + ''" icon="pi pi-comment" severity="warning"></p-tag>
+    </section>
+</ng-container>
+<ng-container *ngIf="type === 'plain'">
+    <section class="flex flex-column mb-1" *ngFor="let comentario of comentarios">
+        <section class="flex align-items-center gap-1">
+            <i class="pi pi-comment" [style]="{ fontSize: '10px' }"></i>
+            <section>
+                <p class="m-0 text-xs"><span class="font-semibold">{{comentario?.autor?.nombre}} {{comentario?.autor?.apellido}}:</span> {{comentario.comentario}}</p>
+                <span class="p-text-secondary" [style]="{ fontSize: '10px' }">{{comentario.fcLabel}}</span>
+            </section>
+        </section>
+    </section>
+</ng-container>
 <p-dialog 
     header="Comentarios ({{total}})" 
     [modal]="true"
     [draggable]="false"
     [(visible)]="visible" 
-    [style]="{ width: '30vw' }">
+    [style]="{ width: '30vw' }"
+    appendTo="body">
             
     <section class="grid">
         <section class="col-12">

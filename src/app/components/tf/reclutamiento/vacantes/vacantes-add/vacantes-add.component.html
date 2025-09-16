@@ -40,7 +40,7 @@
         </small>
     </section>
     <section class="col-12">
-        <p class="m-0 text-sm mb-2">Departamento solicitante</p>
+        <p class="m-0 text-sm mb-2">Área solicitante</p>
         <p-dropdown
           [style]="{ width: '100%' }"
           appendTo="body"
@@ -48,7 +48,7 @@
           [options]="departamentos"
           optionLabel="nombre"
           optionValue="id"
-          placeholder="Seleccione un departamento..."
+          placeholder="Seleccione un área..."
           [virtualScroll]="true"
           [virtualScrollItemSize]="20"
           [filter]="true"
@@ -59,7 +59,7 @@
           class="p-error"
           *ngIf="(f.departamentoId.touched || submitted) && f.departamentoId.errors?.['required']"
         >
-          El departamento es obligatorio.
+          El área es obligatorio.
         </small>
     </section>
     <section class="col-12">
@@ -94,6 +94,12 @@
         >
           La fecha de inicio es obligatoria.
         </small>
+    </section>
+    <section class="col-12">
+      <section class="flex gap-2">
+        <p-checkbox formControlName="aumentoDotacion" [binary]="true" inputId="aumentoDotacion"></p-checkbox>
+        <label for="aumentoDotacion">Aumento de dotación</label>
+      </section>
     </section>
     <section class="col-12">
         <p-button

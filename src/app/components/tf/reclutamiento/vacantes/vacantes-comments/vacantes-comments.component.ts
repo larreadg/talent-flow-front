@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { Comentario } from '../../../../../interfaces/comentario.interface';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ComentariosService } from '../../../../../services/comentarios.service';
 import { TalentFlowResponse } from '../../../../../interfaces/talentflow.interface';
 import { HttpErrorResponse } from '@angular/common/http';
+import { environment } from '../../../../../../environments/environment';
 
 // Primeng
 import { ButtonModule } from 'primeng/button';
@@ -13,7 +14,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { AvatarModule } from 'primeng/avatar';
 import { PanelModule } from 'primeng/panel';
 import { MessageService } from 'primeng/api';
-import { environment } from '../../../../../../environments/environment';
+import { TagModule } from 'primeng/tag';
+import { TooltipModule } from 'primeng/tooltip';
 
 @Component({
   selector: 'app-vacantes-comments',
@@ -24,7 +26,9 @@ import { environment } from '../../../../../../environments/environment';
     InputTextareaModule,
     AvatarModule,
     PanelModule,
+    TagModule,
     CommonModule,
+    TooltipModule,
     ReactiveFormsModule
   ],
   templateUrl: './vacantes-comments.component.html',
@@ -37,11 +41,18 @@ export class VacantesCommentsComponent implements OnInit {
   private toast = inject(MessageService)
 
   @Input() set vacanteEtapaId(id: string | undefined) {
-    if(id) this.id = id
+    if(id) {
+      this.id = id
+
+      if(this.type === 'plain') {
+        this.getComentarios()
+      }
+    }
   }
   @Input() set vacanteEtapaTotal(total: number | undefined) {
     if(typeof total !== 'undefined') this.total = total 
   }
+  @Input() type!: 'btn' | 'tag' | 'plain';
 
   id: string = ''
   total: number = 0
@@ -60,6 +71,7 @@ export class VacantesCommentsComponent implements OnInit {
     )
   })
   env = environment
+  @Output() changed = new EventEmitter<number>()
 
   ngOnInit(): void {}
 
@@ -71,6 +83,7 @@ export class VacantesCommentsComponent implements OnInit {
         const data: any = resp.data as any
         this.comentarios = data.data as Comentario[]
         this.total = this.comentarios.length
+        this.changed.emit(this.total)
       },
       error: (_e: HttpErrorResponse) => {
         this.loading = false

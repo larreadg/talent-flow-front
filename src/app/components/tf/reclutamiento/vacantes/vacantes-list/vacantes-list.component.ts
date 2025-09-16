@@ -34,6 +34,8 @@ import { ProgressBarModule } from 'primeng/progressbar';
 
 // Components
 import { VacantesAddComponent } from '../vacantes-add/vacantes-add.component';
+import { KvStoreService } from '../../../../../services/kv-store.service';
+import { ReportesService } from '../../../../../services/reportes.service';
 
 type SortDir = 1 | -1;
 
@@ -71,8 +73,10 @@ export class VacantesListComponent implements OnInit {
   private api = inject(VacantesService);
   private apiDepartamentos = inject(DepartamentosService);
   private apiSedes = inject(SedesService);
-  private router = inject(Router)
-  private route = inject(ActivatedRoute)
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private kv = inject(KvStoreService);
+  private apiReportes = inject(ReportesService);
 
   bItems = bItemVacantesList;
   env = environment;
@@ -87,8 +91,6 @@ export class VacantesListComponent implements OnInit {
 
   // modales
   addVisible = false;
-  editVisible = false;
-  editVacante!: Vacante;
   deleteLoading = false;
 
   // catálogos
@@ -110,22 +112,22 @@ export class VacantesListComponent implements OnInit {
   // Lo que usa la tabla/API
   filtrosApplied = this.getDefaultFilters();
   // Lo que edita el usuario en el panel (no dispara API hasta Buscar)
-  filtrosDraft   = this.getDefaultFilters();
+  filtrosDraft = this.getDefaultFilters();
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      if(params && params['modal'] && params['modal'] === 'add') {
-        this.addVisible = true
+    this.route.queryParams.subscribe((params) => {
+      if (params && params['modal'] && params['modal'] === 'add') {
+        this.addVisible = true;
 
         this.router.navigate([], {
           relativeTo: this.route,
           queryParams: { modal: null },
           queryParamsHandling: 'merge', // mantiene el resto de los params
-        })
+        });
       }
-    })
-    this.restoreFilters();            // localStorage → applied & draft
-    this.getData();                   // catálogos
+    });
+    this.restoreFilters(); // localStorage → applied & draft
+    this.getData(); // catálogos
     this.loadVacantes({ first: 0, rows: this.rows }); // primera carga
   }
 
@@ -133,7 +135,7 @@ export class VacantesListComponent implements OnInit {
   private getDefaultFilters() {
     return {
       search: '',
-      estados: this.estadoOptions.map(o => o.value), // TODOS
+      estados: this.estadoOptions.map((o) => o.value), // TODOS
       departamentos: [] as string[],
       sedes: [] as string[],
       sortBy: 'nombre',
@@ -149,8 +151,13 @@ export class VacantesListComponent implements OnInit {
         const base = this.getDefaultFilters();
         this.filtrosApplied = {
           search: p.search ?? base.search,
-          estados: Array.isArray(p.estados) && p.estados.length ? p.estados : base.estados,
-          departamentos: Array.isArray(p.departamentos) ? p.departamentos : base.departamentos,
+          estados:
+            Array.isArray(p.estados) && p.estados.length
+              ? p.estados
+              : base.estados,
+          departamentos: Array.isArray(p.departamentos)
+            ? p.departamentos
+            : base.departamentos,
           sedes: Array.isArray(p.sedes) ? p.sedes : base.sedes,
           sortBy: p.sortBy ?? base.sortBy,
           sortDir: p.sortDir === -1 ? -1 : 1,
@@ -158,23 +165,28 @@ export class VacantesListComponent implements OnInit {
         this.filtrosDraft = { ...this.filtrosApplied };
       } else {
         this.filtrosApplied = this.getDefaultFilters();
-        this.filtrosDraft   = this.getDefaultFilters();
+        this.filtrosDraft = this.getDefaultFilters();
       }
     } catch {
       this.filtrosApplied = this.getDefaultFilters();
-      this.filtrosDraft   = this.getDefaultFilters();
+      this.filtrosDraft = this.getDefaultFilters();
     }
   }
 
   private persistApplied() {
-    try { localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.filtrosApplied)); } catch {}
+    try {
+      localStorage.setItem(
+        this.STORAGE_KEY,
+        JSON.stringify(this.filtrosApplied)
+      );
+    } catch {}
   }
 
   // ===== Acciones del panel =====
   onBuscarClick() {
     const estados = this.filtrosDraft.estados?.length
       ? this.filtrosDraft.estados
-      : this.estadoOptions.map(o => o.value);
+      : this.estadoOptions.map((o) => o.value);
 
     this.filtrosApplied = {
       ...this.filtrosApplied, // preserva sortBy/sortDir (los maneja la tabla)
@@ -191,7 +203,7 @@ export class VacantesListComponent implements OnInit {
 
   onLimpiarClick() {
     const base = this.getDefaultFilters();
-    this.filtrosDraft   = { ...base };
+    this.filtrosDraft = { ...base };
     this.filtrosApplied = { ...base };
     this.persistApplied();
     if (this.dt) this.dt.first = 0;
@@ -230,54 +242,67 @@ export class VacantesListComponent implements OnInit {
 
   // ===== Tabla (lazy) =====
   loadVacantes = (event?: TableLazyLoadEvent) => {
-    this.lastLazyState = event ?? this.lastLazyState ?? { first: 0, rows: this.rows };
+    this.lastLazyState = event ??
+      this.lastLazyState ?? { first: 0, rows: this.rows };
 
     const first = this.lastLazyState.first ?? 0;
-    const rows  = this.lastLazyState.rows ?? this.rows;
+    const rows = this.lastLazyState.rows ?? this.rows;
 
     // sort controlado por la tabla (si vino en el evento, usarlo y persistir)
-    const sortField = (this.lastLazyState.sortField as string) ?? this.filtrosApplied.sortBy;
+    const sortField =
+      (this.lastLazyState.sortField as string) ?? this.filtrosApplied.sortBy;
     const sortOrderNum: SortDir =
       typeof this.lastLazyState.sortOrder === 'number'
         ? (this.lastLazyState.sortOrder as SortDir)
         : this.filtrosApplied.sortDir;
 
-    if (this.filtrosApplied.sortBy !== sortField || this.filtrosApplied.sortDir !== sortOrderNum) {
+    if (
+      this.filtrosApplied.sortBy !== sortField ||
+      this.filtrosApplied.sortDir !== sortOrderNum
+    ) {
       this.filtrosApplied.sortBy = sortField;
       this.filtrosApplied.sortDir = sortOrderNum;
       this.persistApplied();
     }
 
     const offset = first;
-    const limit  = rows;
+    const limit = rows;
     const sortDir = sortOrderNum === 1 ? 'asc' : 'desc';
 
     this.loading = true;
-    this.api.get({
-      limit,
-      offset,
-      filter: this.filtrosApplied.search || null,
-      sortBy: sortField,
-      sortDir,
-      estados: this.filtrosApplied.estados,
-      departamentos: this.filtrosApplied.departamentos,
-      sedes: this.filtrosApplied.sedes,
-    }).subscribe({
-      next: (resp: any) => {
-        const payload = resp.data;
-        this.vacantes = payload.data;
-        this.totalRecords = payload.meta.total;
-        this.rows = payload.meta.limit ?? rows;
-        this.loading = false;
-      },
-      error: () => {
-        this.toast.add({ severity: 'error', summary: this.env.appName, detail: 'Error al obtener vacantes' });
-        this.loading = false;
-      }
-    });
+    this.api
+      .get({
+        limit,
+        offset,
+        filter: this.filtrosApplied.search || null,
+        sortBy: sortField,
+        sortDir,
+        estados: this.filtrosApplied.estados,
+        departamentos: this.filtrosApplied.departamentos,
+        sedes: this.filtrosApplied.sedes,
+      })
+      .subscribe({
+        next: (resp: any) => {
+          const payload = resp.data;
+          this.vacantes = payload.data;
+          this.totalRecords = payload.meta.total;
+          this.rows = payload.meta.limit ?? rows;
+          this.loading = false;
+        },
+        error: () => {
+          this.toast.add({
+            severity: 'error',
+            summary: this.env.appName,
+            detail: 'Error al obtener vacantes',
+          });
+          this.loading = false;
+        },
+      });
   };
 
-  // ===== Otros =====
+  /**
+   * ############### Otros ###############
+   */
   addOnClose = (_: any) => {
     if (this.dt) this.dt.first = 0;
     this.loadVacantes({ first: 0, rows: this.rows });
@@ -287,4 +312,78 @@ export class VacantesListComponent implements OnInit {
   goToDetail(v: Vacante) {
     this.router.navigate(['/tf/reclutamiento/vacantes', v.id]);
   }
+
+  /**
+   * ############### Reporte ###############
+   */
+
+  reporteParams = {
+    estados: [] as string[],
+    departamentos: [] as string[],
+    sedes: [] as string[],
+    token: ''
+  };
+  reporteVisible: boolean = false
+
+  reporteShow = () => {
+    this.reporteParams = {
+      estados: [],
+      departamentos: [],
+      sedes: [],
+      token: ''
+    }
+    this.reporteVisible = true
+  }
+  
+  private parseFilenameFromCD(cd: string | null): string | null {
+    if (!cd) return null;
+    // ej: attachment; filename="vacantes_20250914_1030.xlsx"
+    const m = /filename\*?=(?:UTF-8''|")?([^\";]+)/i.exec(cd);
+    return m ? decodeURIComponent(m[1].replace(/\"/g, '')) : null;
+  }
+  
+  reporteDownload = async () => {
+    const token = await this.kv.get('token');
+    if (!token) return;
+  
+    this.reporteParams.token = String(token);
+  
+    const popup = window.open('', '_blank');
+    if (!popup) {
+      // fallback si el bloqueador canceló el popup
+      // muestra toast o descargá en la misma pestaña
+      // this.toastr.error('Habilitá popups para descargar el reporte');
+      return;
+    }
+    // Mensaje de espera en el popup
+    popup.document.write('<!doctype html><title>Generando reporte…</title><p style="font-family:sans-serif">Generando reporte…</p>');
+    popup.opener = null; // seguridad
+  
+    this.apiReportes.get(this.reporteParams).subscribe({
+      next: (res) => {
+        const blob = res.body!;
+        const cd = res.headers.get('Content-Disposition');
+        const filename = this.parseFilenameFromCD(cd) ?? `reporte_${new Date().toISOString().slice(0,10)}.xlsx`;
+  
+        const url = URL.createObjectURL(blob);
+  
+        // Forzar descarga en el popup preservando el filename
+        popup.document.body.innerHTML = `
+          <a id="dl" href="${url}" download="${filename}" style="display:none"></a>
+          <script>document.getElementById('dl').click();</script>
+          <p style="font-family:sans-serif">Si la descarga no comenzó, <a href="${url}" download="${filename}">haz clic aquí</a>.</p>
+        `;
+  
+        // liberar luego de un rato
+        setTimeout(() => URL.revokeObjectURL(url), 60_000);
+        this.reporteVisible = false
+      },
+      error: (err) => {
+        popup.close();
+        // this.toastr.error('No se pudo generar el reporte');
+        console.error(err);
+      }
+    });
+  };  
+
 }

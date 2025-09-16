@@ -13,7 +13,7 @@ import { DepartamentosService } from '../../../../../services/departamentos.serv
 import { SedesService } from '../../../../../services/sedes.service';
 import { CommonModule } from '@angular/common';
 import { Vacante } from '../../../../../interfaces/vacante.interface';
-import { vacantesEstados } from '../../../../../utils/utils';
+import { vacantesEstadosEditable, vacantesResultados } from '../../../../../utils/utils';
 import dayjs from 'dayjs';
 
 // Primeng
@@ -22,6 +22,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
 import { MessagesModule } from 'primeng/messages';
+import { CheckboxModule } from 'primeng/checkbox';
 
 @Component({
   selector: 'app-vacantes-edit',
@@ -32,6 +33,7 @@ import { MessagesModule } from 'primeng/messages';
     CalendarModule,
     DropdownModule,
     MessagesModule,
+    CheckboxModule,
     ReactiveFormsModule,
     CommonModule
   ],
@@ -39,9 +41,10 @@ import { MessagesModule } from 'primeng/messages';
   styleUrl: './vacantes-edit.component.scss'
 })
 export class VacantesEditComponent {
-  @Input() set vacante(vacante:Vacante | undefined) {
+  @Input() set vacante(vacante:Vacante | null) {
     if(vacante) {
       this.setInfo(vacante)
+      this.vacanteEstado = vacante.estado
     }
   }
 
@@ -54,7 +57,9 @@ export class VacantesEditComponent {
   messages: Message[] = [{ severity: 'warn', detail: 'La modificación de la fecha de inicio, afecta a las etapas de la vacante' }];
   submitted = false
   env = environment
-  vacantesEstados = vacantesEstados
+  vacantesEstados = vacantesEstadosEditable
+  vacantesResultados = vacantesResultados
+  vacanteEstado: 'abierta' | 'finalizada' | 'pausada' | 'cancelada' = 'abierta'
 
   procesos: Proceso[] = []
   departamentos: Departamento[] = []
@@ -86,6 +91,13 @@ export class VacantesEditComponent {
       '',
       [Validators.required]
     ),
+    aumentoDotacion: this.fb.nonNullable.control(
+      false,
+      [Validators.required]
+    ),
+    resultado: this.fb.nonNullable.control(
+      null as any,
+    ),
   });
 
   ngOnInit(): void {
@@ -106,13 +118,13 @@ export class VacantesEditComponent {
     this.api.patch(body).subscribe({
       next: async(resp) => {
         this.submitted = false
-        this.toast.add({ key: 'vacantes', severity: 'success', summary: this.env.appName, detail: `La vacante ${body.nombre} fue actualizada`, life: 6000 })
+        this.toast.add({ key: 'vacante-detail', severity: 'success', summary: this.env.appName, detail: `La vacante ${body.nombre} fue actualizada`, life: 6000 })
         this.form.reset()
         this.changed.emit(true)
       },
       error: (e: HttpErrorResponse) => {
         const error: TalentFlowResponse = e.error
-        this.toast.add({ key: 'vacantes', severity: 'error', summary: this.env.appName, detail: error.message || 'Error al actualizar vacante' })
+        this.toast.add({ key: 'vacante-detail', severity: 'error', summary: this.env.appName, detail: error.message || 'Error al actualizar vacante' })
         this.submitted = false
       }
     })
@@ -158,5 +170,7 @@ export class VacantesEditComponent {
     this.form.controls['fechaInicio'].setValue(vacante.fechaInicio)
     this.form.controls['id'].setValue(vacante.id)
     this.form.controls['estado'].setValue(vacante.estado)
+    this.form.controls['aumentoDotacion'].setValue(vacante.aumentoDotacion)
+    this.form.controls['resultado'].setValue(vacante.resultado)
   }
 }
