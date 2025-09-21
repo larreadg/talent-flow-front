@@ -20,6 +20,8 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
+    "chart.js": "^4.5.0",
+    "chartjs-plugin-datalabels": "^2.2.0",
     "dayjs": "^1.11.13",
     "dexie": "^4.2.0",
     "html-to-image": "^1.11.13",

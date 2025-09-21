@@ -92,6 +92,7 @@
   <section class="grid">
     <section class="col-12">
       <app-dia-no-laboral-add
+        *ngIf="addVisible"
         (changed)="addOnClose($event)"
       ></app-dia-no-laboral-add>
     </section>
@@ -107,6 +108,7 @@
   <section class="grid">
     <section class="col-12">
       <app-dia-no-laboral-edit
+        *ngIf="editVisible"
         [departamento]="editDnl"
         (changed)="editOnClose($event)"
       ></app-dia-no-laboral-edit>

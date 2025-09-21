@@ -51,3 +51,11 @@ export const vacantesResultados = [
   {label: 'Traslado',   value: 'traslado'},
   {label: 'Contratación Externa', value: 'contratacion_externa'},
 ];
+
+export function pickVar(css: CSSStyleDeclaration, fallback: string, names: string[]) {
+  for (const n of names) {
+    const v = css.getPropertyValue(n)?.trim();
+    if (v) return v;
+  }
+  return fallback;
+}

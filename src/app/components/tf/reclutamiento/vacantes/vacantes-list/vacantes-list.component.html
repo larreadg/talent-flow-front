@@ -63,7 +63,7 @@
                     [virtualScroll]="true"
                     [virtualScrollItemSize]="35"
                     [showClear]="true"
-                    [showToggleAll]="false"
+                    [showToggleAll]="true"
                   />
                 </section>
 
@@ -74,13 +74,13 @@
                     [(ngModel)]="filtrosDraft.departamentos"
                     optionLabel="nombre"
                     optionValue="id"
-                    placeholder="Departamentos..."
-                    selectedItemsLabel="{0} dptos seleccionados"
+                    placeholder="Áreas..."
+                    selectedItemsLabel="{0} áreas seleccionadas"
                     [virtualScroll]="true"
                     [virtualScrollItemSize]="35"
                     [filter]="true"
                     [showClear]="true"
-                    [showToggleAll]="false"
+                    [showToggleAll]="true"
                   />
                 </section>
 
@@ -97,7 +97,7 @@
                     [virtualScrollItemSize]="35"
                     [filter]="true"
                     [showClear]="true"
-                    [showToggleAll]="false"
+                    [showToggleAll]="true"
                   />
                 </section>
 
@@ -130,7 +130,7 @@
           <th pSortableColumn="nombre">Nombre <p-sortIcon field="nombre" /></th>
           <th pSortableColumn="fechaInicio">Fecha de Inicio <p-sortIcon field="fechaInicio" /></th>
           <th pSortableColumn="departamento.nombre">
-            Departamento Solicitante <p-sortIcon field="departamento.nombre" />
+            Área Solicitante <p-sortIcon field="departamento.nombre" />
           </th>
           <th pSortableColumn="sede.nombre">Sede <p-sortIcon field="sede.nombre" /></th>
           <th pSortableColumn="estado">Estado <p-sortIcon field="estado" /></th>
@@ -161,7 +161,7 @@
           <td>
             <section class="flex gap-2" >
               <p-button
-                *ngIf="vacante.estado === 'abierta' || vacante.estado === 'finalizada'"
+                *ngIf="vacante.estado === 'abierta' || vacante.estado === 'finalizada' || vacante.estado === 'pausada'"
                 pTooltip="Gestionar vacante"
                 icon="pi pi-external-link"
                 [text]="true"
@@ -213,7 +213,7 @@
         [virtualScroll]="true"
         [virtualScrollItemSize]="35"
         [showClear]="true"
-        [showToggleAll]="false"
+        [showToggleAll]="true"
         appendTo="body"
       />
     </section>
@@ -225,13 +225,13 @@
         [(ngModel)]="reporteParams.departamentos"
         optionLabel="nombre"
         optionValue="id"
-        placeholder="Departamentos..."
-        selectedItemsLabel="{0} dptos seleccionados"
+        placeholder="Áreas..."
+        selectedItemsLabel="{0} áreas seleccionadas"
         [virtualScroll]="true"
         [virtualScrollItemSize]="35"
         [filter]="true"
         [showClear]="true"
-        [showToggleAll]="false"
+        [showToggleAll]="true"
         appendTo="body"
       />
     </section>
@@ -249,7 +249,7 @@
         [virtualScrollItemSize]="35"
         [filter]="true"
         [showClear]="true"
-        [showToggleAll]="false"
+        [showToggleAll]="true"
         appendTo="body"
       />
     </section>

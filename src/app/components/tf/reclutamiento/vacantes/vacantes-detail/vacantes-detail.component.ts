@@ -407,8 +407,6 @@ export class VacantesDetailComponent implements OnInit {
     }
   }
   
-  
-
   async exportPNG() {
     try {
       const png = await this.renderOffscreenPng(2000, 2);
@@ -419,6 +417,20 @@ export class VacantesDetailComponent implements OnInit {
     } catch (e) {
       console.error(e);
     }
+  }
+
+  /**
+   * ############### Panel controls ###############
+  */
+
+  ix = 0; // pestaña inicial
+  loaded: { [key: number]: boolean } = { 1: true, 2: false, 3: false };
+
+  onTabChange({ index }: { index: number }) {
+    // apagar todas
+    Object.keys(this.loaded).forEach(k => this.loaded[+k] = false);
+    // encender la actual (TabView es 0-based → sumamos 1)
+    this.loaded[index + 1] = true;
   }
 
 }

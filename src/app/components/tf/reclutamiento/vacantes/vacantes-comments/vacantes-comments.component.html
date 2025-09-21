@@ -7,6 +7,7 @@
     </section>
 </ng-container>
 <ng-container *ngIf="type === 'plain'">
+    <p *ngIf="loading" class="p-text-secondary text-xs">Cargando...</p>
     <section class="flex flex-column mb-1" *ngFor="let comentario of comentarios">
         <section class="flex align-items-center gap-1">
             <i class="pi pi-comment" [style]="{ fontSize: '10px' }"></i>

@@ -8,13 +8,14 @@ import { environment } from '../../../../../environments/environment';
 // Primeng
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { MessageService } from 'primeng/api';
+import { Message, MessageService } from 'primeng/api';
 import { CalendarModule } from 'primeng/calendar';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { tiposDnl } from '../../../../utils/utils';
 import { HttpErrorResponse } from '@angular/common/http';
 import { TalentFlowResponse } from '../../../../interfaces/talentflow.interface';
 import dayjs from 'dayjs';
+import { MessagesModule } from 'primeng/messages';
 
 @Component({
   selector: 'app-dia-no-laboral-edit',
@@ -25,6 +26,7 @@ import dayjs from 'dayjs';
     InputTextModule,
     CalendarModule,
     RadioButtonModule,
+    MessagesModule,
     ReactiveFormsModule,
   ],
   templateUrl: './dia-no-laboral-edit.component.html',
@@ -43,6 +45,8 @@ export class DiaNoLaboralEditComponent {
   submitted = false
   env = environment
   tiposDnl = tiposDnl
+  messages: Message[] = [{ severity: 'warn', detail: 'Si la fecha seleccionada coincide con el periodo de etapas de una o más vacantes en estado abierta o pausada, dichas vacantes se verán afectadas' }]
+
   @Output() changed = new EventEmitter<boolean>()
   form = this.fb.nonNullable.group({
     id: this.fb.nonNullable.control(

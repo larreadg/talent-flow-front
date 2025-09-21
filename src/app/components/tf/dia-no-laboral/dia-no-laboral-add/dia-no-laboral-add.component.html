@@ -1,4 +1,10 @@
 <form class="grid" [formGroup]="form" (ngSubmit)="submit()">
+    <section class="col-12">
+      <p-messages 
+        [(value)]="messages" 
+        [enableService]="false" 
+        [closable]="false" />
+    </section>
     <!-- Nombre -->
     <section class="col-12">
       <p class="m-0 text-sm mb-2">Nombre</p>

@@ -15,9 +15,9 @@
         </section>
     </section>
     <section class="col-12 lg:col-10 lg:col-offset-1">
-        <p-tabView>
+        <p-tabView [(activeIndex)]="ix" (onChange)="onTabChange($event)">
             <p-tabPanel leftIcon="pi pi-list-check" header="Etapas">
-                <section class="grid">
+                <section class="grid" *ngIf="loaded[1]">
                     <section class="col-12" *ngFor="let etapa of vacante?.etapasVacante">
                         <p-panel expandIcon="pi pi-chevron-up" collapseIcon="pi pi-chevron-down" [styleClass]="'border_' + etapa?.estado" [toggleable]="true" [collapsed]="etapa.estado === 'finalizada'" >
                             <ng-template pTemplate="header">
@@ -87,14 +87,14 @@
                 </section>
             </p-tabPanel>
             <p-tabPanel leftIcon="pi pi-pencil" header="Datos">
-                <section class="grid">
+                <section class="grid"  *ngIf="loaded[2]">
                     <section class="col-12">
                         <app-vacantes-edit (changed)="editClose($event)" [vacante]="vacante" ></app-vacantes-edit>
                     </section>
                 </section>
             </p-tabPanel>
-            <p-tabPanel leftIcon="pi pi-chart-line" header="Resultados">
-                <section class="grid p-4" #exportWrap>
+            <p-tabPanel leftIcon="pi pi-chart-line" header="Resumen">
+                <section class="grid p-4" #exportWrap *ngIf="loaded[3]">
                     <section class="col-12">
                         <section class="flex align-items-center justify-content-center gap-2">
                             <img src="assets/svg/tf2.svg" alt="TalentFlow" class="w-3rem h-auto">

@@ -1,0 +1,26 @@
+.masonry {
+    column-count: 2;
+    /* o column-count: 3; */
+    column-gap: 1rem;
+}
+
+.card {
+    break-inside: avoid;
+    /* evita cortes feos */
+    margin-bottom: 1rem;
+    display: block;
+}
+
+:host ::ng-deep .acceso-directo:hover {
+    color: var(--primary-color) !important;
+}
+
+/* Contenedor con alto fijo */
+.chart-12m { height: 300px; }
+
+/* Forzamos que el canvas use el alto del contenedor */
+:host ::ng-deep .chart-12m canvas {
+  height: 300px !important;
+  width: 100% !important;
+  display: block;
+}

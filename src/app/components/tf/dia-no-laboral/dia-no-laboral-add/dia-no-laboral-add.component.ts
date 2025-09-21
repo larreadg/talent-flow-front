@@ -2,7 +2,7 @@ import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { DiaNoLaboralService } from '../../../../services/dia-no-laboral.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { environment } from '../../../../../environments/environment';
-import { MessageService } from 'primeng/api';
+import { Message, MessageService } from 'primeng/api';
 import { CommonModule } from '@angular/common';
 import { tiposDnl } from '../../../../utils/utils';
 import dayjs from 'dayjs';
@@ -14,6 +14,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { MessagesModule } from 'primeng/messages';
 
 @Component({
   selector: 'app-dia-no-laboral-add',
@@ -24,6 +25,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     InputTextModule,
     CalendarModule,
     RadioButtonModule,
+    MessagesModule,
     ReactiveFormsModule,
   ],
   templateUrl: './dia-no-laboral-add.component.html',
@@ -36,6 +38,8 @@ export class DiaNoLaboralAddComponent {
   submitted = false
   env = environment
   tiposDnl = tiposDnl
+  messages: Message[] = [{ severity: 'warn', detail: 'Si la fecha seleccionada coincide con el periodo de etapas de una o más vacantes en estado abierta o pausada, dichas vacantes se verán afectadas' }]
+
   @Output() changed = new EventEmitter<boolean>()
   form = this.fb.nonNullable.group({
     nombre: this.fb.nonNullable.control(

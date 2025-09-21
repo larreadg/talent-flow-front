@@ -29,33 +29,101 @@
                     </section>
                 </p-card>
             </section>
-            <section class="col-12 lg:col-6">
-                <p-card styleClass="h-20rem">
-                    <section class="grid">
-                        <section class="col-12">
-                            <p class="m-0 font-semibold">Vacantes por Departamento</p>
-                        </section>
-                    </section>
-                </p-card>
-            </section>
-            <section class="col-12 lg:col-6">
-                <p-card styleClass="h-20rem">
-                    <section class="grid">
-                        <section class="col-12">
-                            <p class="m-0 font-semibold">Vacantes por Sede</p>
-                        </section>
+            <section class="col-12">
+                <p-card>
+                    <div #g1>
+                        <p class="m-0 font-semibold">Resumen de vacantes mensuales (Últimos 12 meses)</p>
+                        <ng-container *ngIf="!res12Loading && res12List?.length; else sinDatos12">
+                            <section class="m-4 chart-12m">
+                                <p-chart
+                                  #res12Chart
+                                  type="bar"
+                                  [data]="res12Data"
+                                  [options]="res12Options"
+                                  [style]="{ width: '100%', display: 'block' }"
+                                ></p-chart>
+                            </section>
+                        </ng-container>
+                        <ng-template #sinDatos12>
+                            <div class="flex items-center justify-center h-full text-surface-500">
+                              {{ res12Loading ? 'Cargando…' : 'Sin datos para mostrar' }}
+                            </div>
+                        </ng-template>
+                    </div>
+                    <section class="flex justify-content-end mt-4">
+                        <button pTooltip="Exportar como imagen" pButton type="button" label="Exportar" (click)="exportPNG(g1, 'resumen_mensual_vacantes')" icon="pi pi-image" severity="secondary" size="small"></button>
                     </section>
                 </p-card>
             </section>
             <section class="col-12">
-                <p-card styleClass="h-20rem">
-                    <section class="grid">
-                        <section class="col-12">
-                            <p class="m-0 font-semibold">Tendencia Mensual</p>
-                            <p class="m-0 p-text-secondary text-xs">Vacantes por mes</p>
-                        </section>
-                    </section>
-                </p-card>
+                <div class="masonry">
+                    <article class="card">
+                        <p-card>
+                            <section class="grid">
+                                <section class="col-12">
+                                    <p class="mt-0 font-semibold">Accesos directos</p>
+                                    <section class="flex gap-3">
+                                        <p-avatar routerLink="/tf/reclutamiento/vacantes" pTooltip="Vacantes" icon="pi pi-briefcase" styleClass="acceso-directo cursor-pointer"></p-avatar>
+                                        <p-avatar routerLink="/tf/areas" pTooltip="Áreas" icon="pi pi-objects-column" styleClass="acceso-directo cursor-pointer"></p-avatar>
+                                        <p-avatar routerLink="/tf/sedes" pTooltip="Sedes" icon="pi pi-building" styleClass="acceso-directo cursor-pointer"></p-avatar>
+                                        <p-avatar routerLink="/tf/usuarios" pTooltip="Usuarios" icon="pi pi-users" styleClass="acceso-directo cursor-pointer"></p-avatar>
+                                        <p-avatar routerLink="/tf/dia-no-laboral" pTooltip="Días no laborales" icon="pi pi-calendar-times" styleClass="acceso-directo cursor-pointer"></p-avatar>
+                                    </section>
+                                </section>
+                            </section>
+                        </p-card>
+                    </article>
+                    <article class="card">
+                        <p-card>
+                            <div #g2>
+                                <p class="mt-0 font-semibold">Cumplimiento SLA {{cSMValue}} días</p>
+                                <ng-container *ngIf="!cSMLoading && (cSMItems.dentroSLA + cSMItems.fueraSLA) > 0; else sinDatos">
+                                    <p-chart type="doughnut" [data]="csmData" [options]="csmOptions" styleClass="h-auto"></p-chart>
+                                </ng-container>
+                                <ng-template #sinDatos>
+                                    <div class="flex items-center justify-center text-surface-500">
+                                      Sin datos para mostrar
+                                    </div>
+                                </ng-template>               
+                            </div>
+                            <section class="flex justify-content-end mt-4">
+                                <button pTooltip="Exportar como imagen" pButton type="button" label="Exportar" (click)="exportPNG(g2, 'resumen_cumplimiento_vacantes')" icon="pi pi-image" severity="secondary" size="small"></button>
+                            </section>
+                        </p-card>
+                    </article>
+
+                    <article class="card">
+                        <p-card>
+                            <div #g3>
+                                <p class="mt-0 font-semibold">Top {{t5}} áreas con más incumplimientos por etapas</p>
+                                <ng-container *ngIf="t5List.length > 0; else sinDatos">
+                                    <p-table [value]="t5List">
+                                        <ng-template pTemplate="header">
+                                            <tr>
+                                                <th>Área</th>
+                                                <th>Etapas (%)</th>
+                                            </tr>
+                                        </ng-template>
+                                        <ng-template pTemplate="body" let-area>
+                                            <tr>
+                                                <td>{{ area.nombre }}</td>
+                                                <td><p-tag severity="warning" [value]="area.pct + '%'"></p-tag></td>
+                                            </tr>
+                                        </ng-template>
+                                    </p-table>
+                                  </ng-container>
+                                  <ng-template #sinDatos>
+                                    <div class="flex items-center justify-center h-full text-surface-500">
+                                      Sin datos para mostrar
+                                    </div>
+                                </ng-template>
+                            </div>
+                            <section class="flex justify-content-end mt-4">
+                                <button pTooltip="Exportar como imagen" pButton type="button" label="Exportar" (click)="exportPNG(g3, 'resumen_incumplimiento_top5')" icon="pi pi-image" severity="secondary" size="small"></button>
+                            </section>
+                        </p-card>
+                    </article>
+                </div>                  
             </section>
         </section>
     </section>
