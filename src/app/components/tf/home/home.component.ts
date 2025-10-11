@@ -57,6 +57,7 @@ export class HomeComponent implements OnInit {
     this.getSLAResumenMaximo()
     this.getTopDepartamentosIncumplimiento()
     this.getResumenVacantesUltimos12Meses()
+    this.getPromedioFinalizacion()
   }
 
   getResumenPorEstado() {
@@ -206,6 +207,7 @@ export class HomeComponent implements OnInit {
     const abiertas = this.res12List.map(m => m.abiertas ?? 0);
     const finalizadas = this.res12List.map(m => m.finalizadas ?? 0);
     const aumentos = this.res12List.map(m => m.aumentoDotacion ?? 0);
+    const ingresos = this.res12List.map(m => m.ingresos ?? 0);
   
     this.res12Data = {
       labels,
@@ -230,6 +232,14 @@ export class HomeComponent implements OnInit {
           label: 'Aumento de dotación',
           data: aumentos,
           backgroundColor: '#ec4899',
+          borderRadius: 6,
+          barPercentage: 0.85,
+          categoryPercentage: 0.7,
+        },
+        {
+          label: 'Ingresos',
+          data: ingresos,
+          backgroundColor: '#ff9900',
           borderRadius: 6,
           barPercentage: 0.85,
           categoryPercentage: 0.7,
@@ -379,4 +389,21 @@ export class HomeComponent implements OnInit {
       if (ctx) ctx.drawImage(srcCanvas, 0, 0);
     });
   };
+
+  /**
+   * ########### Promedio de finalizacion
+   */
+  promedioDias: number = 0
+  getPromedioFinalizacion() {
+    this.apiReportes.getPromedioDiasFinalizacion().subscribe({
+      next: (resp) => {
+        const data: any = resp.data
+        this.promedioDias = data.promedioDias
+      },
+      error: () => {
+        this.promedioDias = 0
+      }
+    });
+  }
+
 }

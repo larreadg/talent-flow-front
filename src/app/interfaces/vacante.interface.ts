@@ -32,6 +32,8 @@ export interface Vacante {
     aumentoDotacion:boolean;
     resultado: 'promocion_interna' | 'traslado' | 'contratacion_externa' | null;
     fechaInicio: string;
+    fechaIngreso: string;
+    fechaConfirmacion: string;
     estado: 'abierta' | 'finalizada' | 'pausada' | 'cancelada';
     activo: boolean;
     proceso?: Proceso;

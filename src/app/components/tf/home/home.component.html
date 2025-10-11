@@ -123,6 +123,19 @@
                             </section>
                         </p-card>
                     </article>
+
+                    <article class="card">
+                        <p-card>
+                            <div #g4>
+                                <p class="mt-0 font-semibold">Promedio de finalización</p>
+                                <p class="text-center text-4xl mb-0">{{promedioDias}}</p>  
+                                <p class="m-0 text-center p-text-secondary text-xs">días</p>             
+                            </div>
+                            <section class="flex justify-content-end mt-4">
+                                <button pTooltip="Exportar como imagen" pButton type="button" label="Exportar" (click)="exportPNG(g4, 'promedio_finalizacion')" icon="pi pi-image" severity="secondary" size="small"></button>
+                            </section>
+                        </p-card>
+                    </article>
                 </div>                  
             </section>
         </section>

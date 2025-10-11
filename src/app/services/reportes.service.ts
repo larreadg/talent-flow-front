@@ -36,4 +36,8 @@ export class ReportesService {
   getResumenVacantesUltimos12Meses() {
     return this.http.get<TalentFlowResponse>(`${environment.apiUrl}/reportes/vacantes-ultimo-anho`)
   }
+  
+  getPromedioDiasFinalizacion() {
+    return this.http.get<TalentFlowResponse>(`${environment.apiUrl}/reportes/promedio-finalizacion`)
+  }
 }

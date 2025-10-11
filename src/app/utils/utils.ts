@@ -43,6 +43,7 @@ export const vacantesEstados = [
 export const vacantesEstadosEditable = [
   {label: 'Abierta',   value: 'abierta'},
   {label: 'Pausada',   value: 'pausada'},
+  {label: 'Finalizada',   value: 'finalizada'},
   {label: 'Cancelada', value: 'cancelada'},
 ];
 
@@ -51,6 +52,13 @@ export const vacantesResultados = [
   {label: 'Traslado',   value: 'traslado'},
   {label: 'Contratación Externa', value: 'contratacion_externa'},
 ];
+
+export const vacanteEstadoIcons = {
+  abierta: 'pi pi-pencil',
+  cancelada: 'pi pi-times',
+  pausada: 'pi pi-clock',
+  finalizada: 'pi pi-check'
+}
 
 export function pickVar(css: CSSStyleDeclaration, fallback: string, names: string[]) {
   for (const n of names) {

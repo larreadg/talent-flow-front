@@ -23,6 +23,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
 import { MessagesModule } from 'primeng/messages';
 import { CheckboxModule } from 'primeng/checkbox';
+import { DividerModule } from 'primeng/divider';
 
 @Component({
   selector: 'app-vacantes-edit',
@@ -34,6 +35,7 @@ import { CheckboxModule } from 'primeng/checkbox';
     DropdownModule,
     MessagesModule,
     CheckboxModule,
+    DividerModule,
     ReactiveFormsModule,
     CommonModule
   ],
@@ -98,6 +100,12 @@ export class VacantesEditComponent {
     resultado: this.fb.nonNullable.control(
       null as any,
     ),
+    fechaIngreso: this.fb.nonNullable.control(
+      null as any,
+    ),
+    fechaConfirmacion: this.fb.nonNullable.control(
+      null as any,
+    ),
   });
 
   ngOnInit(): void {
@@ -115,6 +123,9 @@ export class VacantesEditComponent {
 
     let body = this.form.getRawValue()
     body.fechaInicio = dayjs(body.fechaInicio).format('YYYY-MM-DD')
+    body.fechaConfirmacion = body.fechaConfirmacion !== null ? dayjs(body.fechaConfirmacion).format('YYYY-MM-DD') : null
+    body.fechaIngreso = body.fechaIngreso !== null ? dayjs(body.fechaIngreso).format('YYYY-MM-DD') : null
+
     this.api.patch(body).subscribe({
       next: async(resp) => {
         this.submitted = false
@@ -172,5 +183,7 @@ export class VacantesEditComponent {
     this.form.controls['estado'].setValue(vacante.estado)
     this.form.controls['aumentoDotacion'].setValue(vacante.aumentoDotacion)
     this.form.controls['resultado'].setValue(vacante.resultado)
+    this.form.controls['fechaIngreso'].setValue(vacante.fechaIngreso)
+    this.form.controls['fechaConfirmacion'].setValue(vacante.fechaConfirmacion)
   }
 }

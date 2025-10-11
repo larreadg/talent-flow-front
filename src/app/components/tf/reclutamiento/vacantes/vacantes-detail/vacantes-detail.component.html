@@ -9,6 +9,7 @@
                 <section class="flex gap-2">
                     <p-tag pTooltip="Sede" icon="pi pi-building" [value]="vacante?.sede?.nombre"></p-tag>
                     <p-tag pTooltip="Departamento" icon="pi pi-objects-column" [value]="vacante?.departamento?.nombre"></p-tag>
+                    <p-tag [className]="vacante?.estado" pTooltip="Estado" [icon]="vacanteEstadoIcons[vacante?.estado || 'abierta']" [value]="vacante?.estado"></p-tag>
                 </section>
             </section>
             <p-button (onClick)="reporteDownload()" severity="success" label="Exportar" icon="pi pi-file-excel" [size]="'small'" />
@@ -43,10 +44,10 @@
                                             </section>
                                         </section>
                                     </section>
-                                    <section class="flex px-2" *ngIf="etapa?.estado === 'abierta'">
+                                    <section class="flex px-2" *ngIf="etapa?.estado === 'abierta' && vacante?.estado === 'abierta'">
                                         <p-button label="Finalizar" icon="pi pi-check-circle" [size]="'small'" (onClick)="finalizarEtapaShow(etapa)" />
                                     </section>
-                                    <section class="flex px-2" *ngIf="etapa?.estado === 'finalizada'">
+                                    <section class="flex px-2" *ngIf="etapa?.estado === 'finalizada' && (vacante?.estado === 'abierta' || vacante?.estado === 'finalizada')">
                                         <p-button label="Editar" icon="pi pi-pencil" [size]="'small'" severity="secondary" (onClick)="editarEtapaShow(etapa)" />
                                     </section>
                                 </section>

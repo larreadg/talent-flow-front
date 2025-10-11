@@ -33,6 +33,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { TableModule } from 'primeng/table';
 import { MenuModule } from 'primeng/menu';
 import { TabViewModule } from 'primeng/tabview';
+import { vacanteEstadoIcons } from '../../../../../utils/utils';
 
 @Component({
   selector: 'app-vacantes-detail',
@@ -78,6 +79,7 @@ export class VacantesDetailComponent implements OnInit {
   vacanteLoading: boolean = false
   env = environment
   disabledDates: Date[] = []
+  vacanteEstadoIcons = vacanteEstadoIcons
 
   menuItems: MenuItem[] = [
     {
