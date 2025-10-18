@@ -140,7 +140,7 @@
                     <article class="card">
                         <p-card>
                             <div #g5>
-                                <p class="mt-0 font-semibold">Resumen de resultados de búsquedas</p>
+                                <p class="mt-0 font-semibold">Resumen de resultados de vacantes</p>
                                 <ng-container *ngIf="!rRLoading && (rRItems.contratacionExterna + rRItems.traslado + rRItems.promocionInterna) > 0; else sinDatos">
                                     <p-chart type="doughnut" [data]="rRData" [options]="rROptions" styleClass="h-auto"></p-chart>
                                 </ng-container>
