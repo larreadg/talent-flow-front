@@ -58,6 +58,7 @@ export class HomeComponent implements OnInit {
     this.getTopDepartamentosIncumplimiento()
     this.getResumenVacantesUltimos12Meses()
     this.getPromedioFinalizacion()
+    this.getResumenResultadosDeBusqueda()
   }
 
   getResumenPorEstado() {
@@ -404,6 +405,86 @@ export class HomeComponent implements OnInit {
         this.promedioDias = 0
       }
     });
+  }
+
+  /**
+   * ########### Reporte resultados de busqueda
+   */
+  rRItems: { promocionInterna: number, traslado: number, contratacionExterna: number } = { promocionInterna: 0, traslado: 0, contratacionExterna: 0 }
+  rRLoading: boolean = false
+  rRData: ChartData<'doughnut'> = {
+    labels: ['Promoción Interna', 'Traslado', 'Contratación Externa'],
+    datasets: [
+      {
+        data: [0, 0, 0],
+        // Colores fijos (volvemos a la versión inicial)
+        backgroundColor: ['#06b6d4', '#ec4899', '#22c55e'],
+        hoverBackgroundColor: ['#5cc7e0', '#fc86c0', '#6ade95'],
+        borderWidth: 0,
+      },
+    ],
+  };
+
+  rROptions: ChartOptions<'doughnut'> = {
+    responsive: true,
+    maintainAspectRatio: false,
+    cutout: '65%',
+    plugins: {
+      legend: { position: 'top', labels: { usePointStyle: true } },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => {
+            const val = ctx.parsed as number;
+            const ds = ctx.dataset.data as number[];
+            const total = ds.reduce((a, b) => a + (b || 0), 0) || 1;
+            const pct = (val / total) * 100;
+            return `${ctx.label}: ${val} (${pct.toFixed(1)}%)`;
+          },
+        },
+      },
+      // 👇 Etiquetas sobre las porciones
+      datalabels: {
+        display: (ctx: any) => {
+          const v = (ctx.dataset.data as number[])[ctx.dataIndex] || 0;
+          return v > 0; // no muestres si es cero
+        },
+        formatter: (value: any, ctx: any) => {
+          const ds = ctx.dataset.data as number[];
+          const total = ds.reduce((a, b) => a + (b || 0), 0) || 1;
+          const pct = Math.round((Number(value) / total) * 100);
+          return `${value} (${pct}%)`;
+        },
+        color: '#fff',
+        font: { weight: 'bold' },
+        anchor: 'center',
+        align: 'center',
+        clamp: true,
+      } as any, // si TS se queja, dejá este 'as any'
+    },
+  };
+
+  getResumenResultadosDeBusqueda() {
+    this.rRLoading = true
+    this.apiReportes.getResumenResultadosDeBusqueda().subscribe({
+      next: async(resp) => {
+        const data = <any> resp.data
+        this.rRItems.promocionInterna = data.promocionInterna
+        this.rRItems.traslado = data.traslado
+        this.rRItems.contratacionExterna = data.contratacionExterna
+        this.rRLoading = false
+        this.rRData = {
+          ...this.rRData,
+          datasets: [
+            { ...(this.rRData.datasets[0] as any), data: [this.rRItems.promocionInterna, this.rRItems.traslado, this.rRItems.contratacionExterna] }
+          ]
+        };
+      },
+      error: (e) => {
+        this.rRItems = { promocionInterna: 0, traslado: 0, contratacionExterna: 0 }
+        this.rRData = { ...this.rRData, datasets: [{ ...(this.rRData.datasets[0] as any), data: [0, 0, 0] }] };
+        this.rRLoading = false
+      }
+    })
   }
 
 }

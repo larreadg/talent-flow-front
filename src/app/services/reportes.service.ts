@@ -40,4 +40,8 @@ export class ReportesService {
   getPromedioDiasFinalizacion() {
     return this.http.get<TalentFlowResponse>(`${environment.apiUrl}/reportes/promedio-finalizacion`)
   }
+  
+  getResumenResultadosDeBusqueda() {
+    return this.http.get<TalentFlowResponse>(`${environment.apiUrl}/reportes/resultados-busquedas`)
+  }
 }
