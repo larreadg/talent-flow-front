@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
-    apiUrl: 'http://localhost:3000/api',
+    apiUrl: 'https://s.personal.com.py/tf/api',
     appName: 'TalentFlow',
     appVersion: 'v1.0.3'
 };

@@ -446,7 +446,11 @@ export class HomeComponent implements OnInit {
       datalabels: {
         display: (ctx: any) => {
           const v = (ctx.dataset.data as number[])[ctx.dataIndex] || 0;
-          return v > 0; // no muestres si es cero
+          const ds = ctx.dataset.data as number[];
+          const total = ds.reduce((a, b) => a + (b || 0), 0) || 1;
+          const pct = (v / total) * 100;
+          // Solo mostrar si el porcentaje es mayor a 5%
+          return pct > 5;
         },
         formatter: (value: any, ctx: any) => {
           const ds = ctx.dataset.data as number[];
@@ -455,11 +459,11 @@ export class HomeComponent implements OnInit {
           return `${value} (${pct}%)`;
         },
         color: '#fff',
-        font: { weight: 'bold' },
+        font: { weight: 'bold', size: 12 },
         anchor: 'center',
         align: 'center',
         clamp: true,
-      } as any, // si TS se queja, dejá este 'as any'
+      } as any,
     },
   };
 
